@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio Edward Landung Pramudya — Web Developer specializing in high-performance IT solutions. Building clean, scalable, and interactive digital experiences." />
+  <title>Edward Landung Pramudya — Portfolio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons (Lucide) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+
+  <!-- Devicon for tech icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="#" class="navbar__logo">E L<span>P</span></a>
+
+      <ul class="navbar__links" id="navLinks">
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <!-- <li><a href="#contact">Contact</a></li> -->
+      </ul>
+
+      <div class="navbar__actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i data-lucide="moon" width="18" height="18"></i>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <div class="hero__shape hero__shape--1"></div>
+      <div class="hero__shape hero__shape--2"></div>
+      <div class="hero__shape hero__shape--3"></div>
+    </div>
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__text">
+          <div class="hero__badge">
+            <span class="dot"></span>
+            Available for work
+          </div>
+          <h1 class="hero__title">
+            I'm <span class="highlight">Edward Landung<br/>Pramudya</span>
+          </h1>
+          <p class="hero__desc">
+            Web Developer specializing in <strong>high-performance IT tech</strong>. I craft clean, scalable, and interactive digital experiences that deliver real impact.
+          </p>
+          <div class="hero__buttons">
+            <a href="#projects" class="btn btn--primary">
+              <i data-lucide="briefcase" width="16" height="16"></i>
+              Lihat Pekerjaan Saya
+            </a>
+            <a href="#contact" class="btn btn--outline">
+              <i data-lucide="file-text" width="16" height="16"></i>
+              CV Saya
+            </a>
+          </div>
+        </div>
+        <div class="hero__photo">
+          <div class="hero__photo-wrapper">
+            <img src="assets/img/profile.png" alt="Edward Landung Pramudya" />
+          </div>
+          <div class="hero__photo-decor"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="container">
+      <p class="section-label fade-up">ABOUT</p>
+      <h2 class="section-title fade-up">A bit about me</h2>
+
+      <div class="about__grid">
+        <!-- Left: Profile -->
+        <div class="about__profile fade-up">
+          <h3 class="about__profile-title">Profil Saya</h3>
+          <p class="about__profile-text">
+            Seorang Manajemen Informatika yang penuh semangat, menciptakan solusi inovatif, dan berdedikasi tinggi dalam pengembangan Teknologi Informasi dan Komunikasi.
+          </p>
+
+          <div class="about__stats">
+            <div class="stat-card">
+              <div class="stat-card__number">3+</div>
+              <div class="stat-card__label">Tahun<br/>Pengalaman</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card__number">20+</div>
+              <div class="stat-card__label">Proyek<br/>Selesai</div>
+            </div>
+          </div>
+
+          <p class="about__skills-label">Soft Skills</p>
+          <div class="about__skills-tags">
+            <span class="skill-tag">Problem Solving</span>
+            <span class="skill-tag">Team Work</span>
+            <span class="skill-tag">Komunikasi</span>
+            <span class="skill-tag">Adaptasi</span>
+            <span class="skill-tag">Leadership</span>
+          </div>
+        </div>
+
+        <!-- Right: Experience Timeline -->
+        <div class="about__experience fade-up">
+          <h3 class="about__experience-title">Pengalaman Kerja</h3>
+
+          <div class="timeline">
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <span class="timeline__date">Jan 2024 — Saat Ini</span>
+              <h4 class="timeline__role">IT Support</h4>
+              <p class="timeline__company">PT Global Data Inspirasi, Gempol, Jawa Timur</p>
+              <p class="timeline__desc">
+                Melakukan instalasi, konfigurasi, troubleshooting perangkat keras & jaringan untuk operasional harian. Mengembangkan sistem monitoring dan memastikan kelancaran infrastruktur IT perusahaan.
+              </p>
+            </div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <span class="timeline__date">Jun 2023 — Des 2023</span>
+              <h4 class="timeline__role">Frontend Website Developer</h4>
+              <p class="timeline__company">Dinas Ketahanan Pangan, Malang, Jember</p>
+              <p class="timeline__desc">
+                Merancang & membangun antarmuka website untuk UMKM, dengan responsif design, performa tinggi, dan pengalaman pengguna yang optimal menggunakan HTML, CSS, dan JavaScript.
+              </p>
+            </div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <span class="timeline__date">Jan 2023 — Mei 2023</span>
+              <h4 class="timeline__role">Backend & Frontend Developer</h4>
+              <p class="timeline__company">Freelance, Jember</p>
+              <p class="timeline__desc">
+                Membangun full-stack web applications, mulai dari desain database hingga deployment. Fokus pada performa, keamanan, dan skalabilitas untuk berbagai klien.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="skills" id="skills">
+    <div class="container">
+      <p class="section-label fade-up">SKILLS</p>
+      <h2 class="section-title fade-up">Technologies I work with</h2>
+
+      <div class="skills__grid fade-up">
+        <div class="tech-badge">
+          <span class="tech-badge__icon"><i class="devicon-html5-plain colored"></i></span>
+          HTML5 / CSS3
+        </div>
+        <div class="tech-badge">
+          <span class="tech-badge__icon"><i class="devicon-javascript-plain colored"></i></span>
+          JavaScript
+        </div>
+        <div class="tech-badge">
+          <span class="tech-badge__icon"><i class="devicon-php-plain colored"></i></span>
+          PHP
+        </div>
+        <div class="tech-badge">
+          <span class="tech-badge__icon"><i class="devicon-laravel-original colored"></i></span>
+          Laravel
+        </div>
+        <div class="tech-badge">
+          <span class="tech-badge__icon"><i class="devicon-vuejs-plain colored"></i></span>
+          Vue.js
+        </div>
+        <div class="tech-badge">
+          <span class="tech-badge__icon"><i class="devicon-react-original colored"></i></span>
+          React
+        </div>
+        <div class="tech-badge">
+          <span class="tech-badge__icon"><i class="devicon-tailwindcss-original colored"></i></span>
+          Tailwind CSS
+        </div>
+        <div class="tech-badge">
+          <span class="tech-badge__icon"><i class="devicon-bootstrap-plain colored"></i></span>
+          Bootstrap
+        </div>
+        <div class="tech-badge">
+          <span class="tech-badge__icon"><i class="devicon-mysql-plain colored"></i></span>
+          MySQL
+        </div>
+        <div class="tech-badge">
+          <span class="tech-badge__icon"><i class="devicon-mongodb-plain colored"></i></span>
+          MongoDB
+        </div>
+        <div class="tech-badge">
+          <span class="tech-badge__icon"><i class="devicon-androidstudio-plain colored"></i></span>
+          Android Studio
+        </div>
+        <div class="tech-badge">
+          <span class="tech-badge__icon"><i class="devicon-vscode-plain colored"></i></span>
+          VS Code
+        </div>
+        <div class="tech-badge">
+          <span class="tech-badge__icon"><i class="devicon-xampp-plain colored"></i></span>
+          XAMPP
+        </div>
+        <div class="tech-badge">
+          <span class="tech-badge__icon"><i class="devicon-postman-plain colored"></i></span>
+          Postman
+        </div>
+        <div class="tech-badge">
+          <span class="tech-badge__icon"><i class="devicon-git-plain colored"></i></span>
+          Git
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <p class="section-label fade-up">PORTOFOLIO</p>
+      <h2 class="section-title fade-up">Selected projects</h2>
+      <p class="hero__desc fade-up" style="margin-bottom: 0;">Beberapa proyek terbaik yang pernah saya kerjakan.</p>
+
+      <div class="projects__grid">
+        <div class="project-card fade-up">
+          <div class="project-card__img">
+            <img src="assets/img/project1.jpg" alt="Dashboard Analytics" />
+          </div>
+          <div class="project-card__body">
+            <h3 class="project-card__title">Dashboard Analytics</h3>
+            <p class="project-card__desc">
+              Aplikasi dashboard monitoring real-time untuk visualisasi data penjualan dan performa bisnis dengan chart interaktif.
+            </p>
+            <div class="project-card__tags">
+              <span class="project-card__tag">Laravel</span>
+              <span class="project-card__tag">Vue.js</span>
+              <span class="project-card__tag">MySQL</span>
+            </div>
+            <div class="project-card__links">
+              <a href="#" class="project-card__link">
+                Live Demo <i data-lucide="arrow-up-right" width="14" height="14"></i>
+              </a>
+              <a href="#" class="project-card__link">
+                GitHub <i data-lucide="github" width="14" height="14"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-up">
+          <div class="project-card__img">
+            <img src="assets/img/project2.jpg" alt="E-Commerce Platform" />
+          </div>
+          <div class="project-card__body">
+            <h3 class="project-card__title">E-Commerce Platform</h3>
+            <p class="project-card__desc">
+              Platform e-commerce lengkap dengan fitur keranjang belanja, manajemen produk, dan integrasi payment gateway.
+            </p>
+            <div class="project-card__tags">
+              <span class="project-card__tag">PHP</span>
+              <span class="project-card__tag">Bootstrap</span>
+              <span class="project-card__tag">MySQL</span>
+            </div>
+            <div class="project-card__links">
+              <a href="#" class="project-card__link">
+                Live Demo <i data-lucide="arrow-up-right" width="14" height="14"></i>
+              </a>
+              <a href="#" class="project-card__link">
+                GitHub <i data-lucide="github" width="14" height="14"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT =====
+  <section class="contact" id="contact">
+    <div class="container">
+      <p class="section-label fade-up">CONTACT</p>
+      <h2 class="section-title fade-up">Let's work together</h2>
+      <p class="hero__desc fade-up" style="margin: 0 auto 0; text-align: center;">
+        Punya projek menarik? Jangan ragu untuk menghubungi saya. Mari berkolaborasi dan ciptakan sesuatu yang luar biasa!
+      </p>
+
+      <div class="contact__form-wrapper fade-up">
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="you@example.com" required />
+            </div>
+          </div>
+          <div class="form-group form-group--full">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" placeholder="Project inquiry" />
+          </div>
+          <div class="form-group form-group--full">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary contact__submit">
+            Send message
+            <i data-lucide="send" width="16" height="16"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <p class="footer__copy">&copy; 2026 Edward Landung Pramudya. All rights reserved.</p>
+        <div class="footer__socials">
+          <a href="#" class="footer__social-link" aria-label="GitHub">
+            <i data-lucide="github" width="18" height="18"></i>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="LinkedIn">
+            <i data-lucide="linkedin" width="18" height="18"></i>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Instagram">
+            <i data-lucide="instagram" width="18" height="18"></i>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Email">
+            <i data-lucide="mail" width="18" height="18"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
