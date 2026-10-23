@@ -262,10 +262,15 @@ function initTextRotator() {
   if (!rotatorEl) return;
 
   const words = [
-    'high-performance IT tech',
+    'High-Performance IT Tech',
     'IT Support',
-    'Manajemen Informatika',
-    'Web Development'
+    'Data Analyst',
+    'Web Development',
+    'Mobile Development',
+    'Backend Developer',
+    'Networking',
+    'Augmented Intelligence & Machine Learning',
+    'IoT (Internet of Things)',
   ];
 
   let wordIndex = 0;
