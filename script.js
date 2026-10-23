@@ -54,6 +54,11 @@ function initThemeToggle() {
     html.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
     updateToggleIcon();
+    // Trigger slide overlay animation
+    document.body.classList.add('slide');
+    setTimeout(() => {
+      document.body.classList.remove('slide');
+    }, 600);
   });
 }
 

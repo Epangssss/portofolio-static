@@ -53,24 +53,24 @@
 
 /* Dark mode */
 [data-theme="dark"] {
-  --clr-bg: #0f172a;
-  --clr-bg-alt: #1e293b;
-  --clr-bg-section: #162032;
-  --clr-surface: #1e293b;
+  --clr-bg: #0a0a0a;
+  --clr-bg-alt: #141414;
+  --clr-bg-section: #111111;
+  --clr-surface: #1a1a1a;
 
   --clr-text: #f1f5f9;
-  --clr-text-secondary: #94a3b8;
-  --clr-text-muted: #64748b;
-  --clr-border: #334155;
+  --clr-text-secondary: #a1a1aa;
+  --clr-text-muted: #71717a;
+  --clr-border: #27272a;
 
-  --clr-primary-light: #1e3a5f;
-  --clr-primary-ultra-light: #0f2644;
+  --clr-primary-light: #172554;
+  --clr-primary-ultra-light: #0c1a3d;
   --clr-accent-light: #1e1b4b;
 
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, .2);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, .3);
-  --shadow-lg: 0 10px 40px rgba(0, 0, 0, .4);
-  --shadow-card: 0 2px 12px rgba(59, 130, 246, .12);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, .3);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, .4);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, .5);
+  --shadow-card: 0 2px 12px rgba(59, 130, 246, .15);
 }
 
 /* =============================================
@@ -167,7 +167,7 @@ h4 {
 }
 
 [data-theme="dark"] .navbar.scrolled {
-  background: rgba(15, 23, 42, .82);
+  background: rgba(10, 10, 10, .85);
 }
 
 .navbar__inner {
@@ -254,6 +254,27 @@ h4 {
   background: var(--clr-primary-light);
   color: var(--clr-primary);
   transform: rotate(20deg);
+}
+
+/* Slide overlay for theme toggle */
+#themeOverlay {
+  position: fixed;
+  inset: 0;
+  background: var(--clr-bg);
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+body.slide #themeOverlay {
+  animation: slideToggle var(--transition) forwards;
+}
+
+@keyframes slideToggle {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { transform: translateX(0); opacity: 0.5; }
+  100% { transform: translateX(100%); opacity: 0; }
 }
 
 /* Mobile menu toggle */
@@ -1089,7 +1110,10 @@ h4 {
     top: 68px;
     left: 0;
     right: 0;
+    z-index: 999;
     background: var(--clr-surface);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
     border-bottom: 1px solid var(--clr-border);
     flex-direction: column;
     padding: 20px var(--container-px);
