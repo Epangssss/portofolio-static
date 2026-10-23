@@ -878,7 +878,7 @@ body.slide #themeOverlay {
 
 .projects__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(2, 2fr);
   gap: 28px;
   margin-top: 40px;
 }
@@ -889,6 +889,9 @@ body.slide #themeOverlay {
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .project-card:hover {
@@ -899,66 +902,56 @@ body.slide #themeOverlay {
 
 .project-card__img {
   width: 100%;
-  height: 350px;
+  height: 270px;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   cursor: zoom-in;
+  background: var(--clr-bg-alt);
+  position: relative;
 }
 
 .project-card__img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
   transition: transform .5s cubic-bezier(.4, 0, .2, 1);
 }
 
-.project-card__img--project2 {
-  width: 100%;
-  height: 350px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  cursor: zoom-in;
-}
-
-.project-card__img--project2 img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  transform: translateY(15px);
-}
 .project-card:hover .project-card__img img {
   transform: scale(1.05);
 }
 
 .project-card__body {
-  padding: 22px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .project-card__title {
   font-family: var(--ff-heading);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  margin-bottom: 8px;
+  line-height: 1.4;
+  margin-bottom: 12px;
   color: var(--clr-text);
 }
 
 .project-card__desc {
   font-size: var(--fs-small);
   color: var(--clr-text-secondary);
-  line-height: 1.7;
-  margin-bottom: 16px;
+  line-height: 1.65;
+  margin-bottom: 20px;
 }
 
 .project-card__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 
 .project-card__tag {
@@ -993,7 +986,10 @@ body.slide #themeOverlay {
 
 .project-card__links {
   display: flex;
-  gap: 12px;
+  align-items: center;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 8px;
 }
 
 .project-card__link {
@@ -1002,12 +998,12 @@ body.slide #themeOverlay {
   color: var(--clr-primary);
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   transition: gap var(--transition);
 }
 
 .project-card__link:hover {
-  gap: 8px;
+  gap: 10px;
 }
 
 /* =============================================
@@ -1350,7 +1346,7 @@ body.slide #themeOverlay {
 
 
   .project-card__img {
-    margin-top: 10px;
+    height: 220px;
   }
 
   .lightbox {
