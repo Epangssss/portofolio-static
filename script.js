@@ -271,6 +271,7 @@ function initTextRotator() {
     'Networking',
     'Augmented Intelligence & Machine Learning',
     'IoT (Internet of Things)',
+    'Design UI / UX'
   ];
 
   let wordIndex = 0;
