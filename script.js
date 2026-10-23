@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initActiveLink();
   initContactForm();
+  initLightbox();
+  initTextRotator();
 });
 
 // =============================================
@@ -155,6 +157,7 @@ function initActiveLink() {
 // =============================================
 function initContactForm() {
   const form = document.getElementById('contactForm');
+  if (!form) return;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -193,3 +196,107 @@ function initContactForm() {
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
 document.head.appendChild(styleSheet);
+
+// =============================================
+// LIGHTBOX — ZOOM GAMBAR PROJECT
+// =============================================
+function initLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const projectCards = document.querySelectorAll('.project-card__img');
+
+  if (!lightbox || !lightboxImg || !lightboxClose) return;
+
+  function openLightbox(img) {
+    if (!img || !img.src) return;
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt || 'Project Preview';
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      if (!lightbox.classList.contains('active')) {
+        lightboxImg.src = '';
+      }
+    }, 300);
+  }
+
+  projectCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const img = card.querySelector('img');
+      openLightbox(img);
+    });
+  });
+
+  // Tombol X versi biasa untuk tutup
+  lightboxClose.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeLightbox();
+  });
+
+  // Klik di luar gambar (area backdrop) untuk tutup
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Tombol Escape di keyboard untuk tutup
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      closeLightbox();
+    }
+  });
+}
+
+// =============================================
+// HERO TEXT ROTATOR (Typewriter Effect)
+// =============================================
+function initTextRotator() {
+  const rotatorEl = document.getElementById('heroRotator');
+  if (!rotatorEl) return;
+
+  const words = [
+    'high-performance IT tech',
+    'IT Support',
+    'Manajemen Informatika',
+    'Web Development'
+  ];
+
+  let wordIndex = 0;
+  let charIndex = words[0].length;
+  let isDeleting = true;
+
+  function type() {
+    const currentWord = words[wordIndex];
+
+    if (isDeleting) {
+      charIndex--;
+      rotatorEl.textContent = currentWord.substring(0, charIndex);
+    } else {
+      charIndex++;
+      rotatorEl.textContent = currentWord.substring(0, charIndex);
+    }
+
+    let speed = isDeleting ? 35 : 70;
+
+    if (!isDeleting && charIndex === currentWord.length) {
+      speed = 2200; // Pause after word is fully typed
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      speed = 400; // Pause before typing next word
+    }
+
+    setTimeout(type, speed);
+  }
+
+  // Initial pause before deleting first word
+  setTimeout(type, 2200);
+}

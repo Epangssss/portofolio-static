@@ -69,7 +69,7 @@
             I'm <span class="highlight">Edward Landung<br />Pramudya</span>
           </h1>
           <p class="hero__desc">
-            Web Developer specializing in <strong>high-performance IT tech</strong>. I craft clean, scalable, and
+            Web Developer specializing in <strong class="hero-rotator"><span id="heroRotator">high-performance IT tech</span><span class="hero-cursor">|</span></strong>. I craft clean, scalable, and
             interactive digital experiences that deliver real impact.
           </p>
 
@@ -331,15 +331,38 @@
               suasana hati.
             </p>
             <div class="project-card__tags">
-              <span class="project-card__tag">Flutter</span>
-              <span class="project-card__tag">Dart</span>
-              <span class="project-card__tag">Python</span>
-              <span class="project-card__tag">Flask</span>
-              <span class="project-card__tag">Node.js</span>
-              <span class="project-card__tag">MongoDB</span>
-              <span class="project-card__tag">ResNet50</span>
-              <span class="project-card__tag">K-NN</span>
-
+              <span class="project-card__tag">
+                <img src="https://cdn.simpleicons.org/flutter" width="14" height="14" alt="Flutter" />
+                Flutter
+              </span>
+              <span class="project-card__tag">
+                <img src="https://cdn.simpleicons.org/dart" width="14" height="14" alt="Dart" />
+                Dart
+              </span>
+              <span class="project-card__tag">
+                <img src="https://cdn.simpleicons.org/python" width="14" height="14" alt="Python" />
+                Python
+              </span>
+              <span class="project-card__tag">
+                <img src="https://cdn.simpleicons.org/flask" width="14" height="14" alt="Flask" />
+                Flask
+              </span>
+              <span class="project-card__tag">
+                <img src="https://cdn.simpleicons.org/nodedotjs" width="14" height="14" alt="Node.js" />
+                Node.js
+              </span>
+              <span class="project-card__tag">
+                <img src="https://cdn.simpleicons.org/mongodb" width="14" height="14" alt="MongoDB" />
+                MongoDB
+              </span>
+              <span class="project-card__tag">
+                <img src="https://cdn.simpleicons.org/tensorflow" width="14" height="14" alt="ResNet50" />
+                ResNet50
+              </span>
+              <span class="project-card__tag">
+                <img src="https://cdn.simpleicons.org/scikitlearn" width="14" height="14" alt="K-NN" />
+                K-NN
+              </span>
             </div>
             <div class="project-card__links">
               <!-- <a href="#" class="project-card__link">
@@ -365,12 +388,26 @@
 
             </p>
             <div class="project-card__tags">
-              <span class="project-card__tag">Blade</span>
-              <span class="project-card__tag">Laravel</span>
-              <span class="project-card__tag">CSS</span>
-              <span class="project-card__tag">JavaScript</span>
-              <span class="project-card__tag">MySQL</span>
-              <span class="project-card__tag">Bootstrap</span>
+              <span class="project-card__tag">
+                <img src="https://cdn.simpleicons.org/laravel" width="14" height="14" alt="Laravel" />
+                Laravel
+              </span>
+              <span class="project-card__tag">
+                <img src="https://cdn.simpleicons.org/css" width="14" height="14" alt="CSS" />
+                CSS
+              </span>
+              <span class="project-card__tag">
+                <img src="https://cdn.simpleicons.org/javascript" width="14" height="14" alt="JavaScript" />
+                JavaScript
+              </span>
+              <span class="project-card__tag">
+                <img src="https://cdn.simpleicons.org/mysql" width="14" height="14" alt="MySQL" />
+                MySQL
+              </span>
+              <span class="project-card__tag">
+                <img src="https://cdn.simpleicons.org/bootstrap" width="14" height="14" alt="Bootstrap" />
+                Bootstrap
+              </span>
             </div>
             <div class="project-card__links">
               <a href="https://occupancy.bieplus.com/" class="project-card__link">
@@ -437,6 +474,12 @@
       </div>
     </div>
   </footer>
+
+  <!-- Lightbox (Zoom Gambar Project) -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Tutup">&times;</button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="Project Preview" />
+  </div>
 
   <script src="script.js"></script>
 </body>
