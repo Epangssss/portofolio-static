@@ -21,6 +21,7 @@
 
   <!-- Devicon for tech icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -178,6 +179,93 @@
                 operasional sistem penerimaan siswa baru, serta menangani instalasi, pemeliharaan, dan troubleshooting
                 perangkat keras/driver PC dan printer.
               </p>
+              <div class="project-card__tags">
+                <!-- Tombol pemicu -->
+                <button type="button" class="project-card__tag" onclick="toggleGallery('gallery-sertifikat-1')">
+                  <i class="fa-solid fa-certificate"></i> Sertifikat
+                </button>
+
+                <button type="button" class="project-card__tag" onclick="toggleGallery('gallery-tempat-kerja-1')">
+                  <i class="fas fa-image"></i> Foto Pengalaman Kerja
+                </button>
+              </div>
+
+              <!-- Gallery Sertifikat (gambar) -->
+              <div id="gallery-sertifikat-1" class="documentation-gallery">
+                <div class="documentation-card" onclick="openGalleryPopup('Sertifikat — IT Support Brilliant English', [
+                    'assets/sertifikat/Magang/Magang-1.png'
+                  ], 0)">
+                  <div class="doc-card__thumb">
+                    <img src="assets/sertifikat/Magang/Magang-1.png" alt="Sertifikat Kompetensi">
+                    <div class="doc-card__overlay">
+                      <i class="fa-solid fa-search-plus"></i>
+                    </div>
+                  </div>
+                  <div class="documentation-card__body">
+                    <h4>Sertifikat Kompetensi</h4>
+                    <p>Klik untuk melihat ukuran penuh.</p>
+                  </div>
+                </div>
+
+                <!-- Tambahkan card lagi di sini kalau ada sertifikat lain -->
+              </div>
+
+              <!-- Gallery Foto Pengalaman Kerja -->
+              <div id="gallery-tempat-kerja-1" class="documentation-gallery">
+                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — Brilliant English', [
+                    'assets/file-magang/1.jpg',
+                    'assets/file-magang/2.jpeg',
+                    'assets/file-magang/3.jpg'
+                  ], 0)">
+                  <div class="doc-card__thumb">
+                    <img src="assets/file-magang/1.jpg" alt="Foto Pengalaman Kerja">
+                    <div class="doc-card__overlay">
+                      <i class="fa-solid fa-search-plus"></i>
+                      <span>3 foto</span>
+                    </div>
+                  </div>
+                  <div class="documentation-card__body">
+                    <h4>Foto Pengalaman Kerja</h4>
+                    <p>Klik untuk melihat semua foto.</p>
+                  </div>
+                </div>
+                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — Brilliant English', [
+                    'assets/file-magang/1.jpg',
+                    'assets/file-magang/2.jpeg',
+                    'assets/file-magang/3.jpg'
+                  ], 1)">
+                  <div class="doc-card__thumb">
+                    <img src="assets/file-magang/2.jpeg" alt="Foto Pengalaman Kerja">
+                    <div class="doc-card__overlay">
+                      <i class="fa-solid fa-search-plus"></i>
+                      <span>3 foto</span>
+                    </div>
+                  </div>
+                  <div class="documentation-card__body">
+                    <h4>Foto Pengalaman Kerja</h4>
+                    <p>Klik untuk melihat semua foto.</p>
+                  </div>
+                </div>
+
+                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — Brilliant English', [
+                    'assets/file-magang/1.jpg',
+                    'assets/file-magang/2.jpeg',
+                    'assets/file-magang/3.jpg'
+                  ], 2)">
+                  <div class="doc-card__thumb">
+                    <img src="assets/file-magang/3.jpg" alt="Foto Pengalaman Kerja">
+                    <div class="doc-card__overlay">
+                      <i class="fa-solid fa-search-plus"></i>
+                      <span>3 foto</span>
+                    </div>
+                  </div>
+                  <div class="documentation-card__body">
+                    <h4>Foto Pengalaman Kerja</h4>
+                    <p>Klik untuk melihat semua foto.</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
             <div class="timeline__item">
@@ -190,6 +278,81 @@
                 magang. Mengimplementasikan fitur sistem pengelolaan penggunaan sertifikat pada website JTINOVA, serta
                 melakukan debugging dan optimasi performa pada website Ukerma untuk kenyamanan pengguna.
               </p>
+              <div class="project-card__tags">
+                <button type="button" class="project-card__tag" onclick="toggleGallery('gallery-sertifikat-2')">
+                  <i class="fa-solid fa-certificate"></i> Sertifikat
+                </button>
+                <button type="button" class="project-card__tag" onclick="toggleGallery('gallery-tempat-kerja-2')">
+                  <i class="fas fa-image"></i> Foto Pengalaman Kerja
+                </button>
+              </div>
+
+              <div id="gallery-sertifikat-2" class="documentation-gallery">
+                <div class="documentation-card" onclick="openGalleryPopup('Sertifikat — Frontend Developer JTINOVA', [
+                    'assets/sertifikat/MBMKM-4/MBMKM-4-1.png',
+                    'assets/sertifikat/MBMKM-4/MBMKM-4-2.png'
+                  ], 0)">
+                  <div class="doc-card__thumb">
+                    <img src="assets/sertifikat/MBMKM-4/MBMKM-4-1.png" alt="Sertifikat JTINOVA Frontend">
+                    <div class="doc-card__overlay">
+                      <i class="fa-solid fa-search-plus"></i>
+                    </div>
+                  </div>
+                  <div class="documentation-card__body">
+                    <h4>Sertifikat Magang</h4>
+                    <p>Klik untuk melihat ukuran penuh.</p>
+                  </div>
+                </div>
+
+                <div class="documentation-card" onclick="openGalleryPopup('Sertifikat — Frontend Developer JTINOVA Nilai', [
+                    'assets/sertifikat/MBMKM-4/MBMKM-4-1.png',
+                    'assets/sertifikat/MBMKM-4/MBMKM-4-2.png'
+                  ], 1)">
+                  <div class="doc-card__thumb">
+                    <img src="assets/sertifikat/MBMKM-4/MBMKM-4-2.png" alt="Sertifikat JTINOVA Frontend Nilai">
+                    <div class="doc-card__overlay">
+                      <i class="fa-solid fa-search-plus"></i>
+                    </div>
+                  </div>
+                  <div class="documentation-card__body">
+                    <h4>Sertifikat Magang (Nilai)</h4>
+                    <p>Klik untuk melihat ukuran penuh.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div id="gallery-tempat-kerja-2" class="documentation-gallery">
+                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — JTINOVA', [
+                    'assets/file2/1.jpeg',
+                    'assets/file2/2.jpeg'
+                  ], 0)">
+                  <div class="doc-card__thumb">
+                    <img src="assets/file2/1.jpeg" alt="Foto Pengalaman Kerja JTINOVA">
+                    <div class="doc-card__overlay">
+                      <i class="fa-solid fa-search-plus"></i>
+                    </div>
+                  </div>
+                  <div class="documentation-card__body">
+                    <h4>Foto Pengalaman Kerja</h4>
+                    <p>Klik untuk melihat semua foto.</p>
+                  </div>
+                </div>
+                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — JTINOVA', [
+                    'assets/file2/1.jpeg',
+                    'assets/file2/2.jpeg'
+                  ], 1)">
+                  <div class="doc-card__thumb">
+                    <img src="assets/file2/2.jpeg" alt="Foto Pengalaman Kerja JTINOVA">
+                    <div class="doc-card__overlay">
+                      <i class="fa-solid fa-search-plus"></i>
+                    </div>
+                  </div>
+                  <div class="documentation-card__body">
+                    <h4>Foto Pengalaman Kerja</h4>
+                    <p>Klik untuk melihat semua foto.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="timeline__item">
@@ -202,6 +365,123 @@
                 pembuatan sertifikat otomatis (automated certificate generator) berbasis website, serta berkolaborasi
                 aktif dalam memecahkan kendala teknis (problem-solving).
               </p>
+              <div class="project-card__tags">
+                <button type="button" class="project-card__tag" onclick="toggleGallery('gallery-sertifikat-3')">
+                  <i class="fa-solid fa-certificate"></i> Sertifikat
+                </button>
+                <button type="button" class="project-card__tag" onclick="toggleGallery('gallery-tempat-kerja-3')">
+                  <i class="fas fa-image"></i> Foto Pengalaman Kerja
+                </button>
+              </div>
+
+              <div id="gallery-sertifikat-3" class="documentation-gallery">
+                <div class="documentation-card" onclick="openGalleryPopup('Sertifikat — Backend & Frontend Developer JTINOVA', [
+                    'assets/sertifikat/MBKM-3/MBKM-3-1.png',
+                    'assets/sertifikat/MBKM-3/MBKM-3-2.png'
+                  ], 0)">
+                  <div class="doc-card__thumb">
+                    <img src="assets/sertifikat/MBKM-3/MBKM-3-1.png" alt="Sertifikat JTINOVA Backend">
+                    <div class="doc-card__overlay">
+                      <i class="fa-solid fa-search-plus"></i>
+                    </div>
+                  </div>
+                  <div class="documentation-card__body">
+                    <h4>Sertifikat Magang</h4>
+                    <p>Klik untuk melihat ukuran penuh.</p>
+                  </div>
+                </div>
+
+                <div class="documentation-card" onclick="openGalleryPopup('Sertifikat — Backend & Frontend Developer JTINOVA', [
+                    'assets/sertifikat/MBKM-3/MBKM-3-1.png',
+                    'assets/sertifikat/MBKM-3/MBKM-3-2.png'
+                  ], 1)">
+                  <div class="doc-card__thumb">
+                    <img src="assets/sertifikat/MBKM-3/MBKM-3-2.png" alt="Sertifikat JTINOVA Backend">
+                    <div class="doc-card__overlay">
+                      <i class="fa-solid fa-search-plus"></i>
+                    </div>
+                  </div>
+                  <div class="documentation-card__body">
+                    <h4>Sertifikat Magang (Nilai)</h4>
+                    <p>Klik untuk melihat ukuran penuh.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div id="gallery-tempat-kerja-3" class="documentation-gallery">
+                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — JTINOVA TEFA', [
+                    'assets/file/1.jpg',
+                    'assets/file/2.jpg',
+                    'assets/file/3.jpg',
+                    'assets/file/4.jpg'
+                  ], 0)">
+                  <div class="doc-card__thumb">
+                    <img src="assets/file/1.jpg" alt="Foto Pengalaman Kerja TEFA">
+                    <div class="doc-card__overlay">
+                      <i class="fa-solid fa-search-plus"></i>
+                    </div>
+                  </div>
+                  <div class="documentation-card__body">
+                    <h4>Foto Pengalaman Kerja</h4>
+                    <p>Klik untuk melihat semua foto.</p>
+                  </div>
+                </div>
+
+                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — JTINOVA TEFA', [
+                    'assets/file/1.jpg',
+                    'assets/file/2.jpg',
+                    'assets/file/3.jpg',
+                    'assets/file/4.jpg'
+                  ], 1)">
+                  <div class="doc-card__thumb">
+                    <img src="assets/file/2.jpg" alt="Foto Pengalaman Kerja TEFA">
+                    <div class="doc-card__overlay">
+                      <i class="fa-solid fa-search-plus"></i>
+                    </div>
+                  </div>
+                  <div class="documentation-card__body">
+                    <h4>Foto Pengalaman Kerja</h4>
+                    <p>Klik untuk melihat semua foto.</p>
+                  </div>
+                </div>
+
+                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — JTINOVA TEFA', [
+                    'assets/file/1.jpg',
+                    'assets/file/2.jpg',
+                    'assets/file/3.jpg',
+                    'assets/file/4.jpg'
+                  ], 2)">
+                  <div class="doc-card__thumb">
+                    <img src="assets/file/3.jpg" alt="Foto Pengalaman Kerja TEFA">
+                    <div class="doc-card__overlay">
+                      <i class="fa-solid fa-search-plus"></i>
+                    </div>
+                  </div>
+                  <div class="documentation-card__body">
+                    <h4>Foto Pengalaman Kerja</h4>
+                    <p>Klik untuk melihat semua foto.</p>
+                  </div>
+                </div>
+
+                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — JTINOVA TEFA', [
+                    'assets/file/1.jpg',
+                    'assets/file/2.jpg',
+                    'assets/file/3.jpg',
+                    'assets/file/4.jpg'
+                  ], 3)">
+                  <div class="doc-card__thumb">
+                    <img src="assets/file/4.jpg" alt="Foto Pengalaman Kerja TEFA">
+                    <div class="doc-card__overlay">
+                      <i class="fa-solid fa-search-plus"></i>
+                    </div>
+                  </div>
+                  <div class="documentation-card__body">
+                    <h4>Foto Pengalaman Kerja</h4>
+                    <p>Klik untuk melihat semua foto.</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -578,6 +858,35 @@
   <div class="lightbox" id="lightbox">
     <button class="lightbox__close" id="lightboxClose" aria-label="Tutup">&times;</button>
     <img class="lightbox__img" id="lightboxImg" src="" alt="Project Preview" />
+  </div>
+
+  <!-- Gallery Popup (Reusable — Sertifikat & Foto Pengalaman Kerja) -->
+  <div class="gallery-popup" id="galleryPopup">
+    <div class="gallery-popup__backdrop" onclick="closeGalleryPopup()"></div>
+    <div class="gallery-popup__container">
+      <div class="gallery-popup__header">
+        <h3 class="gallery-popup__title" id="galleryPopupTitle">Gallery</h3>
+        <button type="button" class="gallery-popup__close" onclick="closeGalleryPopup()" aria-label="Tutup">
+          &times;
+        </button>
+      </div>
+      <div class="gallery-popup__body">
+        <button type="button" class="gallery-popup__nav gallery-popup__nav--prev" id="galleryPrev"
+          onclick="galleryNav(-1)" aria-label="Sebelumnya">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="gallery-popup__img-wrapper">
+          <img id="galleryPopupImg" src="" alt="Gallery Image" />
+        </div>
+        <button type="button" class="gallery-popup__nav gallery-popup__nav--next" id="galleryNext"
+          onclick="galleryNav(1)" aria-label="Selanjutnya">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+      <div class="gallery-popup__footer">
+        <span class="gallery-popup__counter" id="galleryCounter">1 / 1</span>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>

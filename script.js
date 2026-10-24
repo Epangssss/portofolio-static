@@ -308,6 +308,120 @@ function initTextRotator() {
   setTimeout(type, 2200);
 }
 
+//ABOUT
+
+
+function toggleGallery(id) {
+  const gallery = document.getElementById(id);
+  const isOpen = gallery.classList.contains('active');
+
+  // Tutup semua gallery
+  document.querySelectorAll('.documentation-gallery')
+    .forEach(item => item.classList.remove('active'));
+
+  // Buka gallery yang diklik jika sebelumnya tertutup
+  if (!isOpen) {
+    gallery.classList.add('active');
+  }
+}
+
+// =============================================
+// CERTIFICATE PDF MODAL
+// =============================================
+// Gallery popup state
+let galleryImages = [];
+let galleryIndex = 0;
+
+function openGalleryPopup(title, images, startIndex) {
+  galleryImages = Array.isArray(images) ? images : [];
+  if (galleryImages.length === 0) return;
+
+  let idx = typeof startIndex === 'number' ? startIndex : 0;
+  if (idx < 0 || idx >= galleryImages.length) {
+    idx = 0;
+  }
+  galleryIndex = idx;
+
+  const popup = document.getElementById('galleryPopup');
+  const titleEl = document.getElementById('galleryPopupTitle');
+
+  if (titleEl) titleEl.textContent = title;
+  updateGalleryImage();
+
+  if (popup) {
+    popup.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeGalleryPopup() {
+  const popup = document.getElementById('galleryPopup');
+  popup.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function galleryNav(direction) {
+  galleryIndex += direction;
+
+  // Wrap around
+  if (galleryIndex < 0) galleryIndex = galleryImages.length - 1;
+  if (galleryIndex >= galleryImages.length) galleryIndex = 0;
+
+  updateGalleryImage();
+}
+
+function updateGalleryImage() {
+  const img = document.getElementById('galleryPopupImg');
+  const counter = document.getElementById('galleryCounter');
+  const prevBtn = document.getElementById('galleryPrev');
+  const nextBtn = document.getElementById('galleryNext');
+
+  img.src = galleryImages[galleryIndex];
+  img.alt = `Gambar ${galleryIndex + 1} dari ${galleryImages.length}`;
+  counter.textContent = `${galleryIndex + 1} / ${galleryImages.length}`;
+
+  // Show/hide nav buttons based on image count
+  const hasMultiple = galleryImages.length > 1;
+  prevBtn.style.display = hasMultiple ? '' : 'none';
+  nextBtn.style.display = hasMultiple ? '' : 'none';
+  counter.style.display = hasMultiple ? '' : 'none';
+}
+
+// Keyboard controls for gallery popup
+document.addEventListener('keydown', (e) => {
+  const popup = document.getElementById('galleryPopup');
+  if (!popup || !popup.classList.contains('active')) return;
+
+  if (e.key === 'Escape') closeGalleryPopup();
+  if (e.key === 'ArrowLeft') galleryNav(-1);
+  if (e.key === 'ArrowRight') galleryNav(1);
+});
+
+// Swipe support for mobile
+(function () {
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  document.addEventListener('touchstart', (e) => {
+    const popup = document.getElementById('galleryPopup');
+    if (popup && popup.classList.contains('active')) {
+      touchStartX = e.changedTouches[0].screenX;
+    }
+  }, { passive: true });
+
+  document.addEventListener('touchend', (e) => {
+    const popup = document.getElementById('galleryPopup');
+    if (popup && popup.classList.contains('active')) {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        galleryNav(diff > 0 ? 1 : -1);
+      }
+    }
+  }, { passive: true });
+})();
+
+
 // =============================================
 // MOTHERBOARD / CIRCUIT BOARD CANVAS EFFECT
 // =============================================
@@ -574,8 +688,8 @@ function createCircuitCanvas(canvasId, containerId, options = {}) {
 
     // Ultra-fine, subtle, luxury palette (hairline 0.35px)
     const traceBaseColor = dark ? 'rgba(59, 130, 246, 0.045)' : 'rgba(37, 99, 235, 0.050)';
-    const viaBorderColor = dark ? 'rgba(96, 165, 250, 0.15)'  : 'rgba(37, 99, 235, 0.13)';
-    const viaFillColor   = dark ? 'rgba(10, 10, 10, 0.95)'    : 'rgba(255, 255, 255, 0.95)';
+    const viaBorderColor = dark ? 'rgba(96, 165, 250, 0.15)' : 'rgba(37, 99, 235, 0.13)';
+    const viaFillColor = dark ? 'rgba(10, 10, 10, 0.95)' : 'rgba(255, 255, 255, 0.95)';
 
     // 1. Draw static traces (ultra-thin hairline: 0.35px)
     ctx.lineWidth = 0.35;
