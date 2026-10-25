@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Curriculum Vitae (CV) - Edward Landung Pramudya. Web & Mobile Developer." />
+  <title>CV — Edward Landung Pramudya</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Icons (Lucide) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+  <!-- Main Website Stylesheet for tokens & components -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* =============================================
+       CV PAGE SPECIFIC STYLES
+       ============================================= */
+    body.cv-page {
+      background: var(--clr-bg);
+      color: var(--clr-text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Top Floating Toolbar */
+    .cv-topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-bottom: 1px solid var(--clr-border);
+      transition: background var(--transition), border-color var(--transition);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    [data-theme="dark"] .cv-topbar {
+      background: rgba(10, 10, 10, 0.88);
+      box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    .cv-topbar__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .cv-topbar__left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cv-topbar__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: var(--fs-small);
+      font-weight: 600;
+      color: var(--clr-text-secondary);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--clr-border);
+      background: var(--clr-bg-alt);
+      transition: all var(--transition);
+    }
+
+    .cv-topbar__back:hover {
+      color: var(--clr-primary);
+      border-color: var(--clr-primary);
+      transform: translateX(-2px);
+    }
+
+    .cv-topbar__title {
+      font-family: var(--ff-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--clr-text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cv-topbar__badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      background: var(--clr-primary-ultra-light);
+      color: var(--clr-primary);
+      border: 1px solid var(--clr-primary-light);
+    }
+
+    /* View Switcher Tabs */
+    .cv-switcher {
+      display: inline-flex;
+      background: var(--clr-bg-section);
+      padding: 4px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--clr-border);
+      gap: 4px;
+    }
+
+    .cv-switcher__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      font-family: var(--ff-body);
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      color: var(--clr-text-secondary);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .cv-switcher__btn.active {
+      background: var(--clr-surface);
+      color: var(--clr-primary);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    [data-theme="dark"] .cv-switcher__btn.active {
+      background: #27272a;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Actions Right */
+    .cv-topbar__actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cv-topbar__actions .btn {
+      padding: 8px 16px;
+      font-size: var(--fs-xs);
+    }
+
+    /* Main Container */
+    .cv-main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 28px 20px 60px;
+    }
+
+    /* Mobile Tip Notice */
+    .cv-mobile-notice {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: var(--clr-primary-ultra-light);
+      border: 1px solid var(--clr-primary-light);
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      margin-bottom: 24px;
+      font-size: var(--fs-small);
+      color: var(--clr-text);
+      animation: fadeIn 0.4s ease;
+    }
+
+    [data-theme="dark"] .cv-mobile-notice {
+      background: rgba(59, 130, 246, 0.12);
+      border-color: rgba(59, 130, 246, 0.25);
+    }
+
+    .cv-mobile-notice__text {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cv-mobile-notice__actions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    /* PDF Embed Section */
+    .cv-pdf-container {
+      width: 100%;
+      height: 85vh;
+      min-height: 600px;
+      background: var(--clr-surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--clr-border);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .cv-pdf-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* ATS Text Resume Card (Mobile First & Super Clean) */
+    .cv-ats-container {
+      background: var(--clr-surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--clr-border);
+      box-shadow: var(--shadow-md);
+      padding: clamp(24px, 5vw, 48px);
+      transition: background var(--transition), border-color var(--transition);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .cv-ats-header {
+      border-bottom: 2px solid var(--clr-border);
+      padding-bottom: 24px;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .cv-ats-name {
+      font-family: var(--ff-heading);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--clr-text);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .cv-ats-contact {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 8px 16px;
+      font-size: var(--fs-small);
+      color: var(--clr-text-secondary);
+      line-height: 1.5;
+    }
+
+    .cv-ats-contact a {
+      color: var(--clr-primary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .cv-ats-contact a:hover {
+      color: var(--clr-primary-dark);
+    }
+
+    .cv-ats-contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .cv-ats-section {
+      margin-bottom: 28px;
+    }
+
+    .cv-ats-section-title {
+      font-family: var(--ff-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--clr-text);
+      border-bottom: 1.5px solid var(--clr-text);
+      padding-bottom: 6px;
+      margin-bottom: 16px;
+    }
+
+    [data-theme="dark"] .cv-ats-section-title {
+      border-bottom-color: var(--clr-border);
+    }
+
+    .cv-ats-summary {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--clr-text);
+      text-align: justify;
+    }
+
+    /* Experience & Education Items */
+    .cv-ats-item {
+      margin-bottom: 20px;
+    }
+
+    .cv-ats-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .cv-ats-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      margin-bottom: 4px;
+    }
+
+    .cv-ats-org {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--clr-text);
+    }
+
+    .cv-ats-date {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--clr-text-secondary);
+      white-space: nowrap;
+    }
+
+    .cv-ats-role {
+      font-style: italic;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--clr-primary);
+      margin-bottom: 8px;
+    }
+
+    .cv-ats-desc {
+      font-size: 0.92rem;
+      color: var(--clr-text);
+      line-height: 1.65;
+      text-align: justify;
+    }
+
+    .cv-ats-bullets {
+      padding-left: 18px;
+      margin-top: 6px;
+      font-size: 0.92rem;
+      color: var(--clr-text);
+      line-height: 1.65;
+    }
+
+    .cv-ats-bullets li {
+      margin-bottom: 6px;
+    }
+
+    /* Skill tags */
+    .cv-ats-skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .cv-ats-skill-tag {
+      background: var(--clr-bg-alt);
+      border: 1px solid var(--clr-border);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--clr-text);
+      transition: all var(--transition);
+    }
+
+    .cv-ats-skill-tag:hover {
+      border-color: var(--clr-primary);
+      color: var(--clr-primary);
+    }
+
+    /* Certifications & Training */
+    .cv-cert-item {
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      background: var(--clr-bg-alt);
+      border: 1px solid var(--clr-border);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .cv-cert-info h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--clr-text);
+      margin-bottom: 2px;
+    }
+
+    .cv-cert-info p {
+      font-size: 0.82rem;
+      color: var(--clr-text-secondary);
+    }
+
+    .cv-cert-badge {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      color: var(--clr-text-secondary);
+      white-space: nowrap;
+    }
+
+    /* View Mode Visibility Control */
+    .view-mode-pdf .cv-ats-container {
+      display: none;
+    }
+
+    .view-mode-pdf .cv-pdf-container {
+      display: flex;
+    }
+
+    .view-mode-ats .cv-pdf-container {
+      display: none;
+    }
+
+    .view-mode-ats .cv-ats-container {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .cv-topbar__inner {
+        padding: 10px 14px;
+      }
+
+      .cv-topbar__title {
+        display: none;
+      }
+
+      .cv-topbar__actions .btn span {
+        display: none;
+      }
+
+      .cv-topbar__actions .btn {
+        padding: 8px 10px;
+      }
+
+      .cv-mobile-notice {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cv-mobile-notice__actions {
+        width: 100%;
+        justify-content: flex-end;
+      }
+
+      .cv-pdf-container {
+        height: 70vh;
+        min-height: 480px;
+      }
+
+      .cv-ats-container {
+        padding: 20px 16px;
+      }
+    }
+
+    /* Print Styles (Strict A4 ATS layout) */
+    @media print {
+      .cv-topbar,
+      .cv-mobile-notice,
+      .cv-switcher,
+      #themeOverlay {
+        display: none !important;
+      }
+
+      body.cv-page {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+
+      .cv-pdf-container {
+        display: none !important;
+      }
+
+      .cv-ats-container {
+        display: block !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+
+      .cv-ats-name {
+        color: #000000 !important;
+      }
+
+      .cv-ats-role {
+        color: #000000 !important;
+      }
+
+      .cv-ats-contact a {
+        color: #000000 !important;
+        text-decoration: none !important;
+      }
+
+      .cv-ats-skill-tag {
+        border: 1px solid #ccc !important;
+        background: transparent !important;
+        color: #000 !important;
+      }
+
+      .cv-cert-item {
+        background: transparent !important;
+        border: 1px solid #ddd !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="cv-page view-mode-ats" id="cvBody">
+  <div id="themeOverlay"></div>
+
+  <!-- ===== TOPBAR ===== -->
+  <header class="cv-topbar">
+    <div class="cv-topbar__inner">
+      <!-- Left: Back button & Candidate Title -->
+      <div class="cv-topbar__left">
+        <a href="index.html" class="cv-topbar__back" title="Kembali ke Portofolio">
+          <i data-lucide="arrow-left" width="16" height="16"></i>
+          <span>Kembali</span>
+        </a>
+        <div class="cv-topbar__title">
+          <span>Edward Landung Pramudya</span>
+          <span class="cv-topbar__badge">Curriculum Vitae</span>
+        </div>
+      </div>
+
+      <!-- Center: View Mode Switcher -->
+      <div class="cv-switcher" role="tablist">
+        <button type="button" class="cv-switcher__btn active" id="btnModeAts" onclick="switchViewMode('ats')" role="tab"
+          aria-selected="true" title="Tampilan Teks Responsif (Nyaman di HP & Desktop)">
+          <i data-lucide="align-left" width="14" height="14"></i>
+          <span>Tampilan Teks (Mobile)</span>
+        </button>
+        <button type="button" class="cv-switcher__btn" id="btnModePdf" onclick="switchViewMode('pdf')" role="tab"
+          aria-selected="false" title="Tampilan File PDF Asli (2 Halaman)">
+          <i data-lucide="file-text" width="14" height="14"></i>
+          <span>File PDF Asli</span>
+        </button>
+      </div>
+
+      <!-- Right: Actions -->
+      <div class="cv-topbar__actions">
+        <!-- Direct Download PDF -->
+        <a href="assets/CV_ATS_EDWARD%20LANDUNG%20PRAMUDYA.pdf" download="CV_ATS_EDWARD LANDUNG PRAMUDYA.pdf"
+          class="btn btn--primary" title="Unduh File PDF Asli">
+          <i data-lucide="download" width="16" height="16"></i>
+          <span>Unduh PDF</span>
+        </a>
+
+        <!-- Print CV -->
+        <button type="button" onclick="window.print()" class="btn btn--outline" title="Cetak / Simpan PDF Halaman Ini">
+          <i data-lucide="printer" width="16" height="16"></i>
+          <span>Cetak</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Ganti Tema">
+          <i data-lucide="moon" width="16" height="16"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="cv-main">
+
+    <!-- Mobile-friendly info notice banner -->
+    <div class="cv-mobile-notice">
+      <div class="cv-mobile-notice__text">
+        <i data-lucide="smartphone" width="20" height="20" style="color: var(--clr-primary); flex-shrink: 0;"></i>
+        <span>
+          <strong>Tampilan Ramah Mobile:</strong> Anda sedang melihat format teks responsif yang nyaman dibaca di layar HP tanpa perlu pinch-zoom.
+        </span>
+      </div>
+      <div class="cv-mobile-notice__actions">
+        <a href="assets/CV_ATS_EDWARD%20LANDUNG%20PRAMUDYA.pdf" target="_blank" rel="noopener noreferrer"
+          class="btn btn--outline" style="padding: 6px 12px; font-size: 0.8rem;">
+          <i data-lucide="external-link" width="14" height="14"></i>
+          Buka File PDF
+        </a>
+      </div>
+    </div>
+
+    <!-- 1. PDF EMBED VIEW -->
+    <section class="cv-pdf-container" id="pdfViewSection">
+      <iframe src="assets/CV_ATS_EDWARD%20LANDUNG%20PRAMUDYA.pdf#toolbar=1&navpanes=0"
+        title="Dokumen PDF CV Edward Landung Pramudya">
+        <p>Browser Anda tidak mendukung pratinjau PDF langsung.
+          <a href="assets/CV_ATS_EDWARD%20LANDUNG%20PRAMUDYA.pdf" download>Klik di sini untuk mengunduh PDF.</a>
+        </p>
+      </iframe>
+    </section>
+
+    <!-- 2. ATS RESPONSIVE TEXT VIEW -->
+    <article class="cv-ats-container" id="atsViewSection">
+
+      <!-- Header: Candidate Info -->
+      <header class="cv-ats-header">
+        <h1 class="cv-ats-name">Edward Landung Pramudya</h1>
+        <div class="cv-ats-contact">
+          <span class="cv-ats-contact-item">
+            <i data-lucide="map-pin" width="14" height="14"></i>
+            Dusun Teko'an RT 004 RW 014 Desa Tanggul - Kulon, Tanggul, Jember
+          </span>
+          <span>•</span>
+          <span class="cv-ats-contact-item">
+            <i data-lucide="mail" width="14" height="14"></i>
+            <a href="mailto:edwardlpramudya2005@gmail.com">edwardlpramudya2005@gmail.com</a>
+          </span>
+          <span>•</span>
+          <span class="cv-ats-contact-item">
+            <i data-lucide="phone" width="14" height="14"></i>
+            <a href="https://wa.me/6282131270114" target="_blank" rel="noopener noreferrer">082131270114</a>
+          </span>
+        </div>
+      </header>
+
+      <!-- Ringkasan Profil -->
+      <section class="cv-ats-section">
+        <h2 class="cv-ats-section-title">Ringkasan Profil</h2>
+        <p class="cv-ats-summary">
+          Lulusan Manajemen Informatika Politeknik Negeri Jember dengan minat pada pengembangan aplikasi web, mobile, dan machine
+          learning. Memiliki pengalaman mengembangkan aplikasi menggunakan Laravel, Flutter, dan Python, serta mengimplementasikan
+          model machine learning ke dalam sistem. Mampu bekerja secara individu maupun dalam tim, memiliki kemampuan analisis dan
+          pemecahan masalah yang baik, serta antusias mempelajari teknologi baru untuk menciptakan solusi digital yang efektif dan inovatif.
+        </p>
+      </section>
+
+      <!-- Pengalaman Kerja -->
+      <section class="cv-ats-section">
+        <h2 class="cv-ats-section-title">Pengalaman Kerja</h2>
+
+        <!-- Job 1 -->
+        <div class="cv-ats-item">
+          <div class="cv-ats-item-header">
+            <span class="cv-ats-org">Brilliant English Course kampung inggris pare - Kab. Kediri, Jawa Timur, Indonesia</span>
+            <span class="cv-ats-date">Juli 2025 - November 2025</span>
+          </div>
+          <div class="cv-ats-role">IT Support</div>
+          <p class="cv-ats-desc">
+            Berperan sebagai IT Support yang berfokus memberikan layanan dukungan teknis terbaik untuk memastikan kelancaran
+            operasional dan kepuasan klien. Bertanggung jawab dalam merancang ulang alur kerja sistem (workflow/case flow) pengelolaan
+            data pada 3 website guna memperkuat keamanan sistem serta meminimalkan risiko kebocoran data (data breach). Selain itu,
+            turut mengelola prosedur operasional sistem penerimaan siswa baru kursus Bahasa Inggris agar berjalan efektif dan terstruktur,
+            serta menangani instalasi, konfigurasi, pemeliharaan (maintenance), hingga troubleshooting perangkat keras maupun driver
+            pada PC dan printer.
+          </p>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="cv-ats-item">
+          <div class="cv-ats-item-header">
+            <span class="cv-ats-org">Teaching Factory JTINOVA - Kab. Jember, Jawa Timur, Indonesia</span>
+            <span class="cv-ats-date">Januari 2025 - Juni 2025</span>
+          </div>
+          <div class="cv-ats-role">Frontend Website Developer</div>
+          <p class="cv-ats-desc">
+            Bertanggung jawab penuh dalam mengelola dan mengembangkan antarmuka (frontend) pada dua website utama, yaitu
+            JTINOVA dan Ukerma, agar selesai tepat waktu sesuai target masa magang (internship). Fokus pekerjaan meliputi
+            pengembangan dan implementasi fitur baru berupa sistem pengelolaan penggunaan sertifikat pada website JTINOVA, serta
+            melakukan identifikasi masalah (debugging) dan perbaikan bug pada website Ukerma untuk meningkatkan stabilitas, performa
+            sistem, dan kenyamanan pengguna.
+          </p>
+        </div>
+
+        <!-- Job 3 -->
+        <div class="cv-ats-item">
+          <div class="cv-ats-item-header">
+            <span class="cv-ats-org">Teaching Factory (TEFA) JTINOVA - Kab. Jember, Jawa Timur, Indonesia</span>
+            <span class="cv-ats-date">Juli 2024 - Desember 2024</span>
+          </div>
+          <div class="cv-ats-role">Backend Dan Frontend Developer</div>
+          <p class="cv-ats-desc">
+            Berkontribusi dalam merancang, membangun, dan mengintegrasikan sisi backend maupun frontend pada proyek
+            pengembangan sistem pembuatan sertifikat otomatis (automated certificate generator) berbasis website di lingkungan Teaching
+            Factory. Selama periode ini, aktif menerapkan kemampuan kepemimpinan (leadership) dan kolaborasi tim (teamwork) yang
+            solid dalam menganalisis serta memecahkan berbagai kendala teknis (problem-solving) secara terstruktur, disertai komitmen
+            dan tanggung jawab penuh terhadap kualitas hasil pekerjaan yang diberikan.
+          </p>
+        </div>
+      </section>
+
+      <!-- Pendidikan -->
+      <section class="cv-ats-section">
+        <h2 class="cv-ats-section-title">Pendidikan</h2>
+        <div class="cv-ats-item">
+          <div class="cv-ats-item-header">
+            <span class="cv-ats-org">D3 - Politeknik Negeri Jember, Kab. Jember, Jawa Timur, Indonesia</span>
+            <span class="cv-ats-date">2023 - 2026</span>
+          </div>
+          <div class="cv-ats-role">Manajemen Informatika — IPK 3.87</div>
+        </div>
+      </section>
+
+      <!-- Keterampilan -->
+      <section class="cv-ats-section">
+        <h2 class="cv-ats-section-title">Keterampilan</h2>
+        <div class="cv-ats-skills-grid">
+          <span class="cv-ats-skill-tag">Front-end Development</span>
+          <span class="cv-ats-skill-tag">Backend Development</span>
+          <span class="cv-ats-skill-tag">Mobile Development</span>
+          <span class="cv-ats-skill-tag">Software Development</span>
+          <span class="cv-ats-skill-tag">Problem Solving</span>
+          <span class="cv-ats-skill-tag">REST APIs</span>
+          <span class="cv-ats-skill-tag">Use Case Design</span>
+          <span class="cv-ats-skill-tag">UI/UX Design</span>
+          <span class="cv-ats-skill-tag">Server Maintenance</span>
+          <span class="cv-ats-skill-tag">Team Leadership</span>
+          <span class="cv-ats-skill-tag">Teamwork</span>
+          <span class="cv-ats-skill-tag">OBS Studio</span>
+          <span class="cv-ats-skill-tag">CapCut</span>
+          <span class="cv-ats-skill-tag">Canva</span>
+          <span class="cv-ats-skill-tag">Microsoft Word</span>
+          <span class="cv-ats-skill-tag">Microsoft Excel</span>
+        </div>
+      </section>
+
+      <!-- Sertifikasi -->
+      <section class="cv-ats-section">
+        <h2 class="cv-ats-section-title">Sertifikasi</h2>
+
+        <div class="cv-cert-item">
+          <div class="cv-cert-info">
+            <h4>LSP POLIJE</h4>
+            <p>Lembaga Sertifikasi Profesi Pihak Kesatu Politeknik Negeri Jember</p>
+          </div>
+          <span class="cv-cert-badge">September 2026 - September 2029</span>
+        </div>
+
+        <div class="cv-cert-item">
+          <div class="cv-cert-info">
+            <h4>KOMDIGI UJIKOMPETENSI VSGA</h4>
+            <p>BNSP bersama LSP Teknologi Digital</p>
+          </div>
+          <span class="cv-cert-badge">Juni 2025 - Juni 2028</span>
+        </div>
+      </section>
+
+      <!-- Pelatihan -->
+      <section class="cv-ats-section">
+        <h2 class="cv-ats-section-title">Pelatihan</h2>
+
+        <div class="cv-cert-item">
+          <div class="cv-cert-info">
+            <h4>Teknologi Informasi Dan Komunikasi - Sertifikasi Kompetensi Pemrogram Mobil Pratama (Junior Mobile Programmer)</h4>
+            <p>Lembaga Sertifikasi Profesi (LSP) Politeknik Negeri Jember - BNSP (Badan Nasional Sertifikasi Profesi)</p>
+          </div>
+          <span class="cv-cert-badge">Mei 2026 - Juni 2026</span>
+        </div>
+
+        <div class="cv-cert-item">
+          <div class="cv-cert-info">
+            <h4>Teknologi Informasi Dan Komunikasi - Data Science</h4>
+            <p>Bisa AI Academy</p>
+          </div>
+          <span class="cv-cert-badge">Desember 2025 - Desember 2025</span>
+        </div>
+
+        <div class="cv-cert-item">
+          <div class="cv-cert-info">
+            <h4>Teknologi Informasi Dan Komunikasi - Sertifikasi Kompetensi Ilmuwan Data Muda (Associate Data Scientist)</h4>
+            <p>Lembaga Sertifikasi Profesi (LSP) Teknologi Digital - BNSP (Badan Nasional Sertifikasi Profesi)</p>
+          </div>
+          <span class="cv-cert-badge">Juni 2025 - Juli 2025</span>
+        </div>
+      </section>
+
+    </article>
+
+  </main>
+
+  <script>
+    // =============================================
+    // VIEW SWITCHER LOGIC (ATS vs PDF)
+    // =============================================
+    function switchViewMode(mode) {
+      const body = document.getElementById('cvBody');
+      const btnAts = document.getElementById('btnModeAts');
+      const btnPdf = document.getElementById('btnModePdf');
+
+      if (mode === 'pdf') {
+        body.classList.remove('view-mode-ats');
+        body.classList.add('view-mode-pdf');
+        btnPdf.classList.add('active');
+        btnPdf.setAttribute('aria-selected', 'true');
+        btnAts.classList.remove('active');
+        btnAts.setAttribute('aria-selected', 'false');
+      } else {
+        body.classList.remove('view-mode-pdf');
+        body.classList.add('view-mode-ats');
+        btnAts.classList.add('active');
+        btnAts.setAttribute('aria-selected', 'true');
+        btnPdf.classList.remove('active');
+        btnPdf.setAttribute('aria-selected', 'false');
+      }
+    }
+
+    // Auto-detect view mode on load:
+    // If mobile (<= 768px), default to ATS text view for best readability.
+    // If desktop (> 768px), default to PDF embed view.
+    document.addEventListener('DOMContentLoaded', () => {
+      const isMobile = window.innerWidth <= 768;
+      switchViewMode(isMobile ? 'ats' : 'pdf');
+
+      // Init icons & theme
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      } else {
+        window.addEventListener('load', () => {
+          if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+      }
+
+      initTheme();
+    });
+
+    // =============================================
+    // THEME SYNC WITH MAIN PORTFOLIO
+    // =============================================
+    function initTheme() {
+      const toggle = document.getElementById('themeToggle');
+      const html = document.documentElement;
+      const stored = localStorage.getItem('theme');
+
+      if (stored) {
+        html.setAttribute('data-theme', stored);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        html.setAttribute('data-theme', 'dark');
+      }
+
+      updateToggleIcon();
+
+      toggle.addEventListener('click', () => {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateToggleIcon();
+      });
+    }
+
+    function updateToggleIcon() {
+      const toggle = document.getElementById('themeToggle');
+      if (!toggle) return;
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      toggle.innerHTML = isDark
+        ? '<i data-lucide="sun" width="16" height="16"></i>'
+        : '<i data-lucide="moon" width="16" height="16"></i>';
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+  </script>
+</body>
+
+</html>
