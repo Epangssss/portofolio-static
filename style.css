@@ -662,7 +662,7 @@ body.slide #themeOverlay {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30px;
+  padding: 20px;
 }
 
 .hero__photo-wrapper {
@@ -683,8 +683,8 @@ body.slide #themeOverlay {
   top: 50%;
   left: 50%;
   /* 142% ≈ √2 → fully covers the rotated square (no empty corners) */
-  width: 142%;
-  height: 142%;
+  width: 131%;
+  height: 131%;
   max-width: none; /* override global img { max-width: 100% } */
   object-fit: cover;
   object-position: center -20%;
@@ -884,6 +884,7 @@ body.slide #themeOverlay {
   font-size: var(--fs-small);
   color: var(--clr-text-secondary);
   line-height: 1.7;
+  text-align: justify;
 }
 
 .project-card__tags {
@@ -1375,6 +1376,7 @@ body.slide #themeOverlay {
   color: var(--clr-text-secondary);
   line-height: 1.65;
   margin-bottom: 20px;
+  text-align: justify;
 }
 
 .project-card__tags {
