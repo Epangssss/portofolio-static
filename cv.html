@@ -303,128 +303,81 @@
     }
 
     .cv-ats-summary {
-      font-size: 0.95rem;
-      line-height: 1.75;
+      font-size: 0.93rem;
+      line-height: 1.65;
       color: var(--clr-text);
       text-align: justify;
     }
 
-    /* Experience & Education Items */
+    /* Experience, Education, Certification & Training Items */
     .cv-ats-item {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .cv-ats-item:last-child {
       margin-bottom: 0;
     }
 
-    .cv-ats-item-header {
+    .cv-ats-title {
+      font-family: var(--ff-heading);
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--clr-text);
+      margin-bottom: 2px;
+      line-height: 1.35;
+    }
+
+    .cv-ats-meta {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       flex-wrap: wrap;
-      gap: 6px 12px;
-      margin-bottom: 4px;
+      gap: 6px 16px;
+      margin-bottom: 5px;
+      font-size: 0.92rem;
     }
 
     .cv-ats-org {
-      font-weight: 700;
-      font-size: 1rem;
+      font-style: italic;
       color: var(--clr-text);
+      flex: 1 1 300px;
     }
 
     .cv-ats-date {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--clr-text-secondary);
-      white-space: nowrap;
-    }
-
-    .cv-ats-role {
-      font-style: italic;
-      font-weight: 600;
-      font-size: 0.92rem;
-      color: var(--clr-primary);
-      margin-bottom: 8px;
-    }
-
-    .cv-ats-desc {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
+      font-weight: 500;
       color: var(--clr-text);
-      line-height: 1.65;
-      text-align: justify;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .cv-ats-subtext {
+      font-size: 0.91rem;
+      color: var(--clr-text);
+      margin-top: 2px;
     }
 
     .cv-ats-bullets {
-      padding-left: 18px;
-      margin-top: 6px;
-      font-size: 0.92rem;
+      padding-left: 20px;
+      margin: 4px 0 0 0;
+      font-size: 0.91rem;
       color: var(--clr-text);
-      line-height: 1.65;
+      line-height: 1.6;
+      list-style-type: disc;
     }
 
     .cv-ats-bullets li {
-      margin-bottom: 6px;
+      margin-bottom: 4px;
+      text-align: justify;
     }
 
-    /* Skill tags */
-    .cv-ats-skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .cv-ats-bullets li:last-child {
+      margin-bottom: 0;
     }
 
-    .cv-ats-skill-tag {
-      background: var(--clr-bg-alt);
-      border: 1px solid var(--clr-border);
-      padding: 6px 14px;
-      border-radius: var(--radius-sm);
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--clr-text);
-      transition: all var(--transition);
-    }
-
-    .cv-ats-skill-tag:hover {
-      border-color: var(--clr-primary);
-      color: var(--clr-primary);
-    }
-
-    /* Certifications & Training */
-    .cv-cert-item {
-      padding: 12px 16px;
-      border-radius: var(--radius-sm);
-      background: var(--clr-bg-alt);
-      border: 1px solid var(--clr-border);
-      margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .cv-cert-info h4 {
-      font-size: 0.95rem;
+    .cv-ats-bullets strong {
       font-weight: 700;
       color: var(--clr-text);
-      margin-bottom: 2px;
-    }
-
-    .cv-cert-info p {
-      font-size: 0.82rem;
-      color: var(--clr-text-secondary);
-    }
-
-    .cv-cert-badge {
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: var(--radius-full);
-      background: var(--clr-surface);
-      border: 1px solid var(--clr-border);
-      color: var(--clr-text-secondary);
-      white-space: nowrap;
     }
 
     /* View Mode Visibility Control */
@@ -523,7 +476,19 @@
         color: #000000 !important;
       }
 
-      .cv-ats-role {
+      .cv-ats-section-title {
+        border-bottom-color: #000000 !important;
+      }
+
+      .cv-ats-title {
+        color: #000000 !important;
+      }
+
+      .cv-ats-org {
+        color: #000000 !important;
+      }
+
+      .cv-ats-date {
         color: #000000 !important;
       }
 
@@ -532,15 +497,8 @@
         text-decoration: none !important;
       }
 
-      .cv-ats-skill-tag {
-        border: 1px solid #ccc !important;
-        background: transparent !important;
-        color: #000 !important;
-      }
-
-      .cv-cert-item {
-        background: transparent !important;
-        border: 1px solid #ddd !important;
+      .cv-ats-bullets li {
+        color: #000000 !important;
       }
     }
   </style>
@@ -581,7 +539,7 @@
       <!-- Right: Actions -->
       <div class="cv-topbar__actions">
         <!-- Direct Download PDF -->
-        <a href="assets/CV_ATS_EDWARD%20LANDUNG%20PRAMUDYA.pdf" download="CV_ATS_EDWARD LANDUNG PRAMUDYA.pdf"
+        <a href="assets/CV%20ATS%20Edward%20Landung%20Pramudya.pdf" download="CV ATS Edward Landung Pramudya.pdf"
           class="btn btn--primary" title="Unduh File PDF Asli">
           <i data-lucide="download" width="16" height="16"></i>
           <span>Unduh PDF</span>
@@ -613,7 +571,7 @@
         </span>
       </div>
       <div class="cv-mobile-notice__actions">
-        <a href="assets/CV_ATS_EDWARD%20LANDUNG%20PRAMUDYA.pdf" target="_blank" rel="noopener noreferrer"
+        <a href="assets/CV%20ATS%20Edward%20Landung%20Pramudya.pdf" target="_blank" rel="noopener noreferrer"
           class="btn btn--outline" style="padding: 6px 12px; font-size: 0.8rem;">
           <i data-lucide="external-link" width="14" height="14"></i>
           Buka File PDF
@@ -623,10 +581,10 @@
 
     <!-- 1. PDF EMBED VIEW -->
     <section class="cv-pdf-container" id="pdfViewSection">
-      <iframe src="assets/CV_ATS_EDWARD%20LANDUNG%20PRAMUDYA.pdf#toolbar=1&navpanes=0"
+      <iframe src="assets/CV%20ATS%20Edward%20Landung%20Pramudya.pdf#toolbar=1&navpanes=0"
         title="Dokumen PDF CV Edward Landung Pramudya">
         <p>Browser Anda tidak mendukung pratinjau PDF langsung.
-          <a href="assets/CV_ATS_EDWARD%20LANDUNG%20PRAMUDYA.pdf" download>Klik di sini untuk mengunduh PDF.</a>
+          <a href="assets/CV%20ATS%20Edward%20Landung%20Pramudya.pdf" download="CV ATS Edward Landung Pramudya.pdf">Klik di sini untuk mengunduh PDF.</a>
         </p>
       </iframe>
     </section>
@@ -640,17 +598,27 @@
         <div class="cv-ats-contact">
           <span class="cv-ats-contact-item">
             <i data-lucide="map-pin" width="14" height="14"></i>
-            Dusun Teko'an RT 004 RW 014 Desa Tanggul - Kulon, Tanggul, Jember
+            Jember, Jawa Timur
           </span>
-          <span>•</span>
+          <span>|</span>
+          <span class="cv-ats-contact-item">
+            <i data-lucide="phone" width="14" height="14"></i>
+            <a href="https://wa.me/6282131270114" target="_blank" rel="noopener noreferrer">082131270114</a>
+          </span>
+          <span>|</span>
           <span class="cv-ats-contact-item">
             <i data-lucide="mail" width="14" height="14"></i>
             <a href="mailto:edwardlpramudya2005@gmail.com">edwardlpramudya2005@gmail.com</a>
           </span>
-          <span>•</span>
+          <span>|</span>
           <span class="cv-ats-contact-item">
-            <i data-lucide="phone" width="14" height="14"></i>
-            <a href="https://wa.me/6282131270114" target="_blank" rel="noopener noreferrer">082131270114</a>
+            <i data-lucide="linkedin" width="14" height="14"></i>
+            Linkedin: <a href="https://www.linkedin.com/in/edward-landung-pramudya-386199354/" target="_blank" rel="noopener noreferrer">Edward Landung Pramudya</a>
+          </span>
+          <span>|</span>
+          <span class="cv-ats-contact-item">
+            <i data-lucide="globe" width="14" height="14"></i>
+            Portofolio: <a href="https://epangssss.web.id" target="_blank" rel="noopener noreferrer">Epangssss.web.id</a>
           </span>
         </div>
       </header>
@@ -659,10 +627,11 @@
       <section class="cv-ats-section">
         <h2 class="cv-ats-section-title">Ringkasan Profil</h2>
         <p class="cv-ats-summary">
-          Lulusan Manajemen Informatika Politeknik Negeri Jember dengan minat pada pengembangan aplikasi web, mobile, dan machine
-          learning. Memiliki pengalaman mengembangkan aplikasi menggunakan Laravel, Flutter, dan Python, serta mengimplementasikan
-          model machine learning ke dalam sistem. Mampu bekerja secara individu maupun dalam tim, memiliki kemampuan analisis dan
-          pemecahan masalah yang baik, serta antusias mempelajari teknologi baru untuk menciptakan solusi digital yang efektif dan inovatif.
+          Lulusan Manajemen Informatika Politeknik Negeri Jember dengan minat pada pengembangan aplikasi web,
+          mobile, dan machine learning. Memiliki pengalaman mengembangkan aplikasi menggunakan Laravel, Flutter, dan
+          Python, serta mengimplementasikan model machine learning ke dalam sistem. Mampu bekerja secara individu
+          maupun dalam tim, memiliki kemampuan analisis dan pemecahan masalah yang baik, serta antusias mempelajari
+          teknologi baru untuk menciptakan solusi digital yang efektif dan inovatif.
         </p>
       </section>
 
@@ -672,51 +641,46 @@
 
         <!-- Job 1 -->
         <div class="cv-ats-item">
-          <div class="cv-ats-item-header">
-            <span class="cv-ats-org">Brilliant English Course kampung inggris pare - Kab. Kediri, Jawa Timur, Indonesia</span>
+          <div class="cv-ats-title">IT Support</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Brilliant English Course, Kampung Inggris Pare - Kab. Kediri, Jawa Timur</span>
             <span class="cv-ats-date">Juli 2025 - November 2025</span>
           </div>
-          <div class="cv-ats-role">IT Support</div>
-          <p class="cv-ats-desc">
-            Berperan sebagai IT Support yang berfokus memberikan layanan dukungan teknis terbaik untuk memastikan kelancaran
-            operasional dan kepuasan klien. Bertanggung jawab dalam merancang ulang alur kerja sistem (workflow/case flow) pengelolaan
-            data pada 3 website guna memperkuat keamanan sistem serta meminimalkan risiko kebocoran data (data breach). Selain itu,
-            turut mengelola prosedur operasional sistem penerimaan siswa baru kursus Bahasa Inggris agar berjalan efektif dan terstruktur,
-            serta menangani instalasi, konfigurasi, pemeliharaan (maintenance), hingga troubleshooting perangkat keras maupun driver
-            pada PC dan printer.
-          </p>
+          <ul class="cv-ats-bullets">
+            <li>Memberikan layanan dukungan teknis untuk memastikan kelancaran operasional dan kepuasan klien agar selesai tepat waktu sesuai target masa magang (internship).</li>
+            <li>Merancang ulang alur kerja sistem (workflow/case flow) pengelolaan data pada 3 website guna memperkuat keamanan sistem serta meminimalkan risiko kebocoran data (data breach).</li>
+            <li>Mengelola prosedur operasional sistem penerimaan siswa baru kursus Bahasa Inggris agar berjalan efektif dan terstruktur.</li>
+            <li>Menangani instalasi, konfigurasi, pemeliharaan (maintenance), dan troubleshooting perangkat keras maupun driver pada PC dan printer.</li>
+          </ul>
         </div>
 
         <!-- Job 2 -->
         <div class="cv-ats-item">
-          <div class="cv-ats-item-header">
-            <span class="cv-ats-org">Teaching Factory JTINOVA - Kab. Jember, Jawa Timur, Indonesia</span>
+          <div class="cv-ats-title">Frontend Website Developer</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Teaching Factory JTINOVA - Kab. Jember, Jawa Timur</span>
             <span class="cv-ats-date">Januari 2025 - Juni 2025</span>
           </div>
-          <div class="cv-ats-role">Frontend Website Developer</div>
-          <p class="cv-ats-desc">
-            Bertanggung jawab penuh dalam mengelola dan mengembangkan antarmuka (frontend) pada dua website utama, yaitu
-            JTINOVA dan Ukerma, agar selesai tepat waktu sesuai target masa magang (internship). Fokus pekerjaan meliputi
-            pengembangan dan implementasi fitur baru berupa sistem pengelolaan penggunaan sertifikat pada website JTINOVA, serta
-            melakukan identifikasi masalah (debugging) dan perbaikan bug pada website Ukerma untuk meningkatkan stabilitas, performa
-            sistem, dan kenyamanan pengguna.
-          </p>
+          <ul class="cv-ats-bullets">
+            <li>Mengelola dan mengembangkan antarmuka (frontend) pada 2 website utama, yaitu JTINOVA dan Ukerma, agar selesai tepat waktu sesuai target masa magang (internship).</li>
+            <li>Mengembangkan dan mengimplementasikan fitur baru berupa sistem pengelolaan penggunaan sertifikat pada website JTINOVA.</li>
+            <li>Melakukan identifikasi masalah (debugging) dan perbaikan bug pada website Ukerma untuk meningkatkan stabilitas dan performa sistem.</li>
+            <li>Meningkatkan kenyamanan pengguna melalui perbaikan stabilitas dan performa website.</li>
+          </ul>
         </div>
 
         <!-- Job 3 -->
         <div class="cv-ats-item">
-          <div class="cv-ats-item-header">
-            <span class="cv-ats-org">Teaching Factory (TEFA) JTINOVA - Kab. Jember, Jawa Timur, Indonesia</span>
+          <div class="cv-ats-title">Backend dan Frontend Developer</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Teaching Factory (TEFA) JTINOVA - Kab. Jember, Jawa Timur</span>
             <span class="cv-ats-date">Juli 2024 - Desember 2024</span>
           </div>
-          <div class="cv-ats-role">Backend Dan Frontend Developer</div>
-          <p class="cv-ats-desc">
-            Berkontribusi dalam merancang, membangun, dan mengintegrasikan sisi backend maupun frontend pada proyek
-            pengembangan sistem pembuatan sertifikat otomatis (automated certificate generator) berbasis website di lingkungan Teaching
-            Factory. Selama periode ini, aktif menerapkan kemampuan kepemimpinan (leadership) dan kolaborasi tim (teamwork) yang
-            solid dalam menganalisis serta memecahkan berbagai kendala teknis (problem-solving) secara terstruktur, disertai komitmen
-            dan tanggung jawab penuh terhadap kualitas hasil pekerjaan yang diberikan.
-          </p>
+          <ul class="cv-ats-bullets">
+            <li>Merancang, membangun, dan mengintegrasikan sisi backend maupun frontend pada proyek pengembangan sistem pembuatan sertifikat otomatis (automated certificate generator) berbasis website.</li>
+            <li>Menerapkan kepemimpinan (leadership) dan kolaborasi tim (teamwork) dalam menganalisis serta memecahkan kendala teknis (problem-solving) secara terstruktur.</li>
+            <li>Bertanggung jawab penuh terhadap kualitas hasil pekerjaan yang diberikan agar selesai tepat waktu sesuai target masa magang (internship).</li>
+          </ul>
         </div>
       </section>
 
@@ -724,55 +688,43 @@
       <section class="cv-ats-section">
         <h2 class="cv-ats-section-title">Pendidikan</h2>
         <div class="cv-ats-item">
-          <div class="cv-ats-item-header">
-            <span class="cv-ats-org">D3 - Politeknik Negeri Jember, Kab. Jember, Jawa Timur, Indonesia</span>
+          <div class="cv-ats-title">D3 Manajemen Informatika</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Politeknik Negeri Jember, Kab. Jember, Jawa Timur</span>
             <span class="cv-ats-date">2023 - 2026</span>
           </div>
-          <div class="cv-ats-role">Manajemen Informatika — IPK 3.87</div>
+          <div class="cv-ats-subtext">IPK: 3,87</div>
         </div>
       </section>
 
       <!-- Keterampilan -->
       <section class="cv-ats-section">
         <h2 class="cv-ats-section-title">Keterampilan</h2>
-        <div class="cv-ats-skills-grid">
-          <span class="cv-ats-skill-tag">Front-end Development</span>
-          <span class="cv-ats-skill-tag">Backend Development</span>
-          <span class="cv-ats-skill-tag">Mobile Development</span>
-          <span class="cv-ats-skill-tag">Software Development</span>
-          <span class="cv-ats-skill-tag">Problem Solving</span>
-          <span class="cv-ats-skill-tag">REST APIs</span>
-          <span class="cv-ats-skill-tag">Use Case Design</span>
-          <span class="cv-ats-skill-tag">UI/UX Design</span>
-          <span class="cv-ats-skill-tag">Server Maintenance</span>
-          <span class="cv-ats-skill-tag">Team Leadership</span>
-          <span class="cv-ats-skill-tag">Teamwork</span>
-          <span class="cv-ats-skill-tag">OBS Studio</span>
-          <span class="cv-ats-skill-tag">CapCut</span>
-          <span class="cv-ats-skill-tag">Canva</span>
-          <span class="cv-ats-skill-tag">Microsoft Word</span>
-          <span class="cv-ats-skill-tag">Microsoft Excel</span>
-        </div>
+        <ul class="cv-ats-bullets">
+          <li><strong>Programming & Frameworks:</strong> Laravel, Flutter, Dart, Python, PHP, CSS, JavaScript, MySQL, Git.</li>
+          <li><strong>Development:</strong> Front-end Development, Backend Development, Mobile Development, Software Development (Pengembangan Perangkat Lunak), REST APIs, UI/UX Design, Use Case Design.</li>
+          <li><strong>Tools & Other:</strong> Microsoft Word, Microsoft Excel, OBS Studio, CapCut, Canva, Pemeliharaan Server (Server Maintenance), Penanganan Masalah Teknis (Troubleshooting), Pemecahan Masalah (Problem Solving), Kerja Sama Tim (Teamwork), Kepemimpinan Tim (Team Leadership), Kemampuan Bekerja Mandiri (Independent Working).</li>
+        </ul>
       </section>
 
       <!-- Sertifikasi -->
       <section class="cv-ats-section">
         <h2 class="cv-ats-section-title">Sertifikasi</h2>
 
-        <div class="cv-cert-item">
-          <div class="cv-cert-info">
-            <h4>LSP POLIJE</h4>
-            <p>Lembaga Sertifikasi Profesi Pihak Kesatu Politeknik Negeri Jember</p>
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">LSP Polije</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Lembaga Sertifikasi Profesi Pihak Kesatu Politeknik Negeri Jember</span>
+            <span class="cv-ats-date">September 2026 - September 2029</span>
           </div>
-          <span class="cv-cert-badge">September 2026 - September 2029</span>
         </div>
 
-        <div class="cv-cert-item">
-          <div class="cv-cert-info">
-            <h4>KOMDIGI UJIKOMPETENSI VSGA</h4>
-            <p>BNSP bersama LSP Teknologi Digital</p>
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Komdigi Uji Kompetensi VSGA</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">BNSP bersama LSP Teknologi Digital</span>
+            <span class="cv-ats-date">Juni 2025 - Juni 2028</span>
           </div>
-          <span class="cv-cert-badge">Juni 2025 - Juni 2028</span>
         </div>
       </section>
 
@@ -780,28 +732,30 @@
       <section class="cv-ats-section">
         <h2 class="cv-ats-section-title">Pelatihan</h2>
 
-        <div class="cv-cert-item">
-          <div class="cv-cert-info">
-            <h4>Teknologi Informasi Dan Komunikasi - Sertifikasi Kompetensi Pemrogram Mobil Pratama (Junior Mobile Programmer)</h4>
-            <p>Lembaga Sertifikasi Profesi (LSP) Politeknik Negeri Jember - BNSP (Badan Nasional Sertifikasi Profesi)</p>
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Teknologi Informasi dan Komunikasi - Sertifikasi Kompetensi Pemrogram Mobil Pratama (Junior Mobile Programmer)</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Lembaga Sertifikasi Profesi (LSP) Politeknik Negeri Jember</span>
+            <span class="cv-ats-date">Mei 2026 - Juni 2026</span>
           </div>
-          <span class="cv-cert-badge">Mei 2026 - Juni 2026</span>
+          <div class="cv-ats-subtext">BNSP (Badan Nasional Sertifikasi Profesi)</div>
         </div>
 
-        <div class="cv-cert-item">
-          <div class="cv-cert-info">
-            <h4>Teknologi Informasi Dan Komunikasi - Data Science</h4>
-            <p>Bisa AI Academy</p>
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Teknologi Informasi dan Komunikasi - Data Science</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Bisa AI Academy</span>
+            <span class="cv-ats-date">November 2025 - Desember 2025</span>
           </div>
-          <span class="cv-cert-badge">Desember 2025 - Desember 2025</span>
         </div>
 
-        <div class="cv-cert-item">
-          <div class="cv-cert-info">
-            <h4>Teknologi Informasi Dan Komunikasi - Sertifikasi Kompetensi Ilmuwan Data Muda (Associate Data Scientist)</h4>
-            <p>Lembaga Sertifikasi Profesi (LSP) Teknologi Digital - BNSP (Badan Nasional Sertifikasi Profesi)</p>
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Teknologi Informasi dan Komunikasi - Sertifikasi Kompetensi Ilmuwan Data Muda (Associate Data Scientist)</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Lembaga Sertifikasi Profesi (LSP) Teknologi Digital</span>
+            <span class="cv-ats-date">Juni 2025 - Juli 2025</span>
           </div>
-          <span class="cv-cert-badge">Juni 2025 - Juli 2025</span>
+          <div class="cv-ats-subtext">BNSP (Badan Nasional Sertifikasi Profesi)</div>
         </div>
       </section>
 
