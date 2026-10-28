@@ -313,15 +313,24 @@ function initTextRotator() {
 
 function toggleGallery(id) {
   const gallery = document.getElementById(id);
+  if (!gallery) return;
   const isOpen = gallery.classList.contains('active');
 
   // Tutup semua gallery
   document.querySelectorAll('.documentation-gallery')
     .forEach(item => item.classList.remove('active'));
 
-  // Buka gallery yang diklik jika sebelumnya tertutup
+  // Reset status aktif semua tombol
+  document.querySelectorAll('button.project-card__tag')
+    .forEach(btn => btn.classList.remove('active'));
+
+  // Buka gallery yang diklik jika sebelumnya tertutup & aktifkan tombolnya
   if (!isOpen) {
     gallery.classList.add('active');
+    const targetBtn = document.querySelector(`button.project-card__tag[onclick*="'${id}'"]`);
+    if (targetBtn) {
+      targetBtn.classList.add('active');
+    }
   }
 }
 

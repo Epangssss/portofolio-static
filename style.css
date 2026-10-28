@@ -685,7 +685,8 @@ body.slide #themeOverlay {
   /* 142% ≈ √2 → fully covers the rotated square (no empty corners) */
   width: 131%;
   height: 131%;
-  max-width: none; /* override global img { max-width: 100% } */
+  max-width: none;
+  /* override global img { max-width: 100% } */
   object-fit: cover;
   object-position: center -20%;
   transform: translate(-50%, -50%) rotate(-45deg);
@@ -890,13 +891,183 @@ body.slide #themeOverlay {
 .project-card__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .project-card__tag {
   cursor: pointer;
   border: none;
   font: inherit;
+}
+
+/* =============================================
+   GLOWING INTERACTIVE BUTTONS (Efek Bercahaya Lembut)
+   ============================================= */
+button.project-card__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 15px;
+  font-family: inherit;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--clr-primary);
+  background: var(--clr-primary-ultra-light);
+  border: 1.5px solid rgba(94, 188, 224, 0.35);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  box-shadow: 0 1px 3px rgba(59, 130, 246, 0.08), 0 0 5px rgba(59, 130, 246, 0.1);
+  animation: buttonGlowLight 3s infinite ease-in-out;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
+  outline: none;
+}
+
+/* Radiant Shimmer Sweep (Kilau Cahaya Halus) */
+button.project-card__tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-25deg);
+  animation: glowShine 4s infinite;
+  pointer-events: none;
+}
+
+/* Dropdown indicator (▾) */
+button.project-card__tag::after {
+  content: '▾';
+  font-size: 0.85rem;
+  line-height: 1;
+  opacity: 0.7;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+}
+
+/* Icon */
+button.project-card__tag i {
+  transition: transform 0.2s ease;
+}
+
+/* Hover: Cahaya lembut saat didekati */
+button.project-card__tag:hover {
+  transform: translateY(-2px);
+  border-color: var(--clr-primary);
+  color: var(--clr-primary-dark);
+  background: var(--clr-primary-light);
+  box-shadow: 0 2px 12px rgba(59, 130, 246, 0.18);
+  animation-play-state: paused;
+}
+
+button.project-card__tag:hover i {
+  transform: scale(1.1);
+}
+
+/* Press Effect: Sentuhan Fisik saat Diklik */
+button.project-card__tag:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.06s ease, box-shadow 0.06s ease;
+}
+
+/* Active State: Saat Galeri Terbuka */
+button.project-card__tag.active {
+  background: var(--clr-primary);
+  color: #ffffff;
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.2), 0 2px 12px rgba(59, 130, 246, 0.2);
+  animation: none;
+}
+
+button.project-card__tag.active::after {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* Light mode gentle pulse keyframes */
+@keyframes buttonGlowLight {
+
+  0%,
+  100% {
+    box-shadow: 0 0 4px rgba(59, 130, 246, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.18);
+    border-color: rgba(59, 130, 246, 0.5);
+  }
+}
+
+/* Shine beam sweep keyframes */
+@keyframes glowShine {
+
+  0%,
+  70% {
+    left: -120%;
+  }
+
+  100% {
+    left: 160%;
+  }
+}
+
+/* =============================================
+   DARK MODE — SUBTLE GLOW (Efek Bercahaya Lembut Tema Gelap)
+   ============================================= */
+[data-theme="dark"] button.project-card__tag {
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(147, 197, 253, 0.22);
+  box-shadow: 0 0 5px rgba(56, 189, 248, 0.1);
+  animation: buttonGlowDark 3s infinite ease-in-out;
+}
+
+[data-theme="dark"] button.project-card__tag::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+
+[data-theme="dark"] button.project-card__tag:hover {
+  border-color: #60a5fa;
+  color: #ffffff;
+  background: rgba(37, 99, 235, 0.16);
+  box-shadow: 0 0 8px rgba(96, 165, 250, 0.22);
+}
+
+[data-theme="dark"] button.project-card__tag:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] button.project-card__tag.active {
+  background: #2563eb;
+  border-color: #3b82f6;
+  color: #ffffff;
+  box-shadow: 0 0 0 6px rgba(96, 165, 250, 0.25), 0 0 12px rgba(37, 99, 235, 0.25);
+  animation: none;
+}
+
+@keyframes buttonGlowDark {
+
+  0%,
+  100% {
+    box-shadow: 0 0 6px rgba(56, 189, 248, 0.08);
+    border-color: rgba(147, 197, 253, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.16);
+    border-color: rgba(147, 197, 253, 0.35);
+  }
 }
 
 .documentation-gallery {
