@@ -1846,11 +1846,12 @@ button.project-card__tag.active::after {
 
 .gallery-popup__img-wrapper {
   flex: 1;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 0;
-  max-height: 65vh;
+  max-height: 70vh;
   overflow: hidden;
 }
 
@@ -1861,6 +1862,19 @@ button.project-card__tag.active::after {
   border-radius: var(--radius-sm);
   user-select: none;
   transition: opacity 0.2s ease;
+}
+
+#galleryPopupImg[hidden],
+.gallery-popup__pdf[hidden] {
+  display: none !important;
+}
+
+.gallery-popup__pdf {
+  width: 100%;
+  height: 65vh;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: #ffffff;
 }
 
 /* Nav buttons */
@@ -1891,7 +1905,9 @@ button.project-card__tag.active::after {
 .gallery-popup__footer {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
   padding: 12px 20px;
   border-top: 1px solid var(--clr-border);
 }
@@ -1901,6 +1917,24 @@ button.project-card__tag.active::after {
   font-weight: 600;
   color: var(--clr-text-secondary);
   letter-spacing: 0.5px;
+}
+
+.gallery-popup__open-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: #0369a1;
+  margin-left: auto;
+}
+
+.gallery-popup__open-link:hover {
+  text-decoration: underline;
+}
+
+[data-theme="dark"] .gallery-popup__open-link {
+  color: #7dd3fc;
 }
 
 /* Mobile responsive */
@@ -1924,6 +1958,10 @@ button.project-card__tag.active::after {
 
   .gallery-popup__img-wrapper img {
     max-height: 55vh;
+  }
+
+  .gallery-popup__pdf {
+    height: 55vh;
   }
 
   .gallery-popup__header {
@@ -2461,8 +2499,53 @@ button.project-card__tag.active::after {
 }
 
 .cert-card__issuer {
-  font-size: var(--fs-small);
+  font-size: var(--fs-xs);
   color: var(--clr-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.cert-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.cert-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #7dd3fc;
+  background: #e0f2fe;
+  color: #075985;
+  font-family: var(--ff-body);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.cert-card__btn:hover {
+  background: #0369a1;
+  border-color: #0369a1;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .cert-card__btn {
+  background: rgba(56, 189, 248, 0.14);
+  border-color: rgba(125, 211, 252, 0.35);
+  color: #7dd3fc;
+}
+
+[data-theme="dark"] .cert-card__btn:hover {
+  background: #0369a1;
+  border-color: #0369a1;
+  color: #ffffff;
 }
 
 /* =============================================
@@ -3190,6 +3273,58 @@ a.contact-card:hover {
   font-size: var(--fs-xs);
   font-weight: 600;
   backdrop-filter: blur(4px);
+}
+
+.project-modal__doc-thumbs[hidden] {
+  display: none;
+}
+
+.project-modal__doc-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--clr-surface);
+  border-top: 1px solid var(--clr-border);
+}
+
+.project-modal__thumb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--clr-border);
+  background: var(--clr-bg-alt);
+  color: var(--clr-text-secondary);
+  font-family: var(--ff-body);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.project-modal__thumb-btn img {
+  width: 36px;
+  height: 22px;
+  object-fit: cover;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.project-modal__thumb-btn:hover,
+.project-modal__thumb-btn.active {
+  border-color: #0369a1;
+  background: #e0f2fe;
+  color: #075985;
+}
+
+[data-theme="dark"] .project-modal__thumb-btn:hover,
+[data-theme="dark"] .project-modal__thumb-btn.active {
+  background: rgba(56, 189, 248, 0.16);
+  border-color: #7dd3fc;
+  color: #ffffff;
 }
 
 .project-modal__doc-caption {

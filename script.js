@@ -527,6 +527,11 @@ function closeGalleryPopup() {
   if (!popup) return;
   popup.classList.remove('active');
   document.body.style.overflow = '';
+  const pdfFrame = document.getElementById('galleryPopupPdf');
+  if (pdfFrame) {
+    pdfFrame.hidden = true;
+    pdfFrame.src = 'about:blank';
+  }
   if (galleryLastTrigger && typeof galleryLastTrigger.focus === 'function') {
     galleryLastTrigger.focus();
     galleryLastTrigger = null;
@@ -545,12 +550,41 @@ function galleryNav(direction) {
 
 function updateGalleryImage() {
   const img = document.getElementById('galleryPopupImg');
+  const pdfFrame = document.getElementById('galleryPopupPdf');
+  const openLink = document.getElementById('galleryPopupOpenLink');
   const counter = document.getElementById('galleryCounter');
   const prevBtn = document.getElementById('galleryPrev');
   const nextBtn = document.getElementById('galleryNext');
 
-  img.src = galleryImages[galleryIndex];
-  img.alt = `Gambar ${galleryIndex + 1} dari ${galleryImages.length}`;
+  const currentSrc = galleryImages[galleryIndex] || '';
+  const encodedSrc = encodeURI(currentSrc);
+  const isPdf = currentSrc.toLowerCase().endsWith('.pdf');
+
+  if (isPdf) {
+    if (img) {
+      img.hidden = true;
+      img.removeAttribute('src');
+    }
+    if (pdfFrame) {
+      pdfFrame.hidden = false;
+      pdfFrame.src = encodedSrc;
+    }
+  } else {
+    if (pdfFrame) {
+      pdfFrame.hidden = true;
+      pdfFrame.src = 'about:blank';
+    }
+    if (img) {
+      img.hidden = false;
+      img.src = encodedSrc;
+      img.alt = `Gambar ${galleryIndex + 1} dari ${galleryImages.length}`;
+    }
+  }
+
+  if (openLink) {
+    openLink.href = encodedSrc;
+  }
+
   counter.textContent = `${galleryIndex + 1} / ${galleryImages.length}`;
 
   // Show/hide nav buttons based on image count
@@ -1106,24 +1140,38 @@ const PROJECT_DETAILS = {
     role: 'IT Support & Web Developer',
     image: 'assets/img/project2.png',
     imageAlt: 'Dokumentasi antarmuka website Brilliant English+',
-    caption: 'Dokumentasi halaman utama Brilliant International Education Plus (BIEPLUS) yang menampilkan navigasi Program, Galeri, informasi fasilitas Camp/asrama, dan tombol Tracking Transaksi.',
-    overview: 'Brilliant English+ (BIEPLUS) adalah platform web pendaftaran kursus Bahasa Inggris dan sistem manajemen hunian asrama (occupancy) di Kampung Inggris Pare. Sistem ini membantu calon siswa menelusuri program belajar, memeriksa ketersediaan camp, dan memantau transaksi pendaftaran secara daring.',
+    caption: 'Dokumentasi halaman utama Brilliant International Education Plus (BIEPLUS) yang menyatukan beberapa program dalam 1 website dan server terpadu.',
+    gallery: [
+      {
+        src: 'assets/img/project2.png',
+        alt: 'Dokumentasi antarmuka website Brilliant English+',
+        label: 'Portal Occupancy BIEPLUS',
+        caption: 'Halaman utama Brilliant International Education Plus (BIEPLUS) dengan navigasi Program, Galeri, Camp, dan Tracking Transaksi.'
+      },
+      {
+        src: 'assets/img/project-bieplus-main.jpg',
+        alt: 'Portal Utama brilliantinternationaleducation.com',
+        label: 'Website Induk BIEPLUS',
+        caption: 'Tampilan website utama brilliantinternationaleducation.com yang berada pada 1 sistem server dan arsitektur multi-program yang sama.'
+      }
+    ],
+    overview: 'Brilliant English+ (BIEPLUS) adalah platform utama yang menggabungkan beberapa program kursus dan pelatihan ke dalam 1 website dan server terpadu (brilliantinternationaleducation.com / occupancy.bieplus.com). Karena setiap program memiliki mentor yang berbeda-beda, struktur data dan alur sistemnya cukup kompleks. Bagian yang ditampilkan di portofolio ini adalah modul yang secara langsung saya ikut andil kerjakan selama masa magang.',
     features: [
       {
-        title: 'Manajemen Hunian & Asrama (Occupancy System)',
-        desc: 'Mengelola data ketersediaan kamar camp, penempatan peserta kursus, serta informasi fasilitas tempat tinggal siswa secara terpusat.'
+        title: 'Arsitektur 1 Website Multi-Program & Server Terpadu',
+        desc: 'Menyatukan beberapa program pendidikan berbeda (Bahasa Inggris, Bahasa Jerman, dan NHC) ke dalam satu website dan infrastruktur server terpadu.'
       },
       {
-        title: 'Pendaftaran Program & Self-Service Tracking',
-        desc: 'Memfasilitasi pendaftaran kursus Bahasa Inggris secara daring dilengkapi fitur Tracking Transaksi agar calon siswa dapat mengecek status pembayaran dan verifikasi secara mandiri.'
+        title: 'Struktur Data Kompleks (Mentor Berbeda per Program)',
+        desc: 'Menangani keterkaitan data yang kompleks karena setiap program memiliki mentor, jadwal kelas, penempatan camp, dan alur administrasi yang berbeda-beda.'
       },
       {
-        title: 'Perancangan Ulang Alur Kerja & Keamanan Data',
-        desc: 'Menyusun ulang workflow pengelolaan data pendaftaran dan siswa pada sistem backend guna memperkuat keamanan akses serta meminimalkan risiko kebocoran data (data breach).'
+        title: 'Kontribusi Langsung: Workflow & Keamanan Data',
+        desc: 'Berfokus pada bagian sistem yang saya kerjakan langsung, yaitu perancangan ulang alur kerja (workflow/case flow) pengelolaan data pendaftaran pada 3 website guna meminimalkan risiko kebocoran data.'
       },
       {
-        title: 'Pengelolaan Konten Program & Galeri',
-        desc: 'Menyediakan modul informasi kurikulum, pilihan paket belajar, dan dokumentasi fasilitas kampus berbasis Laravel, Bootstrap, dan MySQL.'
+        title: 'Occupancy Camp & Tracking Transaksi Mandiri',
+        desc: 'Mengelola data hunian kamar asrama (camp), penerimaan siswa baru, serta fitur Tracking Transaksi agar calon peserta dapat memantau status pendaftaran secara mandiri.'
       }
     ],
     extUrl: 'https://occupancy.bieplus.com/',
@@ -1164,27 +1212,84 @@ const PROJECT_DETAILS = {
     role: 'Web Developer',
     image: 'assets/img/project4.png',
     imageAlt: 'Dokumentasi antarmuka website Brilliant Kampung Inggris Jerman',
-    caption: 'Dokumentasi portal Brilliant Deutsche Sprache (BIEPLUS) yang menampilkan halaman program Bahasa Jerman, menu Camp dan Galeri, serta fitur Tracking Transaksi.',
-    overview: 'Brilliant Kampung Inggris Jerman (Deutsch Sprache) adalah platform web khusus program kursus Bahasa Jerman di bawah jaringan Brilliant International Education Plus. Platform ini menjembatani kebutuhan siswa yang ingin menguasai bahasa Jerman melalui kelas tatap muka di Pare maupun kelas virtual.',
+    caption: 'Dokumentasi modul program Bahasa Jerman (Deutsch Sprache) yang tergabung dalam ekosistem multi-program 1 website BIEPLUS.',
+    gallery: [
+      {
+        src: 'assets/img/project4.png',
+        alt: 'Halaman Program Bahasa Jerman (Deutsch Sprache)',
+        label: 'Halaman Bahasa Jerman',
+        caption: 'Tampilan modul Brilliant Deutsche Sprache sebagai salah satu program yang dikelola dalam ekosistem 1 website BIEPLUS.'
+      },
+      {
+        src: 'assets/img/project-bieplus-main.jpg',
+        alt: 'Portal Utama brilliantinternationaleducation.com',
+        label: 'Website Induk BIEPLUS',
+        caption: 'Portal utama brilliantinternationaleducation.com yang menjadi wadah server bersama untuk program Bahasa Inggris, Jerman, dan NHC.'
+      }
+    ],
+    overview: 'Brilliant Kampung Inggris Jerman (Deutsch Sprache) merupakan salah satu program kursus yang dibangun terintegrasi di dalam 1 website multi-program bersama jaringan Brilliant International Education Plus. Mengingat setiap program ditangani oleh mentor yang berbeda-beda, struktur datanya terhubung secara kompleks dengan sistem utama. Bagian yang ditampilkan di sini merupakan cakupan fitur dan antarmuka yang saya ikut andil kerjakan.',
     features: [
       {
-        title: 'Program Belajar Kelas Offline & Online',
-        desc: 'Menyediakan informasi terstruktur mengenai pilihan program Bahasa Jerman tatap muka (offline) dengan fasilitas asrama maupun kelas virtual (online).'
+        title: 'Bagian dari 1 Website Multi-Program',
+        desc: 'Berjalan sebagai modul program khusus Bahasa Jerman dalam satu ekosistem website dan server terpadu BIEPLUS, bukan situs terpisah yang berdiri sendiri.'
       },
       {
-        title: 'Tracking Transaksi & Administrasi Siswa',
-        desc: 'Terintegrasi dengan fitur pelacakan transaksi pendaftaran sehingga peserta dapat memantau status registrasi program Bahasa Jerman secara transparan.'
+        title: 'Struktur Mentor & Program Tersendiri',
+        desc: 'Menyesuaikan struktur data kompleks yang memisahkan mentor pengajar, paket kelas offline maupun virtual (online), serta kuota camp khusus peserta Bahasa Jerman.'
       },
       {
-        title: 'Standarisasi Keamanan Alur Data',
-        desc: 'Menerapkan perbaikan workflow pengelolaan data siswa pada ekosistem website BIEPLUS untuk menjaga integritas data pendaftaran.'
+        title: 'Kontribusi Pengembangan Antarmuka & Alur',
+        desc: 'Menampilkan bagian halaman dan alur kerja sistem yang secara langsung saya ikut kerjakan selama magang agar konsisten dengan portal utama.'
       },
       {
-        title: 'Desain Terpadu Berbasis Laravel & MySQL',
-        desc: 'Dibangun di atas arsitektur Laravel, Bootstrap, dan MySQL yang konsisten dengan identitas visual program Deutsch Sprache.'
+        title: 'Tracking Transaksi & Integrasi MySQL',
+        desc: 'Terhubung dengan fitur pelacakan transaksi pendaftaran pada arsitektur Laravel, Bootstrap, dan MySQL.'
       }
     ],
     extUrl: 'https://biepluskampunginggris.com/program/bahasa/jerman',
+    extLabel: 'Buka Live Demo'
+  },
+  nhc: {
+    title: 'Nuswantara Hospitality Center (NHC)',
+    badge: 'Magang',
+    role: 'IT Support & Web Developer',
+    image: 'assets/img/project5.png',
+    imageAlt: 'Dokumentasi halaman Nuswantara Hospitality Center (NHC)',
+    caption: 'Dokumentasi halaman program Nuswantara Hospitality Center (NHC) pada server terpadu BIEPLUS (occupancy.bieplus.com/nhc) beserta tampilan ekosistem induk brilliantinternationaleducation.com.',
+    gallery: [
+      {
+        src: 'assets/img/project5.png',
+        alt: 'Halaman Program Nuswantara Hospitality Center (NHC)',
+        label: 'Halaman Program NHC',
+        caption: 'Tampilan landing page Nuswantara Hospitality Center (NHC) dengan navigasi Program, Galeri, Camp, Kontak, dan fitur Tracking Transaksi.'
+      },
+      {
+        src: 'assets/img/project-bieplus-main.jpg',
+        alt: 'Ekosistem Website Induk BIEPLUS (brilliantinternationaleducation.com)',
+        label: 'Server & Website Induk BIEPLUS',
+        caption: 'Tampilan portal induk brilliantinternationaleducation.com yang berada pada satu arsitektur website dan server yang sama dengan modul program NHC.'
+      }
+    ],
+    overview: 'Nuswantara Hospitality Center (NHC) adalah portal program pelatihan dan persiapan karier perhotelan internasional di Kampung Inggris Pare yang berjalan pada satu server dan website terpadu bersama ekosistem BIEPLUS (https://occupancy.bieplus.com/nhc). Dalam pengembangannya, beberapa program pendidikan dijadikan satu website di mana setiap program memiliki mentor yang berbeda-beda, sehingga struktur data, relasi program, dan alur pengelolaannya cukup kompleks. Bagian yang ditampilkan pada portofolio ini merupakan modul dan fitur yang secara langsung saya ikut andil kerjakan selama masa magang.',
+    features: [
+      {
+        title: 'Arsitektur Multi-Program dalam 1 Website & Server',
+        desc: 'Terintegrasi langsung dalam satu basis kode dan server yang sama dengan portal utama BIEPLUS (occupancy.bieplus.com), memungkinkan pengelolaan beberapa program pendidikan berbeda dalam satu ekosistem terpusat.'
+      },
+      {
+        title: 'Struktur Data Kompleks (Multi-Mentor per Program)',
+        desc: 'Menangani relasi data yang kompleks karena setiap program memiliki mentor/pengajar, jadwal pelatihan, paket kurikulum, dan kuota kamar camp yang berbeda-beda.'
+      },
+      {
+        title: 'Lingkup Kontribusi & Implementasi Modul',
+        desc: 'Berfokus pada bagian yang saya ikut kerjakan secara langsung, meliputi penataan halaman program NHC, perbaikan alur kerja (workflow/case flow) pengelolaan data pendaftaran, serta penguatan keamanan data siswa.'
+      },
+      {
+        title: 'Integrasi Camp & Tracking Transaksi Mandiri',
+        desc: 'Dilengkapi navigasi informasi asrama (Camp), galeri pelatihan perhotelan, serta fitur Tracking Transaksi agar peserta dapat memantau status pendaftaran dan pembayaran secara real-time.'
+      }
+    ],
+    extUrl: 'https://occupancy.bieplus.com/nhc',
     extLabel: 'Buka Live Demo'
   }
 };
@@ -1197,6 +1302,7 @@ function initProjectDetailModal() {
   const roleEl = document.getElementById('projectModalRole');
   const titleEl = document.getElementById('projectModalTitle');
   const imgEl = document.getElementById('projectModalImg');
+  const galleryEl = document.getElementById('projectModalGallery');
   const captionEl = document.getElementById('projectModalCaption');
   const overviewEl = document.getElementById('projectModalOverview');
   const featuresEl = document.getElementById('projectModalFeatures');
@@ -1223,6 +1329,50 @@ function initProjectDetailModal() {
       imgEl.alt = data.imageAlt;
     }
     if (captionEl) captionEl.textContent = data.caption;
+
+    if (galleryEl) {
+      galleryEl.innerHTML = '';
+      if (Array.isArray(data.gallery) && data.gallery.length > 1) {
+        data.gallery.forEach((item, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'project-modal__thumb-btn' + (idx === 0 ? ' active' : '');
+
+          const thumbImg = document.createElement('img');
+          thumbImg.src = item.src;
+          thumbImg.alt = item.alt;
+          thumbImg.width = 36;
+          thumbImg.height = 22;
+          thumbImg.loading = 'lazy';
+
+          const labelSpan = document.createElement('span');
+          labelSpan.textContent = item.label;
+
+          btn.appendChild(thumbImg);
+          btn.appendChild(labelSpan);
+
+          btn.addEventListener('click', () => {
+            if (imgEl) {
+              imgEl.src = item.src;
+              imgEl.alt = item.alt;
+            }
+            if (captionEl && item.caption) {
+              captionEl.textContent = item.caption;
+            }
+            galleryEl.querySelectorAll('.project-modal__thumb-btn').forEach((b) => {
+              b.classList.remove('active');
+            });
+            btn.classList.add('active');
+          });
+
+          galleryEl.appendChild(btn);
+        });
+        galleryEl.hidden = false;
+      } else {
+        galleryEl.hidden = true;
+      }
+    }
+
     if (overviewEl) overviewEl.textContent = data.overview;
 
     if (featuresEl) {
