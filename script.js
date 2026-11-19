@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLightbox();
   initTextRotator();
   initMotherboardEffect();
+  initCvDropdown();
 });
 
 // =============================================
@@ -1543,4 +1544,37 @@ function initProjectDetailModal() {
   });
 }
 
+// =============================================
+// CV LANGUAGE DROPDOWN (HERO)
+// =============================================
+function initCvDropdown() {
+  const dropdown = document.getElementById('heroCvDropdown');
+  const trigger = document.getElementById('heroCvTrigger');
+  const menu = document.getElementById('heroCvMenu');
+  if (!dropdown || !trigger || !menu) return;
 
+  function setOpen(isOpen) {
+    dropdown.classList.toggle('open', isOpen);
+    trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    menu.hidden = !isOpen;
+  }
+
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = menu.hidden;
+    setOpen(isOpen);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target) && !menu.hidden) {
+      setOpen(false);
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menu.hidden) {
+      setOpen(false);
+      trigger.focus();
+    }
+  });
+}

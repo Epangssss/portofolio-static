@@ -21,7 +21,7 @@
   <!-- Devicon & Font Awesome for tech and documentation icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-  <link rel="stylesheet" href="style.css?v=20261120" />
+  <link rel="stylesheet" href="style.css?v=20261121" />
 </head>
 
 <body>
@@ -108,10 +108,31 @@
                 <i data-lucide="briefcase" width="16" height="16" aria-hidden="true"></i>
                 Lihat Pekerjaan Saya
               </a>
-              <a href="cv.html" class="btn btn--outline">
-                <i data-lucide="file-text" width="16" height="16" aria-hidden="true"></i>
-                CV Saya
-              </a>
+              <div class="cv-dropdown" id="heroCvDropdown">
+                <button type="button" class="btn btn--outline cv-dropdown__trigger" id="heroCvTrigger"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="heroCvMenu">
+                  <i data-lucide="file-text" width="16" height="16" aria-hidden="true"></i>
+                  <span>CV Saya</span>
+                  <i data-lucide="chevron-down" width="15" height="15" class="cv-dropdown__chevron"
+                    aria-hidden="true"></i>
+                </button>
+                <div class="cv-dropdown__menu" id="heroCvMenu" role="menu" aria-label="Pilih bahasa CV" hidden>
+                  <a href="cv.html?lang=id" class="cv-dropdown__item" role="menuitem">
+                    <span class="cv-dropdown__badge">ID</span>
+                    <span class="cv-dropdown__text">
+                      <strong>CV Bahasa Indonesia</strong>
+                      <small>Format ATS &amp; PDF (Indonesia)</small>
+                    </span>
+                  </a>
+                  <a href="cv.html?lang=en" class="cv-dropdown__item" role="menuitem">
+                    <span class="cv-dropdown__badge cv-dropdown__badge--en">EN</span>
+                    <span class="cv-dropdown__text">
+                      <strong>CV English Version</strong>
+                      <small>ATS &amp; PDF Format (English)</small>
+                    </span>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
           <div class="hero__photo">
@@ -1506,15 +1527,25 @@
                 </span>
               </div>
 
-              <a href="cv.html" class="contact-card">
+              <div class="contact-card contact-card--cv">
                 <span class="contact-card__icon">
                   <i data-lucide="file-text" width="18" height="18" aria-hidden="true"></i>
                 </span>
                 <span class="contact-card__body">
-                  <span class="contact-card__label">CV Lengkap</span>
-                  <span class="contact-card__value">Lihat &amp; Unduh CV ATS</span>
+                  <span class="contact-card__label">CV Lengkap (ATS &amp; PDF)</span>
+                  <span class="contact-card__value">Pilih Bahasa Curriculum Vitae</span>
+                  <span class="contact-card__cv-links">
+                    <a href="cv.html?lang=id" class="contact-card__cv-btn">
+                      <i data-lucide="file-text" width="13" height="13" aria-hidden="true"></i>
+                      Bahasa Indonesia
+                    </a>
+                    <a href="cv.html?lang=en" class="contact-card__cv-btn contact-card__cv-btn--en">
+                      <i data-lucide="globe" width="13" height="13" aria-hidden="true"></i>
+                      English Version
+                    </a>
+                  </span>
                 </span>
-              </a>
+              </div>
             </div>
           </div>
 
@@ -1689,7 +1720,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=20261120"></script>
+  <script src="script.js?v=20261121"></script>
 </body>
 
 </html>

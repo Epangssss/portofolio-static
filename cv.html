@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Curriculum Vitae (CV) - Edward Landung Pramudya. Web & Mobile Developer." />
+  <meta name="description" content="Curriculum Vitae (CV) - Edward Landung Pramudya. IT Support, Web Developer & Mobile Developer." />
   <title>CV - Edward Landung Pramudya</title>
 
   <!-- Fonts -->
@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 
   <!-- Main Website Stylesheet for tokens & components -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=20261121" />
 
   <style>
     /* =============================================
@@ -59,7 +59,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px 16px;
       flex-wrap: wrap;
     }
 
@@ -106,11 +106,24 @@
       padding: 2px 8px;
       border-radius: var(--radius-full);
       background: var(--clr-primary-ultra-light);
-      color: var(--clr-primary);
+      color: var(--clr-primary-dark);
       border: 1px solid var(--clr-primary-light);
     }
 
-    /* View Switcher Tabs */
+    [data-theme="dark"] .cv-topbar__badge {
+      color: #93c5fd;
+      background: rgba(37, 99, 235, 0.16);
+      border-color: rgba(96, 165, 250, 0.35);
+    }
+
+    .cv-topbar__controls {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* View & Language Switcher Tabs */
     .cv-switcher {
       display: inline-flex;
       background: var(--clr-bg-section);
@@ -124,7 +137,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 14px;
+      padding: 6px 12px;
       border-radius: 6px;
       border: none;
       background: transparent;
@@ -134,11 +147,12 @@
       color: var(--clr-text-secondary);
       cursor: pointer;
       transition: all var(--transition);
+      white-space: nowrap;
     }
 
     .cv-switcher__btn.active {
       background: var(--clr-surface);
-      color: var(--clr-primary);
+      color: var(--clr-primary-dark);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
@@ -224,7 +238,7 @@
       display: block;
     }
 
-    /* ATS Text Resume Card (Mobile First & Super Clean) */
+    /* ATS Text Resume Card */
     .cv-ats-container {
       background: var(--clr-surface);
       border-radius: var(--radius-md);
@@ -236,21 +250,38 @@
       margin: 0 auto;
     }
 
+    .cv-ats-container[hidden] {
+      display: none !important;
+    }
+
     .cv-ats-header {
       border-bottom: 2px solid var(--clr-border);
-      padding-bottom: 24px;
-      margin-bottom: 28px;
+      padding-bottom: 22px;
+      margin-bottom: 26px;
       text-align: center;
     }
 
     .cv-ats-name {
       font-family: var(--ff-heading);
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-size: clamp(1.8rem, 4vw, 2.35rem);
       font-weight: 800;
       letter-spacing: 0.04em;
       color: var(--clr-text);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       text-transform: uppercase;
+    }
+
+    .cv-ats-role {
+      font-family: var(--ff-heading);
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--clr-primary-dark);
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    [data-theme="dark"] .cv-ats-role {
+      color: #93c5fd;
     }
 
     .cv-ats-contact {
@@ -258,22 +289,26 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 8px 16px;
+      gap: 6px 14px;
       font-size: var(--fs-small);
       color: var(--clr-text-secondary);
       line-height: 1.5;
     }
 
     .cv-ats-contact a {
-      color: var(--clr-primary);
+      color: var(--clr-primary-dark);
       text-decoration: underline;
       text-underline-offset: 3px;
       font-weight: 500;
       transition: color var(--transition);
     }
 
+    [data-theme="dark"] .cv-ats-contact a {
+      color: #93c5fd;
+    }
+
     .cv-ats-contact a:hover {
-      color: var(--clr-primary-dark);
+      color: var(--clr-primary);
     }
 
     .cv-ats-contact-item {
@@ -283,7 +318,11 @@
     }
 
     .cv-ats-section {
-      margin-bottom: 28px;
+      margin-bottom: 26px;
+    }
+
+    .cv-ats-section:last-child {
+      margin-bottom: 0;
     }
 
     .cv-ats-section-title {
@@ -309,7 +348,7 @@
       text-align: justify;
     }
 
-    /* Experience, Education, Certification & Training Items */
+    /* Experience, Projects, Education, Certification & Training Items */
     .cv-ats-item {
       margin-bottom: 15px;
     }
@@ -355,6 +394,7 @@
       font-size: 0.91rem;
       color: var(--clr-text);
       margin-top: 2px;
+      line-height: 1.55;
     }
 
     .cv-ats-bullets {
@@ -393,7 +433,7 @@
       display: none;
     }
 
-    .view-mode-ats .cv-ats-container {
+    .view-mode-ats .cv-ats-container:not([hidden]) {
       display: block;
     }
 
@@ -409,13 +449,15 @@
     }
 
     /* Responsive adjustments */
+    @media (max-width: 960px) {
+      .cv-topbar__title {
+        display: none;
+      }
+    }
+
     @media (max-width: 768px) {
       .cv-topbar__inner {
         padding: 10px 14px;
-      }
-
-      .cv-topbar__title {
-        display: none;
       }
 
       .cv-topbar__actions .btn span {
@@ -464,7 +506,7 @@
         display: none !important;
       }
 
-      .cv-ats-container {
+      .cv-ats-container:not([hidden]) {
         display: block !important;
         border: none !important;
         box-shadow: none !important;
@@ -472,24 +514,20 @@
         max-width: 100% !important;
       }
 
-      .cv-ats-name {
+      .cv-ats-container[hidden] {
+        display: none !important;
+      }
+
+      .cv-ats-name,
+      .cv-ats-role,
+      .cv-ats-title,
+      .cv-ats-org,
+      .cv-ats-date {
         color: #000000 !important;
       }
 
       .cv-ats-section-title {
         border-bottom-color: #000000 !important;
-      }
-
-      .cv-ats-title {
-        color: #000000 !important;
-      }
-
-      .cv-ats-org {
-        color: #000000 !important;
-      }
-
-      .cv-ats-date {
-        color: #000000 !important;
       }
 
       .cv-ats-contact a {
@@ -512,9 +550,9 @@
     <div class="cv-topbar__inner">
       <!-- Left: Back button & Candidate Title -->
       <div class="cv-topbar__left">
-        <a href="index.html" class="cv-topbar__back" title="Kembali ke Portofolio">
+        <a href="index.html" class="cv-topbar__back" id="cvBackLink" title="Kembali ke Portofolio">
           <i data-lucide="arrow-left" width="16" height="16"></i>
-          <span>Kembali</span>
+          <span id="cvBackText">Kembali</span>
         </a>
         <div class="cv-topbar__title">
           <span>Edward Landung Pramudya</span>
@@ -522,37 +560,51 @@
         </div>
       </div>
 
-      <!-- Center: View Mode Switcher -->
-      <div class="cv-switcher" role="tablist">
-        <button type="button" class="cv-switcher__btn active" id="btnModeAts" onclick="switchViewMode('ats')" role="tab"
-          aria-selected="true" title="Tampilan Teks Responsif (Nyaman di HP & Desktop)">
-          <i data-lucide="align-left" width="14" height="14"></i>
-          <span>Tampilan Teks (Mobile)</span>
-        </button>
-        <button type="button" class="cv-switcher__btn" id="btnModePdf" onclick="switchViewMode('pdf')" role="tab"
-          aria-selected="false" title="Tampilan File PDF Asli (2 Halaman)">
-          <i data-lucide="file-text" width="14" height="14"></i>
-          <span>File PDF Asli</span>
-        </button>
+      <!-- Center: Language & View Mode Switchers -->
+      <div class="cv-topbar__controls">
+        <div class="cv-switcher cv-lang-switcher" role="group" aria-label="Pilih bahasa CV">
+          <button type="button" class="cv-switcher__btn active" id="btnLangId" onclick="switchLanguage('id')"
+            aria-pressed="true" title="CV Bahasa Indonesia">
+            <span>ID - Indonesia</span>
+          </button>
+          <button type="button" class="cv-switcher__btn" id="btnLangEn" onclick="switchLanguage('en')"
+            aria-pressed="false" title="CV English Version">
+            <span>EN - English</span>
+          </button>
+        </div>
+
+        <div class="cv-switcher" role="tablist">
+          <button type="button" class="cv-switcher__btn active" id="btnModeAts" onclick="switchViewMode('ats')"
+            role="tab" aria-selected="true" title="Tampilan Teks Responsif (Nyaman di HP & Desktop)">
+            <i data-lucide="align-left" width="14" height="14"></i>
+            <span id="labelModeAts">Tampilan Teks (ATS)</span>
+          </button>
+          <button type="button" class="cv-switcher__btn" id="btnModePdf" onclick="switchViewMode('pdf')" role="tab"
+            aria-selected="false" title="Tampilan File PDF Asli (2 Halaman)">
+            <i data-lucide="file-text" width="14" height="14"></i>
+            <span id="labelModePdf">File PDF Asli</span>
+          </button>
+        </div>
       </div>
 
       <!-- Right: Actions -->
       <div class="cv-topbar__actions">
         <!-- Direct Download PDF -->
-        <a href="assets/CV%20ATS%20Edward%20Landung%20Pramudya.pdf" download="CV ATS Edward Landung Pramudya.pdf"
-          class="btn btn--primary" title="Unduh File PDF Asli">
+        <a href="assets/cv-edward-landung-pramudya.pdf" download="cv-edward-landung-pramudya.pdf"
+          class="btn btn--primary" id="cvDownloadBtn" title="Unduh File PDF Asli">
           <i data-lucide="download" width="16" height="16"></i>
-          <span>Unduh PDF</span>
+          <span id="labelDownloadPdf">Unduh PDF</span>
         </a>
 
         <!-- Print CV -->
-        <button type="button" onclick="window.print()" class="btn btn--outline" title="Cetak / Simpan PDF Halaman Ini">
+        <button type="button" onclick="window.print()" class="btn btn--outline" id="cvPrintBtn"
+          title="Cetak / Simpan PDF Halaman Ini">
           <i data-lucide="printer" width="16" height="16"></i>
-          <span>Cetak</span>
+          <span id="labelPrintCv">Cetak</span>
         </button>
 
         <!-- Theme Toggle -->
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Ganti Tema">
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Ganti Tema">
           <i data-lucide="moon" width="16" height="16"></i>
         </button>
       </div>
@@ -565,36 +617,38 @@
     <!-- Mobile-friendly info notice banner -->
     <div class="cv-mobile-notice">
       <div class="cv-mobile-notice__text">
-        <i data-lucide="smartphone" width="20" height="20" style="color: var(--clr-primary); flex-shrink: 0;"></i>
-        <span>
-          <strong>Tampilan Ramah Mobile:</strong> Anda sedang melihat format teks responsif yang nyaman dibaca di layar HP tanpa perlu pinch-zoom.
+        <i data-lucide="smartphone" width="20" height="20" style="color: var(--clr-primary-dark); flex-shrink: 0;"></i>
+        <span id="cvMobileNoticeText">
+          <strong>Tampilan Ramah Mobile:</strong> Anda sedang melihat format teks responsif Bahasa Indonesia yang nyaman dibaca tanpa perlu pinch-zoom.
         </span>
       </div>
       <div class="cv-mobile-notice__actions">
-        <a href="assets/CV%20ATS%20Edward%20Landung%20Pramudya.pdf" target="_blank" rel="noopener noreferrer"
-          class="btn btn--outline" style="padding: 6px 12px; font-size: 0.8rem;">
+        <a href="assets/cv-edward-landung-pramudya.pdf" target="_blank" rel="noopener noreferrer"
+          class="btn btn--outline" id="cvMobileOpenPdfBtn" style="padding: 6px 12px; font-size: 0.8rem;">
           <i data-lucide="external-link" width="14" height="14"></i>
-          Buka File PDF
+          <span id="labelOpenPdf">Buka File PDF</span>
         </a>
       </div>
     </div>
 
     <!-- 1. PDF EMBED VIEW -->
     <section class="cv-pdf-container" id="pdfViewSection">
-      <iframe src="assets/CV%20ATS%20Edward%20Landung%20Pramudya.pdf#toolbar=1&navpanes=0"
+      <iframe id="cvPdfFrame" src="assets/cv-edward-landung-pramudya.pdf#toolbar=1&navpanes=0"
         title="Dokumen PDF CV Edward Landung Pramudya">
         <p>Browser Anda tidak mendukung pratinjau PDF langsung.
-          <a href="assets/CV%20ATS%20Edward%20Landung%20Pramudya.pdf" download="CV ATS Edward Landung Pramudya.pdf">Klik di sini untuk mengunduh PDF.</a>
+          <a id="cvPdfFallbackLink" href="assets/cv-edward-landung-pramudya.pdf"
+            download="cv-edward-landung-pramudya.pdf">Klik di sini untuk mengunduh PDF.</a>
         </p>
       </iframe>
     </section>
 
-    <!-- 2. ATS RESPONSIVE TEXT VIEW -->
-    <article class="cv-ats-container" id="atsViewSection">
+    <!-- 2. ATS RESPONSIVE TEXT VIEW (INDONESIAN) -->
+    <article class="cv-ats-container" id="atsViewId" lang="id">
 
       <!-- Header: Candidate Info -->
       <header class="cv-ats-header">
         <h1 class="cv-ats-name">Edward Landung Pramudya</h1>
+        <p class="cv-ats-role">IT Support | Web Developer | Mobile Developer</p>
         <div class="cv-ats-contact">
           <span class="cv-ats-contact-item">
             <i data-lucide="map-pin" width="14" height="14"></i>
@@ -613,12 +667,19 @@
           <span>|</span>
           <span class="cv-ats-contact-item">
             <i data-lucide="linkedin" width="14" height="14"></i>
-            Linkedin: <a href="https://www.linkedin.com/in/edward-landung-pramudya-386199354/" target="_blank" rel="noopener noreferrer">Edward Landung Pramudya</a>
+            LinkedIn: <a href="https://www.linkedin.com/in/edward-landung-pramudya-386199354/" target="_blank"
+              rel="noopener noreferrer">linkedin.com/in/edward-landung-pramudya-386199354/</a>
+          </span>
+          <span>|</span>
+          <span class="cv-ats-contact-item">
+            <i data-lucide="github" width="14" height="14"></i>
+            GitHub: <a href="https://github.com/Epangssss" target="_blank"
+              rel="noopener noreferrer">github.com/Epangssss</a>
           </span>
           <span>|</span>
           <span class="cv-ats-contact-item">
             <i data-lucide="globe" width="14" height="14"></i>
-            Portofolio: <a href="https://epangssss.web.id" target="_blank" rel="noopener noreferrer">Epangssss.web.id</a>
+            Portofolio: <a href="https://epangssss.web.id" target="_blank" rel="noopener noreferrer">epangssss.web.id</a>
           </span>
         </div>
       </header>
@@ -627,11 +688,12 @@
       <section class="cv-ats-section">
         <h2 class="cv-ats-section-title">Ringkasan Profil</h2>
         <p class="cv-ats-summary">
-          Lulusan Manajemen Informatika Politeknik Negeri Jember dengan minat pada pengembangan aplikasi web,
-          mobile, dan machine learning. Memiliki pengalaman mengembangkan aplikasi menggunakan Laravel, Flutter, dan
-          Python, serta mengimplementasikan model machine learning ke dalam sistem. Mampu bekerja secara individu
-          maupun dalam tim, memiliki kemampuan analisis dan pemecahan masalah yang baik, serta antusias mempelajari
-          teknologi baru untuk menciptakan solusi digital yang efektif dan inovatif.
+          Lulusan Manajemen Informatika Politeknik Negeri Jember dengan minat pada pengembangan aplikasi web, mobile, dan
+          machine learning. Memiliki pengalaman mengembangkan aplikasi menggunakan Laravel, Flutter, dan Python, serta
+          mengimplementasikan model machine learning ke dalam sistem. Mampu bekerja secara individu maupun dalam tim,
+          memiliki kemampuan analisis dan pemecahan masalah yang baik, serta antusias mempelajari teknologi baru untuk
+          menciptakan solusi digital yang efektif dan inovatif. Terbuka untuk posisi IT Support, Web Developer, dan
+          Mobile Developer.
         </p>
       </section>
 
@@ -641,16 +703,19 @@
 
         <!-- Job 1 -->
         <div class="cv-ats-item">
-          <div class="cv-ats-title">IT Support & Web Developer</div>
+          <div class="cv-ats-title">IT Support &amp; Web Developer</div>
           <div class="cv-ats-meta">
             <span class="cv-ats-org">Brilliant English Course, Kampung Inggris Pare - Kab. Kediri, Jawa Timur</span>
             <span class="cv-ats-date">Juli 2025 - November 2025</span>
           </div>
           <ul class="cv-ats-bullets">
-            <li>Memberikan layanan dukungan teknis untuk memastikan kelancaran operasional dan kepuasan klien agar selesai tepat waktu sesuai target masa magang (internship).</li>
-            <li>Merancang ulang alur kerja sistem (workflow/case flow) pengelolaan data pada 3 website guna memperkuat keamanan sistem serta meminimalkan risiko kebocoran data (data breach).</li>
-            <li>Mengelola prosedur operasional sistem penerimaan siswa baru kursus Bahasa Inggris agar berjalan efektif dan terstruktur.</li>
-            <li>Menangani instalasi, konfigurasi, pemeliharaan (maintenance), dan troubleshooting perangkat keras maupun driver pada PC dan printer.</li>
+            <li>Memberikan layanan dukungan teknis untuk memastikan kelancaran operasional dan kepuasan klien.</li>
+            <li>Merancang ulang alur kerja sistem (workflow/case flow) pengelolaan data pada 3 website guna memperkuat
+              keamanan sistem serta meminimalkan risiko kebocoran data (data breach).</li>
+            <li>Mengelola prosedur operasional sistem penerimaan siswa baru kursus Bahasa Inggris agar berjalan efektif
+              dan terstruktur.</li>
+            <li>Menangani instalasi, konfigurasi, pemeliharaan (maintenance), dan troubleshooting perangkat keras maupun
+              driver pada PC dan printer.</li>
           </ul>
         </div>
 
@@ -662,10 +727,11 @@
             <span class="cv-ats-date">Januari 2025 - Juni 2025</span>
           </div>
           <ul class="cv-ats-bullets">
-            <li>Mengelola dan mengembangkan antarmuka (frontend) pada 2 website utama, yaitu JTINOVA dan Ukerma, agar selesai tepat waktu sesuai target masa magang (internship).</li>
-            <li>Mengembangkan dan mengimplementasikan fitur baru berupa sistem pengelolaan penggunaan sertifikat pada website JTINOVA.</li>
-            <li>Melakukan identifikasi masalah (debugging) dan perbaikan bug pada website Ukerma untuk meningkatkan stabilitas dan performa sistem.</li>
-            <li>Meningkatkan kenyamanan pengguna melalui perbaikan stabilitas dan performa website.</li>
+            <li>Mengelola dan mengembangkan antarmuka (frontend) pada 2 website utama, yaitu JTINOVA dan Ukerma.</li>
+            <li>Mengembangkan dan mengimplementasikan fitur baru berupa sistem pengelolaan penggunaan sertifikat pada
+              website JTINOVA.</li>
+            <li>Melakukan identifikasi masalah (debugging) dan perbaikan bug pada website Ukerma untuk meningkatkan
+              stabilitas dan performa sistem.</li>
           </ul>
         </div>
 
@@ -677,10 +743,77 @@
             <span class="cv-ats-date">Juli 2024 - Desember 2024</span>
           </div>
           <ul class="cv-ats-bullets">
-            <li>Merancang, membangun, dan mengintegrasikan sisi backend maupun frontend pada proyek pengembangan sistem pembuatan sertifikat otomatis (automated certificate generator) berbasis website.</li>
-            <li>Menerapkan kepemimpinan (leadership) dan kolaborasi tim (teamwork) dalam menganalisis serta memecahkan kendala teknis (problem-solving) secara terstruktur.</li>
-            <li>Bertanggung jawab penuh terhadap kualitas hasil pekerjaan yang diberikan agar selesai tepat waktu sesuai target masa magang (internship).</li>
+            <li>Merancang, membangun, dan mengintegrasikan sisi backend maupun frontend pada proyek pengembangan sistem
+              pembuatan sertifikat otomatis (automated certificate generator) berbasis website.</li>
+            <li>Menerapkan kepemimpinan (leadership) dan kolaborasi tim (teamwork) dalam menganalisis serta memecahkan
+              kendala teknis (problem-solving) secara terstruktur.</li>
+            <li>Bertanggung jawab penuh terhadap kualitas hasil pekerjaan yang diberikan.</li>
           </ul>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="cv-ats-section">
+        <h2 class="cv-ats-section-title">Projects</h2>
+
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Famotion</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Flutter, Dart, Python, ResNet50, K-NN | Proyek Pribadi</span>
+            <span class="cv-ats-date">Januari 2026 - Mei 2026</span>
+          </div>
+          <p class="cv-ats-subtext">
+            Mengembangkan aplikasi mobile Famotion dengan Flutter/Dart, mengintegrasikan model machine learning ResNet50
+            dan K-NN berbasis Python.
+          </p>
+        </div>
+
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Brilliant English+</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Laravel, CSS, JavaScript, MySQL, Bootstrap | IT Support &amp; Web Developer | Brilliant English Course</span>
+            <span class="cv-ats-date">Juli 2025 - November 2025</span>
+          </div>
+          <p class="cv-ats-subtext">
+            Mengembangkan platform kursus online bahasa Inggris dengan materi pembelajaran interaktif, kuis adaptif,
+            komunitas belajar, serta informasi tempat tinggal dan CAMP.
+          </p>
+        </div>
+
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Brilliant English Pare</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Laravel, CSS, JavaScript, MySQL, Bootstrap | IT Support &amp; Web Developer | Brilliant English Course</span>
+            <span class="cv-ats-date">Juli 2025 - November 2025</span>
+          </div>
+          <p class="cv-ats-subtext">
+            Mengembangkan website kursus bahasa Inggris dengan fitur informasi tempat tinggal, materi pembelajaran, dan
+            komunitas belajar.
+          </p>
+        </div>
+
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Brilliant Kampung Inggris Jerman</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Laravel, CSS, JavaScript, MySQL, Bootstrap | IT Support &amp; Web Developer | Brilliant English Course</span>
+            <span class="cv-ats-date">Juli 2025 - November 2025</span>
+          </div>
+          <p class="cv-ats-subtext">
+            Mengembangkan website pembelajaran bahasa Jerman (Deutsche Sprache) dengan pilihan kelas tatap muka (offline)
+            dan virtual (online).
+          </p>
+        </div>
+
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Sistem Pembuatan Sertifikat Otomatis Berbasis Website</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Automated Certificate Generator | Backend dan Frontend Developer - JTI Innovation Center</span>
+            <span class="cv-ats-date">Juli 2024 - Desember 2024</span>
+          </div>
+          <p class="cv-ats-subtext">
+            Merancang, membangun, dan mengintegrasikan sisi backend maupun frontend pada proyek pengembangan sistem
+            pembuatan sertifikat otomatis (automated certificate generator) berbasis website.
+          </p>
         </div>
       </section>
 
@@ -701,9 +834,15 @@
       <section class="cv-ats-section">
         <h2 class="cv-ats-section-title">Keterampilan</h2>
         <ul class="cv-ats-bullets">
-          <li><strong>Programming & Frameworks:</strong> Laravel, Flutter, Dart, Python, PHP, CSS, JavaScript, MySQL, Git.</li>
-          <li><strong>Development:</strong> Front-end Development, Backend Development, Mobile Development, Software Development (Pengembangan Perangkat Lunak), REST APIs, UI/UX Design, Use Case Design.</li>
-          <li><strong>Tools & Other:</strong> Microsoft Word, Microsoft Excel, OBS Studio, CapCut, Canva, Pemeliharaan Server (Server Maintenance), Penanganan Masalah Teknis (Troubleshooting), Pemecahan Masalah (Problem Solving), Kerja Sama Tim (Teamwork), Kepemimpinan Tim (Team Leadership), Kemampuan Bekerja Mandiri (Independent Working).</li>
+          <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript, Tailwind CSS, Bootstrap, Vue.js, React, Flutter, Dart, Vite</li>
+          <li><strong>Backend &amp; API:</strong> PHP, Laravel, Python, Flask, Node.js, REST API</li>
+          <li><strong>Database &amp; Data:</strong> MySQL, MariaDB, MongoDB, Chart.js</li>
+          <li><strong>AI &amp; Machine Learning:</strong> Machine Learning, ResNet50, K-NN, OpenCV</li>
+          <li><strong>UI/UX &amp; Desain Sistem:</strong> UI/UX Design, Use Case Design, Workflow Design, Responsive Layout, Canva</li>
+          <li><strong>Pengembangan:</strong> Front-end Development, Back-end Development, Mobile Development, Pengembangan Perangkat Lunak</li>
+          <li><strong>Tools:</strong> Git, Postman, Android Studio, VS Code, Microsoft Word, Microsoft Excel, OBS Studio, CapCut</li>
+          <li><strong>Soft Skills:</strong> Pemeliharaan Server, Penanganan Masalah Teknis, Pemecahan Masalah, Kerja Sama Tim, Kepemimpinan Tim, Kemampuan Bekerja Mandiri</li>
+          <li><strong>Bahasa:</strong> Indonesia (Native), Inggris (Beginner, CEFR A1 - EPT 35/140, 2024)</li>
         </ul>
       </section>
 
@@ -735,10 +874,9 @@
         <div class="cv-ats-item">
           <div class="cv-ats-title">Teknologi Informasi dan Komunikasi - Sertifikasi Kompetensi Pemrogram Mobil Pratama (Junior Mobile Programmer)</div>
           <div class="cv-ats-meta">
-            <span class="cv-ats-org">Lembaga Sertifikasi Profesi (LSP) Politeknik Negeri Jember</span>
+            <span class="cv-ats-org">Lembaga Sertifikasi Profesi (LSP) Politeknik Negeri Jember - BNSP (Badan Nasional Sertifikasi Profesi)</span>
             <span class="cv-ats-date">Mei 2026 - Juni 2026</span>
           </div>
-          <div class="cv-ats-subtext">BNSP (Badan Nasional Sertifikasi Profesi)</div>
         </div>
 
         <div class="cv-ats-item">
@@ -752,10 +890,263 @@
         <div class="cv-ats-item">
           <div class="cv-ats-title">Teknologi Informasi dan Komunikasi - Sertifikasi Kompetensi Ilmuwan Data Muda (Associate Data Scientist)</div>
           <div class="cv-ats-meta">
-            <span class="cv-ats-org">Lembaga Sertifikasi Profesi (LSP) Teknologi Digital</span>
+            <span class="cv-ats-org">Lembaga Sertifikasi Profesi (LSP) Teknologi Digital - BNSP (Badan Nasional Sertifikasi Profesi)</span>
             <span class="cv-ats-date">Juni 2025 - Juli 2025</span>
           </div>
-          <div class="cv-ats-subtext">BNSP (Badan Nasional Sertifikasi Profesi)</div>
+        </div>
+      </section>
+
+    </article>
+
+    <!-- 3. ATS RESPONSIVE TEXT VIEW (ENGLISH) -->
+    <article class="cv-ats-container" id="atsViewEn" lang="en" hidden>
+
+      <!-- Header: Candidate Info -->
+      <header class="cv-ats-header">
+        <h1 class="cv-ats-name">Edward Landung Pramudya</h1>
+        <p class="cv-ats-role">IT Support | Web Developer | Mobile Developer</p>
+        <div class="cv-ats-contact">
+          <span class="cv-ats-contact-item">
+            <i data-lucide="map-pin" width="14" height="14"></i>
+            Jember, East Java
+          </span>
+          <span>|</span>
+          <span class="cv-ats-contact-item">
+            <i data-lucide="phone" width="14" height="14"></i>
+            <a href="https://wa.me/6282131270114" target="_blank" rel="noopener noreferrer">082131270114</a>
+          </span>
+          <span>|</span>
+          <span class="cv-ats-contact-item">
+            <i data-lucide="mail" width="14" height="14"></i>
+            <a href="mailto:edwardlpramudya2005@gmail.com">edwardlpramudya2005@gmail.com</a>
+          </span>
+          <span>|</span>
+          <span class="cv-ats-contact-item">
+            <i data-lucide="linkedin" width="14" height="14"></i>
+            LinkedIn: <a href="https://www.linkedin.com/in/edward-landung-pramudya-386199354/" target="_blank"
+              rel="noopener noreferrer">linkedin.com/in/edward-landung-pramudya-386199354/</a>
+          </span>
+          <span>|</span>
+          <span class="cv-ats-contact-item">
+            <i data-lucide="github" width="14" height="14"></i>
+            GitHub: <a href="https://github.com/Epangssss" target="_blank"
+              rel="noopener noreferrer">github.com/Epangssss</a>
+          </span>
+          <span>|</span>
+          <span class="cv-ats-contact-item">
+            <i data-lucide="globe" width="14" height="14"></i>
+            Portfolio: <a href="https://epangssss.web.id" target="_blank" rel="noopener noreferrer">epangssss.web.id</a>
+          </span>
+        </div>
+      </header>
+
+      <!-- Professional Summary -->
+      <section class="cv-ats-section">
+        <h2 class="cv-ats-section-title">Professional Summary</h2>
+        <p class="cv-ats-summary">
+          Information Management graduate from Politeknik Negeri Jember, interested in web, mobile, and machine learning
+          application development. Experienced in developing applications using Laravel, Flutter, and Python, and in
+          implementing machine learning models into systems. Able to work independently and in a team, with good
+          analytical and problem-solving skills, and enthusiastic about learning new technologies to create effective
+          and innovative digital solutions. Open to IT Support, Web Developer, and Mobile Developer positions.
+        </p>
+      </section>
+
+      <!-- Work Experience -->
+      <section class="cv-ats-section">
+        <h2 class="cv-ats-section-title">Work Experience</h2>
+
+        <!-- Job 1 -->
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">IT Support &amp; Web Developer</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Brilliant English Course, Kampung Inggris Pare - Kediri Regency, East Java</span>
+            <span class="cv-ats-date">July 2025 - November 2025</span>
+          </div>
+          <ul class="cv-ats-bullets">
+            <li>Provided technical support services to ensure smooth operations and client satisfaction.</li>
+            <li>Redesigned the system workflow/case flow for data management across 3 websites to strengthen system
+              security and minimise the risk of data breaches.</li>
+            <li>Managed the operational procedures of the new-student admission system for the English course so it ran
+              effectively and in a structured way.</li>
+            <li>Handled installation, configuration, maintenance, and troubleshooting of hardware and drivers on PCs and
+              printers.</li>
+          </ul>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Web Development Intern</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">JTI Innovation Center - Jember Regency, East Java</span>
+            <span class="cv-ats-date">January 2025 - June 2025</span>
+          </div>
+          <ul class="cv-ats-bullets">
+            <li>Managed and developed the frontend of 2 main websites, JTINOVA and Ukerma.</li>
+            <li>Developed and implemented a new feature: a certificate-usage management system on the JTINOVA website.</li>
+            <li>Identified problems (debugging) and fixed bugs on the Ukerma website to improve system stability and
+              performance.</li>
+          </ul>
+        </div>
+
+        <!-- Job 3 -->
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Backend and Frontend Developer</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">JTI Innovation Center - Jember Regency, East Java</span>
+            <span class="cv-ats-date">July 2024 - December 2024</span>
+          </div>
+          <ul class="cv-ats-bullets">
+            <li>Designed, built, and integrated both backend and frontend for a web-based automated certificate generator
+              system.</li>
+            <li>Applied leadership and teamwork in analysing and solving technical obstacles (problem-solving) in a
+              structured way.</li>
+            <li>Fully responsible for the quality of the work assigned.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="cv-ats-section">
+        <h2 class="cv-ats-section-title">Projects</h2>
+
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Famotion</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Flutter, Dart, Python, ResNet50, K-NN | Personal Project</span>
+            <span class="cv-ats-date">January 2026 - May 2026</span>
+          </div>
+          <p class="cv-ats-subtext">
+            Developed the Famotion mobile app with Flutter/Dart, integrating Python-based ResNet50 and K-NN machine
+            learning models.
+          </p>
+        </div>
+
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Brilliant English+</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Laravel, CSS, JavaScript, MySQL, Bootstrap | IT Support &amp; Web Developer | Brilliant English Course</span>
+            <span class="cv-ats-date">July 2025 - November 2025</span>
+          </div>
+          <p class="cv-ats-subtext">
+            Developed an online English course platform with interactive learning materials, adaptive quizzes, a learning
+            community, and boarding and CAMP information.
+          </p>
+        </div>
+
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Brilliant English Pare</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Laravel, CSS, JavaScript, MySQL, Bootstrap | IT Support &amp; Web Developer | Brilliant English Course</span>
+            <span class="cv-ats-date">July 2025 - November 2025</span>
+          </div>
+          <p class="cv-ats-subtext">
+            Developed an English course website featuring boarding information, learning materials, and a learning
+            community.
+          </p>
+        </div>
+
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Brilliant Kampung Inggris Jerman</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Laravel, CSS, JavaScript, MySQL, Bootstrap | IT Support &amp; Web Developer | Brilliant English Course</span>
+            <span class="cv-ats-date">July 2025 - November 2025</span>
+          </div>
+          <p class="cv-ats-subtext">
+            Developed a German language learning website (Deutsche Sprache) offering in-person (offline) and virtual
+            (online) classes.
+          </p>
+        </div>
+
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Web-Based Automated Certificate Generator System</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Automated Certificate Generator | Backend and Frontend Developer - JTI Innovation Center</span>
+            <span class="cv-ats-date">July 2024 - December 2024</span>
+          </div>
+          <p class="cv-ats-subtext">
+            Designed, built, and integrated both backend and frontend for a web-based automated certificate generator
+            system.
+          </p>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section class="cv-ats-section">
+        <h2 class="cv-ats-section-title">Education</h2>
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Diploma (D3) in Information Management</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Politeknik Negeri Jember, Jember Regency, East Java</span>
+            <span class="cv-ats-date">2023 - 2026</span>
+          </div>
+          <div class="cv-ats-subtext">GPA: 3.87</div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section class="cv-ats-section">
+        <h2 class="cv-ats-section-title">Skills</h2>
+        <ul class="cv-ats-bullets">
+          <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript, Tailwind CSS, Bootstrap, Vue.js, React, Flutter, Dart, Vite</li>
+          <li><strong>Backend &amp; API:</strong> PHP, Laravel, Python, Flask, Node.js, REST API</li>
+          <li><strong>Database &amp; Data:</strong> MySQL, MariaDB, MongoDB, Chart.js</li>
+          <li><strong>AI &amp; Machine Learning:</strong> Machine Learning, ResNet50, K-NN, OpenCV</li>
+          <li><strong>UI/UX &amp; System Design:</strong> UI/UX Design, Use Case Design, Workflow Design, Responsive Layout, Canva</li>
+          <li><strong>Development:</strong> Front-end Development, Back-end Development, Mobile Development, Software Development</li>
+          <li><strong>Tools:</strong> Git, Postman, Android Studio, VS Code, Microsoft Word, Microsoft Excel, OBS Studio, CapCut</li>
+          <li><strong>Soft Skills:</strong> Server Maintenance, Troubleshooting, Problem Solving, Teamwork, Team Leadership, Independent Working</li>
+          <li><strong>Languages:</strong> Indonesian (Native), English (Beginner, CEFR A1 - EPT 35/140, 2024)</li>
+        </ul>
+      </section>
+
+      <!-- Certifications -->
+      <section class="cv-ats-section">
+        <h2 class="cv-ats-section-title">Certifications</h2>
+
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">LSP Polije</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">First-Party Professional Certification Body, Politeknik Negeri Jember</span>
+            <span class="cv-ats-date">September 2026 - September 2029</span>
+          </div>
+        </div>
+
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Komdigi VSGA Competency Test</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">BNSP with LSP Teknologi Digital</span>
+            <span class="cv-ats-date">June 2025 - June 2028</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Training -->
+      <section class="cv-ats-section">
+        <h2 class="cv-ats-section-title">Training</h2>
+
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Information and Communication Technology - Junior Mobile Programmer Competency Certification</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Professional Certification Body (LSP) Politeknik Negeri Jember - BNSP (National Professional Certification Board)</span>
+            <span class="cv-ats-date">May 2026 - June 2026</span>
+          </div>
+        </div>
+
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Information and Communication Technology - Data Science</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Bisa AI Academy</span>
+            <span class="cv-ats-date">November 2025 - December 2025</span>
+          </div>
+        </div>
+
+        <div class="cv-ats-item">
+          <div class="cv-ats-title">Information and Communication Technology - Associate Data Scientist Competency Certification</div>
+          <div class="cv-ats-meta">
+            <span class="cv-ats-org">Professional Certification Body (LSP) Teknologi Digital - BNSP (National Professional Certification Board)</span>
+            <span class="cv-ats-date">June 2025 - July 2025</span>
+          </div>
         </div>
       </section>
 
@@ -765,8 +1156,123 @@
 
   <script>
     // =============================================
-    // VIEW SWITCHER LOGIC (ATS vs PDF)
+    // LANGUAGE & VIEW SWITCHER LOGIC (ID/EN + ATS/PDF)
     // =============================================
+    const CV_LANG_CONFIG = {
+      id: {
+        htmlLang: 'id',
+        title: 'CV (Indonesia) - Edward Landung Pramudya',
+        pdfSrc: 'assets/cv-edward-landung-pramudya.pdf',
+        pdfFilename: 'cv-edward-landung-pramudya.pdf',
+        backText: 'Kembali',
+        backTitle: 'Kembali ke Portofolio',
+        modeAts: 'Tampilan Teks (ATS)',
+        modePdf: 'File PDF Asli',
+        downloadPdf: 'Unduh PDF',
+        printCv: 'Cetak',
+        openPdf: 'Buka File PDF',
+        iframeTitle: 'Dokumen PDF CV Edward Landung Pramudya (Bahasa Indonesia)',
+        noticeHtml: '<strong>Tampilan Ramah Mobile:</strong> Anda sedang melihat format teks responsif <strong>Bahasa Indonesia</strong> yang nyaman dibaca tanpa perlu pinch-zoom.'
+      },
+      en: {
+        htmlLang: 'en',
+        title: 'CV (English) - Edward Landung Pramudya',
+        pdfSrc: 'assets/cv-edward-landung-pramudya-english.pdf',
+        pdfFilename: 'cv-edward-landung-pramudya-english.pdf',
+        backText: 'Back',
+        backTitle: 'Back to Portfolio',
+        modeAts: 'Text View (ATS)',
+        modePdf: 'Original PDF',
+        downloadPdf: 'Download PDF',
+        printCv: 'Print',
+        openPdf: 'Open PDF File',
+        iframeTitle: 'CV PDF Document - Edward Landung Pramudya (English)',
+        noticeHtml: '<strong>Mobile-Friendly View:</strong> You are viewing the responsive <strong>English</strong> ATS text format designed for effortless reading without pinch-zooming.'
+      }
+    };
+
+    let currentLang = 'id';
+
+    function switchLanguage(lang, updateUrl = true) {
+      const normalized = lang === 'en' ? 'en' : 'id';
+      currentLang = normalized;
+      const cfg = CV_LANG_CONFIG[normalized];
+
+      document.documentElement.setAttribute('lang', cfg.htmlLang);
+      document.title = cfg.title;
+
+      const btnId = document.getElementById('btnLangId');
+      const btnEn = document.getElementById('btnLangEn');
+      const atsId = document.getElementById('atsViewId');
+      const atsEn = document.getElementById('atsViewEn');
+
+      if (btnId) {
+        btnId.classList.toggle('active', normalized === 'id');
+        btnId.setAttribute('aria-pressed', normalized === 'id' ? 'true' : 'false');
+      }
+      if (btnEn) {
+        btnEn.classList.toggle('active', normalized === 'en');
+        btnEn.setAttribute('aria-pressed', normalized === 'en' ? 'true' : 'false');
+      }
+
+      if (atsId) atsId.hidden = normalized !== 'id';
+      if (atsEn) atsEn.hidden = normalized !== 'en';
+
+      // Update PDF links & iframe
+      const pdfFrame = document.getElementById('cvPdfFrame');
+      const downloadBtn = document.getElementById('cvDownloadBtn');
+      const mobileOpenBtn = document.getElementById('cvMobileOpenPdfBtn');
+      const fallbackLink = document.getElementById('cvPdfFallbackLink');
+
+      if (pdfFrame) {
+        const targetSrc = `${cfg.pdfSrc}#toolbar=1&navpanes=0`;
+        if (pdfFrame.getAttribute('src') !== targetSrc) {
+          pdfFrame.setAttribute('src', targetSrc);
+        }
+        pdfFrame.title = cfg.iframeTitle;
+      }
+
+      if (downloadBtn) {
+        downloadBtn.href = cfg.pdfSrc;
+        downloadBtn.setAttribute('download', cfg.pdfFilename);
+      }
+
+      if (mobileOpenBtn) {
+        mobileOpenBtn.href = cfg.pdfSrc;
+      }
+
+      if (fallbackLink) {
+        fallbackLink.href = cfg.pdfSrc;
+        fallbackLink.setAttribute('download', cfg.pdfFilename);
+      }
+
+      // Update UI labels
+      const backLink = document.getElementById('cvBackLink');
+      const backText = document.getElementById('cvBackText');
+      const labelModeAts = document.getElementById('labelModeAts');
+      const labelModePdf = document.getElementById('labelModePdf');
+      const labelDownloadPdf = document.getElementById('labelDownloadPdf');
+      const labelPrintCv = document.getElementById('labelPrintCv');
+      const labelOpenPdf = document.getElementById('labelOpenPdf');
+      const noticeText = document.getElementById('cvMobileNoticeText');
+
+      if (backLink) backLink.title = cfg.backTitle;
+      if (backText) backText.textContent = cfg.backText;
+      if (labelModeAts) labelModeAts.textContent = cfg.modeAts;
+      if (labelModePdf) labelModePdf.textContent = cfg.modePdf;
+      if (labelDownloadPdf) labelDownloadPdf.textContent = cfg.downloadPdf;
+      if (labelPrintCv) labelPrintCv.textContent = cfg.printCv;
+      if (labelOpenPdf) labelOpenPdf.textContent = cfg.openPdf;
+      if (noticeText) noticeText.innerHTML = cfg.noticeHtml;
+
+      // Keep URL query parameter synchronized cleanly
+      if (updateUrl && window.history && typeof window.history.replaceState === 'function') {
+        const url = new URL(window.location.href);
+        url.searchParams.set('lang', normalized);
+        window.history.replaceState({}, '', url.toString());
+      }
+    }
+
     function switchViewMode(mode) {
       const body = document.getElementById('cvBody');
       const btnAts = document.getElementById('btnModeAts');
@@ -789,14 +1295,14 @@
       }
     }
 
-    // Auto-detect view mode on load:
-    // If mobile (<= 768px), default to ATS text view for best readability.
-    // If desktop (> 768px), default to PDF embed view.
     document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const urlLang = (params.get('lang') || '').toLowerCase();
+      switchLanguage(urlLang === 'en' ? 'en' : 'id', false);
+
       const isMobile = window.innerWidth <= 768;
       switchViewMode(isMobile ? 'ats' : 'pdf');
 
-      // Init icons & theme
       if (typeof lucide !== 'undefined') {
         lucide.createIcons();
       } else {
