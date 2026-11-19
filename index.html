@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Portfolio Edward Landung Pramudya — Web Developer specializing in high-performance IT solutions. Building clean, scalable, and interactive digital experiences." />
-  <title>Edward Landung Pramudya — Portofolio</title>
+    content="Portfolio Edward Landung Pramudya - Web Developer specializing in high-performance IT solutions. Building clean, scalable, and interactive digital experiences." />
+  <title>Edward Landung Pramudya - Portofolio</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,832 +18,1287 @@
   <!-- Icons (Lucide) -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 
-
-  <!-- Devicon for tech icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-  <link rel="stylesheet" href="style.css?v=glow5" />
+  <!-- Devicon & Font Awesome for tech and documentation icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css?v=20261119" />
 </head>
 
 <body>
   <div id="themeOverlay"></div>
 
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar" id="navbar">
-    <div class="navbar__inner">
-      <a href="#" class="navbar__logo">E L<span>P</span></a>
+  <!-- ===== HEADER & NAVBAR ===== -->
+  <header class="site-header">
+    <nav class="navbar" id="navbar" aria-label="Navigasi utama">
+      <div class="navbar__inner">
+        <a href="#hero" class="navbar__logo">E L<span>P</span></a>
 
-      <ul class="navbar__links" id="navLinks">
-        <li><a href="#hero" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-      </ul>
+        <ul class="navbar__links" id="navLinks">
+          <li><a href="#hero" class="active">Beranda</a></li>
+          <li><a href="#about">Tentang Saya</a></li>
+          <li><a href="#projects">Portofolio</a></li>
+          <li><a href="#pendidikan">Pendidikan</a></li>
+          <li><a href="#pengalaman">Pengalaman</a></li>
+          <li><a href="#sertifikasi">Sertifikasi</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
 
-      <div class="navbar__actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-          <i data-lucide="moon" width="18" height="18"></i>
-        </button>
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="hero">
-    <div class="hero__bg">
-      <canvas id="motherboardCanvas" class="circuit-canvas"></canvas>
-      <div class="hero__shape hero__shape--1"></div>
-      <div class="hero__shape hero__shape--2"></div>
-      <div class="hero__shape hero__shape--3"></div>
-    </div>
-    <div class="container">
-      <div class="hero__content">
-        <div class="hero__text">
-          <div class="hero__badge">
-            <span class="dot"></span>
-            Available for work
-          </div>
-          <h1 class="hero__title">
-            I'm <span class="highlight">Edward Landung<br />Pramudya</span>
-          </h1>
-          <p class="hero__desc">
-            Developer specializing in <strong class="hero-rotator"><span id="heroRotator">High-Performance IT
-                Tech</span><span class="hero-cursor">|</span></strong>. I craft clean, scalable, and
-            interactive digital experiences that deliver real impact.
-          </p>
-
-          <div class="hero__socials">
-            <a href="https://github.com/Epangssss" class="hero__social-link" target="_blank" rel="noopener noreferrer"
-              aria-label="GitHub">
-              <img src="https://cdn.simpleicons.org/github" width="18" height="18" alt="">
-            </a>
-
-            <a href="https://www.linkedin.com/in/edward-landung-pramudya-386199354/" class="hero__social-link"
-              target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <img src="assets/img/linkedin.png" width="18" height="18" alt="LinkedIn">
-            </a>
-
-
-            <a href="https://www.instagram.com/edwardlanp/" class="hero__social-link" target="_blank"
-              rel="noopener noreferrer" aria-label="Instagram">
-              <img src="https://cdn.simpleicons.org/instagram" width="18" height="18" alt="">
-            </a>
-
-            <a href="https://wa.me/6282131270114" class="hero__social-link" target="_blank" rel="noopener noreferrer"
-              aria-label="WhatsApp">
-              <img src="https://cdn.simpleicons.org/whatsapp" width="18" height="18" alt="">
-            </a>
-          </div>
-
-
-          <div class="hero__buttons">
-            <a href="#projects" class="btn btn--primary">
-              <i data-lucide="briefcase" width="16" height="16"></i>
-              Lihat Pekerjaan Saya
-            </a>
-            <a href="cv.html" class="btn btn--outline">
-              <i data-lucide="file-text" width="16" height="16"></i>
-              CV Saya
-            </a>
-
-          </div>
-        </div>
-        <div class="hero__photo">
-          <div class="hero__photo-wrapper">
-            <img src="assets/img/profile.png" alt="Edward Landung Pramudya" />
-          </div>
-          <div class="hero__photo-decor"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section class="about" id="about">
-    <div class="container">
-      <p class="section-label fade-up">ABOUT</p>
-      <h2 class="section-title fade-up">A bit about me</h2>
-
-      <div class="about__grid">
-        <!-- Left: Profile -->
-        <div class="about__profile fade-up">
-          <h3 class="about__profile-title">Profil Saya</h3>
-          <p class="about__profile-text">
-            Seorang Manajemen Informatika yang penuh semangat, menciptakan solusi inovatif, dan berdedikasi tinggi dalam
-            pengembangan Teknologi Informasi dan Komunikasi.
-          </p>
-
-          <div class="about__stats">
-            <div class="stat-card">
-              <div class="stat-card__number">1,5+</div>
-              <div class="stat-card__label">Tahun<br />Pengalaman</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-card__number">20+</div>
-              <div class="stat-card__label">Proyek<br />Selesai</div>
-            </div>
-          </div>
-
-          <p class="about__skills-label">Soft Skills</p>
-          <div class="about__skills-tags">
-            <span class="skill-tag">Problem Solving</span>
-            <span class="skill-tag">Team Work</span>
-            <span class="skill-tag">Communication</span>
-            <span class="skill-tag">Adaptation</span>
-            <span class="skill-tag">Leadership</span>
-            <span class="skill-tag">Hard Working</span>
-            <span class="skill-tag">Fast Learner</span>
-            <span class="skill-tag">Independent</span>
-            <span class="skill-tag">Creative</span>
-          </div>
-        </div>
-
-        <!-- Right: Experience Timeline -->
-        <div class="about__experience fade-up">
-          <h3 class="about__experience-title">Pengalaman Kerja</h3>
-
-          <div class="timeline">
-            <div class="timeline__item">
-              <div class="timeline__dot"></div>
-              <span class="timeline__date">Juli 2025 — November 2025</span>
-              <h4 class="timeline__role">IT Support</h4>
-              <p class="timeline__company">Brilliant English Course Kampung Inggris Pare — Kab. Kediri, Jawa Timur</p>
-              <p class="timeline__desc">
-                Memberikan layanan dukungan teknis operasional, merancang ulang alur kerja sistem (workflow/case flow)
-                pengelolaan data pada 3 website untuk memperkuat keamanan dan meminimalkan risiko data breach, mengelola
-                operasional sistem penerimaan siswa baru, serta menangani instalasi, pemeliharaan, dan troubleshooting
-                perangkat keras/driver PC dan printer.
-              </p>
-              <div class="project-card__tags">
-                <!-- Tombol pemicu -->
-                <button type="button" class="project-card__tag" onclick="toggleGallery('gallery-sertifikat-1')">
-                  <i class="fa-solid fa-certificate"></i> Sertifikat
-                </button>
-
-                <button type="button" class="project-card__tag" onclick="toggleGallery('gallery-tempat-kerja-1')">
-                  <i class="fas fa-image"></i> Foto Pengalaman Kerja
-                </button>
-              </div>
-
-              <!-- Gallery Sertifikat (gambar) -->
-              <div id="gallery-sertifikat-1" class="documentation-gallery">
-                <div class="documentation-card" onclick="openGalleryPopup('Sertifikat — IT Support Brilliant English', [
-                    'assets/sertifikat/Magang/Magang-1.png'
-                  ], 0)">
-                  <div class="doc-card__thumb">
-                    <img src="assets/sertifikat/Magang/Magang-1.png" alt="Sertifikat Kompetensi">
-                    <div class="doc-card__overlay">
-                      <i class="fa-solid fa-search-plus"></i>
-                    </div>
-                  </div>
-                  <div class="documentation-card__body">
-                    <h4>Sertifikat Kompetensi</h4>
-                    <p>Klik untuk melihat ukuran penuh.</p>
-                  </div>
-                </div>
-
-                <!-- Tambahkan card lagi di sini kalau ada sertifikat lain -->
-              </div>
-
-              <!-- Gallery Foto Pengalaman Kerja -->
-              <div id="gallery-tempat-kerja-1" class="documentation-gallery">
-                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — Brilliant English', [
-                    'assets/file-magang/1.jpg',
-                    'assets/file-magang/2.jpeg',
-                    'assets/file-magang/3.jpg'
-                  ], 0)">
-                  <div class="doc-card__thumb">
-                    <img src="assets/file-magang/1.jpg" alt="Foto Pengalaman Kerja">
-                    <div class="doc-card__overlay">
-                      <i class="fa-solid fa-search-plus"></i>
-                      <span>3 foto</span>
-                    </div>
-                  </div>
-                  <div class="documentation-card__body">
-                    <h4>Foto Pengalaman Kerja</h4>
-                    <p>Klik untuk melihat semua foto.</p>
-                  </div>
-                </div>
-                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — Brilliant English', [
-                    'assets/file-magang/1.jpg',
-                    'assets/file-magang/2.jpeg',
-                    'assets/file-magang/3.jpg'
-                  ], 1)">
-                  <div class="doc-card__thumb">
-                    <img src="assets/file-magang/2.jpeg" alt="Foto Pengalaman Kerja">
-                    <div class="doc-card__overlay">
-                      <i class="fa-solid fa-search-plus"></i>
-                      <span>3 foto</span>
-                    </div>
-                  </div>
-                  <div class="documentation-card__body">
-                    <h4>Foto Pengalaman Kerja</h4>
-                    <p>Klik untuk melihat semua foto.</p>
-                  </div>
-                </div>
-
-                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — Brilliant English', [
-                    'assets/file-magang/1.jpg',
-                    'assets/file-magang/2.jpeg',
-                    'assets/file-magang/3.jpg'
-                  ], 2)">
-                  <div class="doc-card__thumb">
-                    <img src="assets/file-magang/3.jpg" alt="Foto Pengalaman Kerja">
-                    <div class="doc-card__overlay">
-                      <i class="fa-solid fa-search-plus"></i>
-                      <span>3 foto</span>
-                    </div>
-                  </div>
-                  <div class="documentation-card__body">
-                    <h4>Foto Pengalaman Kerja</h4>
-                    <p>Klik untuk melihat semua foto.</p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="timeline__item">
-              <div class="timeline__dot"></div>
-              <span class="timeline__date">Januari 2025 — Juni 2025</span>
-              <h4 class="timeline__role">Frontend Website Developer</h4>
-              <p class="timeline__company">JTI Innovation Center — Kab. Jember, Jawa Timur</p>
-              <p class="timeline__desc">
-                Mengelola dan mengembangkan antarmuka (frontend) pada dua website utama (JTINOVA & Ukerma) selama masa
-                magang. Mengimplementasikan fitur sistem pengelolaan penggunaan sertifikat pada website JTINOVA, serta
-                melakukan debugging dan optimasi performa pada website Ukerma untuk kenyamanan pengguna.
-              </p>
-              <div class="project-card__tags">
-                <button type="button" class="project-card__tag" onclick="toggleGallery('gallery-sertifikat-2')">
-                  <i class="fa-solid fa-certificate"></i> Sertifikat
-                </button>
-                <button type="button" class="project-card__tag" onclick="toggleGallery('gallery-tempat-kerja-2')">
-                  <i class="fas fa-image"></i> Foto Pengalaman Kerja
-                </button>
-              </div>
-
-              <div id="gallery-sertifikat-2" class="documentation-gallery">
-                <div class="documentation-card" onclick="openGalleryPopup('Sertifikat — Frontend Developer JTINOVA', [
-                    'assets/sertifikat/MBMKM-4/MBMKM-4-1.png',
-                    'assets/sertifikat/MBMKM-4/MBMKM-4-2.png'
-                  ], 0)">
-                  <div class="doc-card__thumb">
-                    <img src="assets/sertifikat/MBMKM-4/MBMKM-4-1.png" alt="Sertifikat JTINOVA Frontend">
-                    <div class="doc-card__overlay">
-                      <i class="fa-solid fa-search-plus"></i>
-                    </div>
-                  </div>
-                  <div class="documentation-card__body">
-                    <h4>Sertifikat Magang</h4>
-                    <p>Klik untuk melihat ukuran penuh.</p>
-                  </div>
-                </div>
-
-                <div class="documentation-card" onclick="openGalleryPopup('Sertifikat — Frontend Developer JTINOVA Nilai', [
-                    'assets/sertifikat/MBMKM-4/MBMKM-4-1.png',
-                    'assets/sertifikat/MBMKM-4/MBMKM-4-2.png'
-                  ], 1)">
-                  <div class="doc-card__thumb">
-                    <img src="assets/sertifikat/MBMKM-4/MBMKM-4-2.png" alt="Sertifikat JTINOVA Frontend Nilai">
-                    <div class="doc-card__overlay">
-                      <i class="fa-solid fa-search-plus"></i>
-                    </div>
-                  </div>
-                  <div class="documentation-card__body">
-                    <h4>Sertifikat Magang (Nilai)</h4>
-                    <p>Klik untuk melihat ukuran penuh.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div id="gallery-tempat-kerja-2" class="documentation-gallery">
-                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — JTINOVA', [
-                    'assets/file2/1.jpeg',
-                    'assets/file2/2.jpeg'
-                  ], 0)">
-                  <div class="doc-card__thumb">
-                    <img src="assets/file2/1.jpeg" alt="Foto Pengalaman Kerja JTINOVA">
-                    <div class="doc-card__overlay">
-                      <i class="fa-solid fa-search-plus"></i>
-                    </div>
-                  </div>
-                  <div class="documentation-card__body">
-                    <h4>Foto Pengalaman Kerja</h4>
-                    <p>Klik untuk melihat semua foto.</p>
-                  </div>
-                </div>
-                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — JTINOVA', [
-                    'assets/file2/1.jpeg',
-                    'assets/file2/2.jpeg'
-                  ], 1)">
-                  <div class="doc-card__thumb">
-                    <img src="assets/file2/2.jpeg" alt="Foto Pengalaman Kerja JTINOVA">
-                    <div class="doc-card__overlay">
-                      <i class="fa-solid fa-search-plus"></i>
-                    </div>
-                  </div>
-                  <div class="documentation-card__body">
-                    <h4>Foto Pengalaman Kerja</h4>
-                    <p>Klik untuk melihat semua foto.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="timeline__item">
-              <div class="timeline__dot"></div>
-              <span class="timeline__date">Juli 2024 — Desember 2024</span>
-              <h4 class="timeline__role">Backend & Frontend Developer</h4>
-              <p class="timeline__company">JTI Innovation Center — Kab. Jember, Jawa Timur</p>
-              <p class="timeline__desc">
-                Merancang, membangun, dan mengintegrasikan sisi backend maupun frontend pada proyek pengembangan sistem
-                pembuatan sertifikat otomatis (automated certificate generator) berbasis website, serta berkolaborasi
-                aktif dalam memecahkan kendala teknis (problem-solving).
-              </p>
-              <div class="project-card__tags">
-                <button type="button" class="project-card__tag" onclick="toggleGallery('gallery-sertifikat-3')">
-                  <i class="fa-solid fa-certificate"></i> Sertifikat
-                </button>
-                <button type="button" class="project-card__tag" onclick="toggleGallery('gallery-tempat-kerja-3')">
-                  <i class="fas fa-image"></i> Foto Pengalaman Kerja
-                </button>
-              </div>
-
-              <div id="gallery-sertifikat-3" class="documentation-gallery">
-                <div class="documentation-card" onclick="openGalleryPopup('Sertifikat — Backend & Frontend Developer JTINOVA', [
-                    'assets/sertifikat/MBKM-3/MBKM-3-1.png',
-                    'assets/sertifikat/MBKM-3/MBKM-3-2.png'
-                  ], 0)">
-                  <div class="doc-card__thumb">
-                    <img src="assets/sertifikat/MBKM-3/MBKM-3-1.png" alt="Sertifikat JTINOVA Backend">
-                    <div class="doc-card__overlay">
-                      <i class="fa-solid fa-search-plus"></i>
-                    </div>
-                  </div>
-                  <div class="documentation-card__body">
-                    <h4>Sertifikat Magang</h4>
-                    <p>Klik untuk melihat ukuran penuh.</p>
-                  </div>
-                </div>
-
-                <div class="documentation-card" onclick="openGalleryPopup('Sertifikat — Backend & Frontend Developer JTINOVA', [
-                    'assets/sertifikat/MBKM-3/MBKM-3-1.png',
-                    'assets/sertifikat/MBKM-3/MBKM-3-2.png'
-                  ], 1)">
-                  <div class="doc-card__thumb">
-                    <img src="assets/sertifikat/MBKM-3/MBKM-3-2.png" alt="Sertifikat JTINOVA Backend">
-                    <div class="doc-card__overlay">
-                      <i class="fa-solid fa-search-plus"></i>
-                    </div>
-                  </div>
-                  <div class="documentation-card__body">
-                    <h4>Sertifikat Magang (Nilai)</h4>
-                    <p>Klik untuk melihat ukuran penuh.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div id="gallery-tempat-kerja-3" class="documentation-gallery">
-                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — JTINOVA TEFA', [
-                    'assets/file/1.jpg',
-                    'assets/file/2.jpg',
-                    'assets/file/3.jpg',
-                    'assets/file/4.jpg'
-                  ], 0)">
-                  <div class="doc-card__thumb">
-                    <img src="assets/file/1.jpg" alt="Foto Pengalaman Kerja TEFA">
-                    <div class="doc-card__overlay">
-                      <i class="fa-solid fa-search-plus"></i>
-                    </div>
-                  </div>
-                  <div class="documentation-card__body">
-                    <h4>Foto Pengalaman Kerja</h4>
-                    <p>Klik untuk melihat semua foto.</p>
-                  </div>
-                </div>
-
-                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — JTINOVA TEFA', [
-                    'assets/file/1.jpg',
-                    'assets/file/2.jpg',
-                    'assets/file/3.jpg',
-                    'assets/file/4.jpg'
-                  ], 1)">
-                  <div class="doc-card__thumb">
-                    <img src="assets/file/2.jpg" alt="Foto Pengalaman Kerja TEFA">
-                    <div class="doc-card__overlay">
-                      <i class="fa-solid fa-search-plus"></i>
-                    </div>
-                  </div>
-                  <div class="documentation-card__body">
-                    <h4>Foto Pengalaman Kerja</h4>
-                    <p>Klik untuk melihat semua foto.</p>
-                  </div>
-                </div>
-
-                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — JTINOVA TEFA', [
-                    'assets/file/1.jpg',
-                    'assets/file/2.jpg',
-                    'assets/file/3.jpg',
-                    'assets/file/4.jpg'
-                  ], 2)">
-                  <div class="doc-card__thumb">
-                    <img src="assets/file/3.jpg" alt="Foto Pengalaman Kerja TEFA">
-                    <div class="doc-card__overlay">
-                      <i class="fa-solid fa-search-plus"></i>
-                    </div>
-                  </div>
-                  <div class="documentation-card__body">
-                    <h4>Foto Pengalaman Kerja</h4>
-                    <p>Klik untuk melihat semua foto.</p>
-                  </div>
-                </div>
-
-                <div class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja — JTINOVA TEFA', [
-                    'assets/file/1.jpg',
-                    'assets/file/2.jpg',
-                    'assets/file/3.jpg',
-                    'assets/file/4.jpg'
-                  ], 3)">
-                  <div class="doc-card__thumb">
-                    <img src="assets/file/4.jpg" alt="Foto Pengalaman Kerja TEFA">
-                    <div class="doc-card__overlay">
-                      <i class="fa-solid fa-search-plus"></i>
-                    </div>
-                  </div>
-                  <div class="documentation-card__body">
-                    <h4>Foto Pengalaman Kerja</h4>
-                    <p>Klik untuk melihat semua foto.</p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SKILLS ===== -->
-  <section class="skills" id="skills">
-    <div class="container">
-      <p class="section-label fade-up">SKILLS</p>
-      <h2 class="section-title fade-up">Technologies I work with</h2>
-
-      <div class="skills__grid fade-up">
-        <div class="tech-badge">
-          <span class="tech-badge__icon"><i class="devicon-html5-plain colored"></i></span>
-          HTML
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon">
-            <img src="https://cdn.simpleicons.org/css" width="14" height="14" alt="CSS">
-          </span>
-          CSS
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon"><i class="devicon-javascript-plain colored"></i></span>
-          JavaScript
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon"><i class="devicon-php-plain colored"></i></span>
-          PHP
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon"><i class="devicon-laravel-original colored"></i></span>
-          Laravel
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon"><i class="devicon-vuejs-plain colored"></i></span>
-          Vue.js
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon"><i class="devicon-react-original colored"></i></span>
-          React
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon"><i class="devicon-tailwindcss-original colored"></i></span>
-          Tailwind CSS
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon"><i class="devicon-bootstrap-plain colored"></i></span>
-          Bootstrap
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon"><i class="devicon-mysql-plain colored"></i></span>
-          MySQL
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon"><i class="devicon-mongodb-plain colored"></i></span>
-          MongoDB
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon"><i class="devicon-androidstudio-plain colored"></i></span>
-          Android Studio
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon"><i class="devicon-vscode-plain colored"></i></span>
-          VS Code
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon"><i class="devicon-postman-plain colored"></i></span>
-          Postman
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon"><i class="devicon-git-plain colored"></i></span>
-          Git
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon"><i class="devicon-mariadb-original colored"></i></span>
-          MariaDB
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon"><img src="https://cdn.simpleicons.org/obsstudio" alt="OBS Studio" /></span>
-          OBS Studio
-        </div>
-        <div class="tech-badge">
-          <span class="tech-badge__icon">
-            <img src="assets/img/capcut.jpg" alt="CapCut">
-          </span>
-          CapCut
-        </div>
-
-        <div class="tech-badge">
-          <span class="tech-badge__icon">
-            <img src="assets/img/word.jpg" alt="Microsoft Word">
-          </span>
-          Microsoft Word
-        </div>
-
-        <div class="tech-badge">
-          <span class="tech-badge__icon">
-            <img src="assets/img/excel.jpg" alt="Excel">
-          </span>
-          Excel
-        </div>
-
-        <div class="tech-badge">
-          <span class="tech-badge__icon">
-            <img src="assets/img/canva.jpg" alt="Canva">
-          </span>
-          Canva
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PROJECTS ===== -->
-  <section class="projects" id="projects">
-    <canvas id="projectsCanvas" class="circuit-canvas"></canvas>
-    <div class="container">
-      <p class="section-label fade-up">PORTOFOLIO</p>
-      <h2 class="section-title fade-up">Selected projects</h2>
-      <p class="hero__desc fade-up" style="margin-bottom: 0;">Beberapa proyek terbaik yang pernah saya kerjakan.</p>
-
-      <div class="projects__grid">
-        <div class="project-card fade-up">
-          <div class="project-card__img">
-            <img src="assets/img/project1.png" alt="Aplikasi Famotion" />
-          </div>
-          <div class="project-card__body">
-            <h3 class="project-card__title">Mobile App Famotion</h3>
-            <p class="project-card__desc">
-              Famotion (Face Mood Emotion Detection) adalah aplikasi mobile untuk Tugas Akhir Program Studi Manajemen
-              Informatika yang mendeteksi
-              emosi pengguna
-              melalui ekspresi wajah, seperti Happy, Sad, Angry, dan Neutral, untuk memberikan rekomendasi musik sesuai
-              suasana hati.
-            </p>
-            <div class="project-card__tags">
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/flutter" width="14" height="14" alt="Flutter" />
-                Flutter
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/dart" width="14" height="14" alt="Dart" />
-                Dart
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/python" width="14" height="14" alt="Python" />
-                Python
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/flask" width="14" height="14" alt="Flask" />
-                Flask
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/nodedotjs" width="14" height="14" alt="Node.js" />
-                Node.js
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/mongodb" width="14" height="14" alt="MongoDB" />
-                MongoDB
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/tensorflow" width="14" height="14" alt="ResNet50" />
-                ResNet50
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/scikitlearn" width="14" height="14" alt="K-NN" />
-                K-NN
-              </span>
-            </div>
-            <div class="project-card__links">
-              <!-- <a href="#" class="project-card__link" target="_blank" rel="noopener noreferrer">
-                Live Demo <i data-lucide="arrow-up-right" width="14" height="14"></i>
-              </a> -->
-              <a href="https://github.com/Epangssss/Famotion" target="_blank" rel="noopener noreferrer"
-                class="project-card__link">
-                GitHub <i data-lucide="arrow-up-right" width="14" height="14"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card fade-up">
-          <div class="project-card__img">
-            <img src="assets/img/project2.png" alt="Brilliant English+" />
-          </div>
-          <div class="project-card__body">
-            <h3 class="project-card__title">Brilliant English+</h3>
-            <p class="project-card__desc">
-              Brilliant English+ adalah sebuah platform kursus online yang dirancang untuk membantu siswa belajar
-              bahasa Inggris dengan lebih efektif dan menyenangkan. Platform ini menyediakan berbagai fitur unggulan,
-              seperti materi pembelajaran interaktif, kuis adaptif, dan komunitas belajar yang suportif.
-            </p>
-            <div class="project-card__tags">
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/laravel" width="14" height="14" alt="Laravel" />
-                Laravel
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/css" width="14" height="14" alt="CSS" />
-                CSS
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/javascript" width="14" height="14" alt="JavaScript" />
-                JavaScript
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/mysql" width="14" height="14" alt="MySQL" />
-                MySQL
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/bootstrap" width="14" height="14" alt="Bootstrap" />
-                Bootstrap
-              </span>
-            </div>
-            <div class="project-card__links">
-              <a href="https://occupancy.bieplus.com/" target="_blank" rel="noopener noreferrer"
-                class="project-card__link">
-                Live Demo <i data-lucide="arrow-up-right" width="14" height="14"></i>
-              </a>
-              <!-- <a href="https://github.com/Epangssss/Brilliant-English" target="_blank" rel="noopener noreferrer" class="project-card__link">
-                GitHub <i data-lucide="arrow-up-right" width="14" height="14"></i>
-              </a> -->
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card fade-up">
-          <div class="project-card__img">
-            <img src="assets/img/project3.png" alt="Brilliant English+" />
-          </div>
-          <div class="project-card__body">
-            <h3 class="project-card__title">Brilliant English Pare</h3>
-            <p class="project-card__desc">
-              Brilliant English Pare adalah sebuah website untuk membantu siswa belajar bahasa Inggris dengan lebih
-              efektif dan menyenangkan.
-              Platform ini menyediakan berbagai fitur unggulan, seperti informasi tempat tinggal, materi pembelajaran,
-              dan komunitas belajar.
-            </p>
-            <div class="project-card__tags">
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/laravel" width="14" height="14" alt="Laravel" />
-                Laravel
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/css" width="14" height="14" alt="CSS" />
-                CSS
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/javascript" width="14" height="14" alt="JavaScript" />
-                JavaScript
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/mysql" width="14" height="14" alt="MySQL" />
-                MySQL
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/bootstrap" width="14" height="14" alt="Bootstrap" />
-                Bootstrap
-              </span>
-            </div>
-            <div class="project-card__links">
-              <a href="https://brilliantenglishpare.com/" target="_blank" rel="noopener noreferrer"
-                class="project-card__link">
-                Live Demo <i data-lucide="arrow-up-right" width="14" height="14"></i>
-              </a>
-              <!-- <a href="https://github.com/Epangssss/Brilliant-English" target="_blank" rel="noopener noreferrer" class="project-card__link">
-                        GitHub <i data-lucide="arrow-up-right" width="14" height="14"></i>
-                      </a> -->
-            </div>
-          </div>
-        </div>
-        <div class="project-card fade-up">
-          <div class="project-card__img">
-            <img src="assets/img/project4.png" alt="Bieplus Kampung Inggris Jerman" />
-          </div>
-          <div class="project-card__body">
-            <h3 class="project-card__title">Brilliant Kampung Inggris Jerman</h3>
-            <p class="project-card__desc">
-              "Brilliant Kampung Inggris Jerman adalah solusi pembelajaran bahasa Jerman yang inovatif. Kami berkomitmen
-              menghadirkan
-              pengalaman belajar yang tidak hanya efektif, tetapi juga menyenangkan melalui metode yang terstruktur.
-              Dengan dukungan
-              fitur-fitur unggulan, kami menyediakan beragam pilihan kelas tatap muka (offline) dan virtual (online)
-              untuk membantu
-              siswa menguasai bahasa Jerman dengan lebih optimal."
-            </p>
-            <div class="project-card__tags">
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/laravel" width="14" height="14" alt="Laravel" />
-                Laravel
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/css" width="14" height="14" alt="CSS" />
-                CSS
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/javascript" width="14" height="14" alt="JavaScript" />
-                JavaScript
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/mysql" width="14" height="14" alt="MySQL" />
-                MySQL
-              </span>
-              <span class="project-card__tag">
-                <img src="https://cdn.simpleicons.org/bootstrap" width="14" height="14" alt="Bootstrap" />
-                Bootstrap
-              </span>
-            </div>
-            <div class="project-card__links">
-              <a href="https://biepluskampunginggris.com/program/bahasa/jerman" target="_blank"
-                rel="noopener noreferrer" class="project-card__link">
-                Live Demo <i data-lucide="arrow-up-right" width="14" height="14"></i>
-              </a>
-              <!-- <a href="https://github.com/Epangssss/Brilliant-English" target="_blank" rel="noopener noreferrer" class="project-card__link">
-                                GitHub <i data-lucide="arrow-up-right" width="14" height="14"></i>
-                              </a> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ===== CONTACT =====
-  <section class="contact" id="contact">
-    <div class="container">
-      <p class="section-label fade-up">CONTACT</p>
-      <h2 class="section-title fade-up">Let's work together</h2>
-      <p class="hero__desc fade-up" style="margin: 0 auto 0; text-align: center;">
-        Punya projek menarik? Jangan ragu untuk menghubungi saya. Mari berkolaborasi dan ciptakan sesuatu yang luar biasa!
-      </p>
-
-      <div class="contact__form-wrapper fade-up">
-        <form id="contactForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" placeholder="Your name" required />
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" placeholder="you@example.com" required />
-            </div>
-          </div>
-          <div class="form-group form-group--full">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" placeholder="Project inquiry" />
-          </div>
-          <div class="form-group form-group--full">
-            <label for="message">Message</label>
-            <textarea id="message" placeholder="Tell me about your project..."></textarea>
-          </div>
-          <button type="submit" class="btn btn--primary contact__submit">
-            Send message
-            <i data-lucide="send" width="16" height="16"></i>
+        <div class="navbar__actions">
+          <button type="button" class="theme-toggle" id="themeToggle" aria-label="Ubah tema warna">
+            <i data-lucide="moon" width="18" height="18" aria-hidden="true"></i>
           </button>
-        </form>
+          <button type="button" class="menu-toggle" id="menuToggle" aria-label="Buka menu navigasi"
+            aria-expanded="false" aria-controls="navLinks">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
-    </div>
-  </section> -->
+    </nav>
+  </header>
+
+  <main id="mainContent">
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+      <div class="hero__bg">
+        <canvas id="motherboardCanvas" class="circuit-canvas"></canvas>
+        <div class="hero__shape hero__shape--1"></div>
+        <div class="hero__shape hero__shape--2"></div>
+        <div class="hero__shape hero__shape--3"></div>
+      </div>
+      <div class="container">
+        <div class="hero__content">
+          <div class="hero__text">
+            <div class="hero__badge">
+              <span class="dot"></span>
+              Available for work
+            </div>
+            <h1 class="hero__title">
+              I'm <span class="highlight">Edward Landung<br />Pramudya</span>
+            </h1>
+            <p class="hero__desc">
+              Developer specializing in <strong class="hero-rotator"><span id="heroRotator">High-Performance IT
+                  Tech</span><span class="hero-cursor">|</span></strong>. I craft clean, scalable, and
+              interactive digital experiences that deliver real impact.
+            </p>
+
+            <div class="hero__socials">
+              <a href="https://github.com/Epangssss" class="hero__social-link" target="_blank" rel="noopener noreferrer"
+                aria-label="GitHub">
+                <img src="https://cdn.simpleicons.org/github" width="18" height="18" alt="">
+              </a>
+
+              <a href="https://www.linkedin.com/in/edward-landung-pramudya-386199354/" class="hero__social-link"
+                target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <img src="assets/img/linkedin.png" width="18" height="18" alt="">
+              </a>
+
+              <a href="https://www.instagram.com/edwardlanp/" class="hero__social-link" target="_blank"
+                rel="noopener noreferrer" aria-label="Instagram">
+                <img src="https://cdn.simpleicons.org/instagram" width="18" height="18" alt="">
+              </a>
+
+              <a href="https://wa.me/6282131270114" class="hero__social-link" target="_blank" rel="noopener noreferrer"
+                aria-label="WhatsApp 082131270114">
+                <img src="https://cdn.simpleicons.org/whatsapp" width="18" height="18" alt="">
+              </a>
+            </div>
+
+            <div class="hero__buttons">
+              <a href="#projects" class="btn btn--primary">
+                <i data-lucide="briefcase" width="16" height="16" aria-hidden="true"></i>
+                Lihat Pekerjaan Saya
+              </a>
+              <a href="cv.html" class="btn btn--outline">
+                <i data-lucide="file-text" width="16" height="16" aria-hidden="true"></i>
+                CV Saya
+              </a>
+            </div>
+          </div>
+          <div class="hero__photo">
+            <div class="hero__photo-wrapper">
+              <img src="assets/img/profile.png" alt="Foto profil Edward Landung Pramudya" width="250" height="250"
+                fetchpriority="high" />
+            </div>
+            <div class="hero__photo-decor"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TENTANG SAYA (Ringkasan Profil & Mari Interaksi) ===== -->
+    <section class="about" id="about">
+      <div class="container">
+        <p class="section-label fade-up">TENTANG SAYA</p>
+        <h2 class="section-title fade-up">Ringkasan Profil &amp; Interaksi</h2>
+
+        <div class="about__grid">
+          <!-- Left: Ringkasan Profil -->
+          <div class="about__profile fade-up">
+            <h3 class="about__profile-title">Ringkasan Profil</h3>
+            <p class="about__profile-text">
+              Lulusan Manajemen Informatika Politeknik Negeri Jember dengan minat pada pengembangan aplikasi web,
+              mobile, dan machine learning. Memiliki pengalaman mengembangkan aplikasi menggunakan Laravel, Flutter, dan
+              Python, serta mengimplementasikan model machine learning ke dalam sistem. Mampu bekerja secara individu
+              maupun dalam tim, memiliki kemampuan analisis dan pemecahan masalah yang baik, serta antusias mempelajari
+              teknologi baru untuk menciptakan solusi digital yang efektif dan inovatif.
+            </p>
+
+            <div class="about__stats">
+              <div class="stat-card">
+                <div class="stat-card__number">6</div>
+                <div class="stat-card__label">Proyek<br />Selesai</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card__number">3</div>
+                <div class="stat-card__label">Program<br />Magang</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-card__number">2</div>
+                <div class="stat-card__label">Sertifikasi<br />BNSP</div>
+              </div>
+            </div>
+
+            <p class="about__skills-label">Soft Skills</p>
+            <div class="about__skills-tags">
+              <span class="skill-tag">Problem Solving</span>
+              <span class="skill-tag">Team Work</span>
+              <span class="skill-tag">Communication</span>
+              <span class="skill-tag">Adaptation</span>
+              <span class="skill-tag">Leadership</span>
+              <span class="skill-tag">Hard Working</span>
+              <span class="skill-tag">Fast Learner</span>
+              <span class="skill-tag">Independent</span>
+              <span class="skill-tag">Creative</span>
+            </div>
+          </div>
+
+          <!-- Right: Mari Interaksi -->
+          <div class="about__interact fade-up">
+            <h3 class="about__interact-title">Mari Interaksi</h3>
+            <p class="about__interact-text">
+              Saya terbuka untuk diskusi seputar pengembangan aplikasi web, mobile, machine learning, maupun peluang
+              kerja dan kolaborasi proyek. Silakan terhubung melalui kanal sosial atau hubungi saya langsung melalui
+              WhatsApp.
+            </p>
+
+            <div class="interact-list">
+              <a href="https://wa.me/6282131270114?text=Halo%20Edward,%20saya%20melihat%20portofolio%20Anda%20dan%20ingin%20berdiskusi."
+                class="interact-card interact-card--whatsapp" target="_blank" rel="noopener noreferrer">
+                <span class="interact-card__icon">
+                  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                </span>
+                <span class="interact-card__content">
+                  <span class="interact-card__label">WhatsApp</span>
+                  <span class="interact-card__value">082131270114</span>
+                </span>
+                <span class="interact-card__action">Chat WhatsApp</span>
+              </a>
+
+              <a href="mailto:edwardlpramudya2005@gmail.com" class="interact-card">
+                <span class="interact-card__icon">
+                  <i data-lucide="mail" width="18" height="18" aria-hidden="true"></i>
+                </span>
+                <span class="interact-card__content">
+                  <span class="interact-card__label">Email</span>
+                  <span class="interact-card__value">edwardlpramudya2005@gmail.com</span>
+                </span>
+                <span class="interact-card__arrow">
+                  <i data-lucide="arrow-up-right" width="16" height="16" aria-hidden="true"></i>
+                </span>
+              </a>
+
+              <a href="https://www.linkedin.com/in/edward-landung-pramudya-386199354/" class="interact-card"
+                target="_blank" rel="noopener noreferrer">
+                <span class="interact-card__icon">
+                  <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                </span>
+                <span class="interact-card__content">
+                  <span class="interact-card__label">LinkedIn</span>
+                  <span class="interact-card__value">Edward Landung Pramudya</span>
+                </span>
+                <span class="interact-card__arrow">
+                  <i data-lucide="arrow-up-right" width="16" height="16" aria-hidden="true"></i>
+                </span>
+              </a>
+
+              <a href="https://github.com/Epangssss" class="interact-card" target="_blank" rel="noopener noreferrer">
+                <span class="interact-card__icon">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
+                </span>
+                <span class="interact-card__content">
+                  <span class="interact-card__label">GitHub</span>
+                  <span class="interact-card__value">github.com/Epangssss</span>
+                </span>
+                <span class="interact-card__arrow">
+                  <i data-lucide="arrow-up-right" width="16" height="16" aria-hidden="true"></i>
+                </span>
+              </a>
+
+              <a href="https://www.instagram.com/edwardlanp/" class="interact-card" target="_blank"
+                rel="noopener noreferrer">
+                <span class="interact-card__icon">
+                  <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                </span>
+                <span class="interact-card__content">
+                  <span class="interact-card__label">Instagram</span>
+                  <span class="interact-card__value">@edwardlanp</span>
+                </span>
+                <span class="interact-card__arrow">
+                  <i data-lucide="arrow-up-right" width="16" height="16" aria-hidden="true"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spesialisasi & Tech Stack Inti -->
+        <div class="about__specialty fade-up">
+          <div class="about__specialty-header">
+            <h3 class="about__specialty-title">Spesialisasi &amp; Tech Stack Inti</h3>
+            <p class="about__specialty-subtitle">
+              Kemampuan teknis utama yang saya terapkan dalam merancang, membangun, dan mengelola solusi perangkat
+              lunak.
+            </p>
+          </div>
+
+          <div class="specialty-grid">
+            <article class="specialty-card">
+              <div class="specialty-card__head">
+                <span class="specialty-card__icon">
+                  <i data-lucide="layout" width="20" height="20" aria-hidden="true"></i>
+                </span>
+                <h4 class="specialty-card__title">Frontend Development</h4>
+              </div>
+              <p class="specialty-card__desc">
+                Membangun antarmuka website dan aplikasi mobile yang responsif, interaktif, serta nyaman digunakan di
+                berbagai ukuran layar dengan struktur komponen yang rapi dan performa optimal.
+              </p>
+              <div class="specialty-card__tags">
+                <span class="specialty-tag">HTML5</span>
+                <span class="specialty-tag">CSS3</span>
+                <span class="specialty-tag">JavaScript</span>
+                <span class="specialty-tag">Tailwind CSS</span>
+                <span class="specialty-tag">Bootstrap</span>
+                <span class="specialty-tag">Vue.js</span>
+                <span class="specialty-tag">React</span>
+                <span class="specialty-tag">Flutter</span>
+                <span class="specialty-tag">Dart</span>
+              </div>
+            </article>
+
+            <article class="specialty-card">
+              <div class="specialty-card__head">
+                <span class="specialty-card__icon">
+                  <i data-lucide="server" width="20" height="20" aria-hidden="true"></i>
+                </span>
+                <h4 class="specialty-card__title">Backend Development</h4>
+              </div>
+              <p class="specialty-card__desc">
+                Merancang logika bisnis di sisi server, pengembangan RESTful API, autentikasi &amp; keamanan akses,
+                otomatisasi dokumen (seperti generator sertifikat otomatis), serta integrasi model Machine Learning ke
+                dalam aplikasi.
+              </p>
+              <div class="specialty-card__tags">
+                <span class="specialty-tag">PHP</span>
+                <span class="specialty-tag">Laravel</span>
+                <span class="specialty-tag">Python</span>
+                <span class="specialty-tag">Flask</span>
+                <span class="specialty-tag">Node.js</span>
+                <span class="specialty-tag">REST API</span>
+              </div>
+            </article>
+
+            <article class="specialty-card">
+              <div class="specialty-card__head">
+                <span class="specialty-card__icon">
+                  <i data-lucide="database" width="20" height="20" aria-hidden="true"></i>
+                </span>
+                <h4 class="specialty-card__title">Database</h4>
+              </div>
+              <p class="specialty-card__desc">
+                Merancang struktur database relasional maupun NoSQL, mengelola relasi dan integritas data,
+                mengoptimalkan query, serta menyusun alur pengelolaan data yang aman untuk meminimalkan risiko kebocoran
+                data.
+              </p>
+              <div class="specialty-card__tags">
+                <span class="specialty-tag">MySQL</span>
+                <span class="specialty-tag">MariaDB</span>
+                <span class="specialty-tag">MongoDB</span>
+              </div>
+            </article>
+
+            <article class="specialty-card">
+              <div class="specialty-card__head">
+                <span class="specialty-card__icon">
+                  <i data-lucide="pen-tool" width="20" height="20" aria-hidden="true"></i>
+                </span>
+                <h4 class="specialty-card__title">UI/UX &amp; System Design</h4>
+              </div>
+              <p class="specialty-card__desc">
+                Merancang alur kerja sistem (workflow/case flow), pemodelan Use Case, serta desain antarmuka yang
+                berfokus pada kemudahan navigasi, kejelasan hierarki visual, dan pengalaman pengguna yang intuitif.
+              </p>
+              <div class="specialty-card__tags">
+                <span class="specialty-tag">UI/UX Design</span>
+                <span class="specialty-tag">Use Case Design</span>
+                <span class="specialty-tag">Workflow Design</span>
+                <span class="specialty-tag">Responsive Layout</span>
+                <span class="specialty-tag">Canva</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== PORTOFOLIO ===== -->
+    <section class="projects" id="projects">
+      <canvas id="projectsCanvas" class="circuit-canvas"></canvas>
+      <div class="container">
+        <div class="portfolio-header fade-up">
+          <span class="portfolio-badge">
+            <i data-lucide="briefcase" width="14" height="14" aria-hidden="true"></i>
+            PORTFOLIO
+          </span>
+          <h2 class="section-title portfolio-header__title">Koleksi Proyek Unggulan</h2>
+          <p class="portfolio-header__desc">
+            Berikut adalah berbagai solusi perangkat lunak berbasis web enterprise, dashboard monitoring, portal
+            self-service, dan sistem internal yang pernah saya rancang dan kembangkan.
+          </p>
+        </div>
+
+        <div class="portfolio-toolbar fade-up">
+          <div class="portfolio-filters" role="group" aria-label="Filter kategori portofolio">
+            <button type="button" class="portfolio-filter-btn active" data-filter="all"
+              aria-pressed="true">Semua</button>
+            <button type="button" class="portfolio-filter-btn" data-filter="web" aria-pressed="false">Web
+              Applications</button>
+            <button type="button" class="portfolio-filter-btn" data-filter="enterprise" aria-pressed="false">Enterprise
+              &amp; Internal</button>
+            <button type="button" class="portfolio-filter-btn" data-filter="mobile-design" aria-pressed="false">Desain
+              &amp; Mobile</button>
+            <button type="button" class="portfolio-filter-btn" data-filter="ai-iot" aria-pressed="false">AI &amp;
+              IoT</button>
+            <button type="button" class="portfolio-filter-btn" data-filter="training" aria-pressed="false">Training
+              &amp; Tech Workshop</button>
+          </div>
+          <div class="portfolio-search">
+            <label for="projectSearchInput" class="sr-only">Cari proyek atau teknologi</label>
+            <i data-lucide="search" width="16" height="16" class="portfolio-search__icon" aria-hidden="true"></i>
+            <input type="search" id="projectSearchInput" class="portfolio-search__input"
+              placeholder="Cari proyek atau teknologi..." autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="projects__grid">
+          <div class="project-card fade-up" data-category="mobile-design ai-iot" data-project-id="famotion"
+            tabindex="0" role="button" aria-label="Lihat detail proyek Mobile App Famotion">
+            <div class="project-card__img">
+              <img src="assets/img/project1.png" alt="Aplikasi Famotion" width="600" height="270" loading="lazy" />
+            </div>
+            <div class="project-card__body">
+              <div class="project-card__header">
+                <h3 class="project-card__title">Mobile App Famotion</h3>
+                <span class="project-card__badge">Skripsi/TA</span>
+              </div>
+              <p class="project-card__desc">
+                Famotion (Face Mood Emotion Detection) adalah aplikasi mobile untuk Tugas Akhir Program Studi Manajemen
+                Informatika yang mendeteksi emosi pengguna melalui ekspresi wajah, seperti Happy, Sad, Angry, dan
+                Neutral, untuk memberikan rekomendasi musik sesuai suasana hati.
+              </p>
+              <div class="project-card__tags">
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/flutter" width="14" height="14" alt="Flutter" loading="lazy" />
+                  Flutter
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/dart" width="14" height="14" alt="Dart" loading="lazy" />
+                  Dart
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/python" width="14" height="14" alt="Python" loading="lazy" />
+                  Python
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/flask" width="14" height="14" alt="Flask" loading="lazy" />
+                  Flask
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/nodedotjs" width="14" height="14" alt="Node.js"
+                    loading="lazy" />
+                  Node.js
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/mongodb" width="14" height="14" alt="MongoDB" loading="lazy" />
+                  MongoDB
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/tensorflow" width="14" height="14" alt="ResNet50"
+                    loading="lazy" />
+                  ResNet50
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/scikitlearn" width="14" height="14" alt="K-NN" loading="lazy" />
+                  K-NN
+                </span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://github.com/Epangssss/Famotion" target="_blank" rel="noopener noreferrer"
+                  class="project-card__link">
+                  GitHub <i data-lucide="arrow-up-right" width="14" height="14" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card fade-up" data-category="web enterprise training" data-project-id="bieplus"
+            tabindex="0" role="button" aria-label="Lihat detail proyek Brilliant English+">
+            <div class="project-card__img">
+              <img src="assets/img/project2.png" alt="Brilliant English+" width="600" height="270" loading="lazy" />
+            </div>
+            <div class="project-card__body">
+              <div class="project-card__header">
+                <h3 class="project-card__title">Brilliant English+</h3>
+                <span class="project-card__badge">Magang</span>
+              </div>
+              <p class="project-card__desc">
+                Brilliant English+ adalah sebuah platform kursus online yang dirancang untuk membantu siswa belajar
+                bahasa Inggris dengan lebih efektif dan menyenangkan. Platform ini menyediakan berbagai fitur unggulan,
+                seperti materi pembelajaran interaktif, kuis adaptif, dan komunitas belajar yang suportif.
+              </p>
+              <div class="project-card__tags">
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/laravel" width="14" height="14" alt="Laravel" loading="lazy" />
+                  Laravel
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/css" width="14" height="14" alt="CSS" loading="lazy" />
+                  CSS
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/javascript" width="14" height="14" alt="JavaScript"
+                    loading="lazy" />
+                  JavaScript
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/mysql" width="14" height="14" alt="MySQL" loading="lazy" />
+                  MySQL
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/bootstrap" width="14" height="14" alt="Bootstrap"
+                    loading="lazy" />
+                  Bootstrap
+                </span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://occupancy.bieplus.com/" target="_blank" rel="noopener noreferrer"
+                  class="project-card__link">
+                  Live Demo <i data-lucide="arrow-up-right" width="14" height="14" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card fade-up" data-category="web training" data-project-id="brilliant-pare"
+            tabindex="0" role="button" aria-label="Lihat detail proyek Brilliant English Pare">
+            <div class="project-card__img">
+              <img src="assets/img/project3.png" alt="Brilliant English Pare" width="600" height="270" loading="lazy" />
+            </div>
+            <div class="project-card__body">
+              <div class="project-card__header">
+                <h3 class="project-card__title">Brilliant English Pare</h3>
+                <span class="project-card__badge">Freelance</span>
+              </div>
+              <p class="project-card__desc">
+                Brilliant English Pare adalah sebuah website untuk membantu siswa belajar bahasa Inggris dengan lebih
+                efektif dan menyenangkan. Platform ini menyediakan berbagai fitur unggulan, seperti informasi tempat
+                tinggal, materi pembelajaran, dan komunitas belajar.
+              </p>
+              <div class="project-card__tags">
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/laravel" width="14" height="14" alt="Laravel" loading="lazy" />
+                  Laravel
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/css" width="14" height="14" alt="CSS" loading="lazy" />
+                  CSS
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/javascript" width="14" height="14" alt="JavaScript"
+                    loading="lazy" />
+                  JavaScript
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/mysql" width="14" height="14" alt="MySQL" loading="lazy" />
+                  MySQL
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/bootstrap" width="14" height="14" alt="Bootstrap"
+                    loading="lazy" />
+                  Bootstrap
+                </span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://brilliantenglishpare.com/" target="_blank" rel="noopener noreferrer"
+                  class="project-card__link">
+                  Live Demo <i data-lucide="arrow-up-right" width="14" height="14" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card fade-up" data-category="web training" data-project-id="brilliant-jerman"
+            tabindex="0" role="button" aria-label="Lihat detail proyek Brilliant Kampung Inggris Jerman">
+            <div class="project-card__img">
+              <img src="assets/img/project4.png" alt="Bieplus Kampung Inggris Jerman" width="600" height="270"
+                loading="lazy" />
+            </div>
+            <div class="project-card__body">
+              <div class="project-card__header">
+                <h3 class="project-card__title">Brilliant Kampung Inggris Jerman</h3>
+                <span class="project-card__badge">Magang</span>
+              </div>
+              <p class="project-card__desc">
+                Brilliant Kampung Inggris Jerman adalah platform pembelajaran bahasa Jerman yang menghadirkan pengalaman
+                belajar efektif dan terstruktur. Platform ini menyediakan pilihan kelas tatap muka (offline) dan
+                virtual (online) untuk membantu siswa menguasai bahasa Jerman secara optimal.
+              </p>
+              <div class="project-card__tags">
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/laravel" width="14" height="14" alt="Laravel" loading="lazy" />
+                  Laravel
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/css" width="14" height="14" alt="CSS" loading="lazy" />
+                  CSS
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/javascript" width="14" height="14" alt="JavaScript"
+                    loading="lazy" />
+                  JavaScript
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/mysql" width="14" height="14" alt="MySQL" loading="lazy" />
+                  MySQL
+                </span>
+                <span class="project-card__tag">
+                  <img src="https://cdn.simpleicons.org/bootstrap" width="14" height="14" alt="Bootstrap"
+                    loading="lazy" />
+                  Bootstrap
+                </span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://biepluskampunginggris.com/program/bahasa/jerman" target="_blank"
+                  rel="noopener noreferrer" class="project-card__link">
+                  Live Demo <i data-lucide="arrow-up-right" width="14" height="14" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="projectsEmptyState" class="portfolio-empty" hidden>
+          <p class="portfolio-empty__text">Tidak ada proyek yang cocok dengan filter atau kata kunci pencarian Anda.</p>
+          <button type="button" class="btn btn--outline" id="resetPortfolioFilterBtn">Tampilkan Semua Proyek</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="skills" id="skills">
+      <div class="container">
+        <p class="section-label fade-up">KEAHLIAN</p>
+        <h2 class="section-title fade-up">Teknologi yang Saya Gunakan</h2>
+
+        <div class="skills__grid fade-up">
+          <div class="tech-badge">
+            <span class="tech-badge__icon"><i class="devicon-html5-plain colored" aria-hidden="true"></i></span>
+            HTML
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon">
+              <img src="https://cdn.simpleicons.org/css" width="22" height="22" alt="CSS" loading="lazy">
+            </span>
+            CSS
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon"><i class="devicon-javascript-plain colored" aria-hidden="true"></i></span>
+            JavaScript
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon"><i class="devicon-php-plain colored" aria-hidden="true"></i></span>
+            PHP
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon"><i class="devicon-laravel-original colored" aria-hidden="true"></i></span>
+            Laravel
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon"><i class="devicon-vuejs-plain colored" aria-hidden="true"></i></span>
+            Vue.js
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon"><i class="devicon-react-original colored" aria-hidden="true"></i></span>
+            React
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon"><i class="devicon-tailwindcss-original colored"
+                aria-hidden="true"></i></span>
+            Tailwind CSS
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon"><i class="devicon-bootstrap-plain colored" aria-hidden="true"></i></span>
+            Bootstrap
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon"><i class="devicon-mysql-plain colored" aria-hidden="true"></i></span>
+            MySQL
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon"><i class="devicon-mongodb-plain colored" aria-hidden="true"></i></span>
+            MongoDB
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon"><i class="devicon-androidstudio-plain colored" aria-hidden="true"></i></span>
+            Android Studio
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon"><i class="devicon-vscode-plain colored" aria-hidden="true"></i></span>
+            VS Code
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon"><i class="devicon-postman-plain colored" aria-hidden="true"></i></span>
+            Postman
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon"><i class="devicon-git-plain colored" aria-hidden="true"></i></span>
+            Git
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon"><i class="devicon-mariadb-original colored" aria-hidden="true"></i></span>
+            MariaDB
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon"><img src="https://cdn.simpleicons.org/obsstudio" width="22" height="22"
+                alt="OBS Studio" loading="lazy" /></span>
+            OBS Studio
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon">
+              <img src="assets/img/capcut.jpg" width="22" height="22" alt="CapCut" loading="lazy">
+            </span>
+            CapCut
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon">
+              <img src="assets/img/word.jpg" width="22" height="22" alt="Microsoft Word" loading="lazy">
+            </span>
+            Microsoft Word
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon">
+              <img src="assets/img/excel.jpg" width="22" height="22" alt="Excel" loading="lazy">
+            </span>
+            Excel
+          </div>
+          <div class="tech-badge">
+            <span class="tech-badge__icon">
+              <img src="assets/img/canva.jpg" width="22" height="22" alt="Canva" loading="lazy">
+            </span>
+            Canva
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PENDIDIKAN ===== -->
+    <section class="education" id="pendidikan">
+      <canvas id="educationCanvas" class="circuit-canvas"></canvas>
+      <div class="container">
+        <p class="section-label fade-up">PENDIDIKAN</p>
+        <h2 class="section-title fade-up">Riwayat Pendidikan</h2>
+
+        <article class="education-card fade-up">
+          <div class="education-card__header">
+            <div class="education-card__main">
+              <div class="education-card__logo-wrapper">
+                <img src="assets/img/polije-logo.png" alt="Logo Politeknik Negeri Jember" width="56" height="56"
+                  loading="lazy" class="education-card__logo" />
+              </div>
+              <div class="education-card__identity">
+                <div class="education-card__meta">
+                  <span class="education-card__period">2023 - 2026</span>
+                </div>
+                <h3 class="education-card__degree">D3 Manajemen Informatika</h3>
+                <h4 class="education-card__school">Politeknik Negeri Jember</h4>
+                <p class="education-card__address">
+                  <i data-lucide="map-pin" width="15" height="15" aria-hidden="true"></i>
+                  <span>Jl. Mastrip PO. BOX 164, Jember, Jawa Timur 68101</span>
+                </p>
+              </div>
+            </div>
+            <div class="education-card__gpa">
+              <span class="education-card__gpa-label">Indeks Prestasi Kumulatif</span>
+              <span class="education-card__gpa-value">IPK: 3,87 / 4,00</span>
+            </div>
+          </div>
+
+          <ul class="education-card__highlights">
+            <li>Fokus pada rekayasa perangkat lunak berbasis web (Laravel, PHP, MySQL), aplikasi mobile (Flutter, Dart),
+              dan implementasi model Machine Learning (Python, Flask, ResNet50, K-NN).</li>
+            <li>Menyelesaikan Tugas Akhir aplikasi mobile <strong>Famotion (Face Mood Emotion Detection)</strong> untuk
+              rekomendasi musik berdasarkan ekspresi wajah.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== PENGALAMAN ===== -->
+    <section class="experience" id="pengalaman">
+      <canvas id="experienceCanvas" class="circuit-canvas"></canvas>
+      <div class="container">
+        <p class="section-label fade-up">PENGALAMAN</p>
+        <h2 class="section-title fade-up">Pengalaman Kerja &amp; Magang</h2>
+
+        <div class="timeline fade-up">
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <span class="timeline__date">Juli 2025 - November 2025</span>
+            <h3 class="timeline__role">IT Support &amp; Web Developer</h3>
+            <div class="timeline__company">
+              <span class="timeline__logo"><img src="assets/img/logo-brilliant-english.png"
+                  alt="Logo Brilliant English Course" width="44" height="44" loading="lazy" /></span>
+              <span class="timeline__company-text">
+                <strong class="timeline__company-name">Brilliant English Course</strong>
+                <span class="timeline__company-loc">Kampung Inggris Pare - Kab. Kediri, Jawa Timur</span>
+              </span>
+            </div>
+            <p class="timeline__desc timeline__intro">Bertugas sebagai IT Support dan Web Developer selama magang di
+              Brilliant English Course, Kampung Inggris Pare, untuk menjaga kelancaran operasional teknis serta keamanan
+              data pada website dan sistem penerimaan siswa baru.</p>
+            <h4 class="timeline__achv-title">Kontribusi &amp; Pencapaian:</h4>
+            <ul class="timeline__achv">
+              <li>Memberikan layanan dukungan teknis operasional agar kegiatan berjalan lancar dan klien terlayani tepat
+                waktu sesuai target masa magang.</li>
+              <li>Merancang ulang alur kerja sistem (workflow/case flow) pengelolaan data pada <strong>3
+                  website</strong> untuk memperkuat keamanan dan meminimalkan risiko kebocoran data (data breach).</li>
+              <li>Mengelola prosedur operasional sistem penerimaan siswa baru kursus Bahasa Inggris agar efektif dan
+                terstruktur.</li>
+              <li>Menangani instalasi, konfigurasi, pemeliharaan, dan troubleshooting perangkat keras serta driver pada
+                PC dan printer.</li>
+            </ul>
+            <div class="project-card__tags">
+              <button type="button" class="project-card__tag" aria-expanded="false" aria-controls="gallery-sertifikat-1"
+                onclick="toggleGallery('gallery-sertifikat-1')">
+                <i class="fa-solid fa-certificate" aria-hidden="true"></i> Sertifikat
+              </button>
+
+              <button type="button" class="project-card__tag" aria-expanded="false"
+                aria-controls="gallery-tempat-kerja-1" onclick="toggleGallery('gallery-tempat-kerja-1')">
+                <i class="fas fa-image" aria-hidden="true"></i> Foto Pengalaman Kerja
+              </button>
+            </div>
+
+            <!-- Gallery Sertifikat -->
+            <div id="gallery-sertifikat-1" class="documentation-gallery">
+              <button type="button" class="documentation-card" onclick="openGalleryPopup('Sertifikat - IT Support & Web Developer Brilliant English', [
+                  'assets/sertifikat/Magang/Magang-1.png'
+                ], 0)">
+                <span class="doc-card__thumb">
+                  <img src="assets/sertifikat/Magang/Magang-1.png" alt="Sertifikat Kompetensi Brilliant English Course"
+                    width="320" height="140" loading="lazy">
+                  <span class="doc-card__overlay">
+                    <i class="fa-solid fa-search-plus" aria-hidden="true"></i>
+                  </span>
+                </span>
+                <span class="documentation-card__body">
+                  <span class="doc-card__title">Sertifikat Kompetensi</span>
+                  <span class="doc-card__subtitle">Klik untuk melihat ukuran penuh.</span>
+                </span>
+              </button>
+            </div>
+
+            <!-- Gallery Foto Pengalaman Kerja -->
+            <div id="gallery-tempat-kerja-1" class="documentation-gallery">
+              <button type="button" class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja - Brilliant English', [
+                  'assets/file-magang/1.jpg',
+                  'assets/file-magang/2.jpeg',
+                  'assets/file-magang/3.jpg'
+                ], 0)">
+                <span class="doc-card__thumb">
+                  <img src="assets/file-magang/1.jpg" alt="Foto Pengalaman Kerja Brilliant English 1" width="320"
+                    height="140" loading="lazy">
+                  <span class="doc-card__overlay">
+                    <i class="fa-solid fa-search-plus" aria-hidden="true"></i>
+                    <span>3 foto</span>
+                  </span>
+                </span>
+                <span class="documentation-card__body">
+                  <span class="doc-card__title">Foto Pengalaman Kerja</span>
+                  <span class="doc-card__subtitle">Klik untuk melihat semua foto.</span>
+                </span>
+              </button>
+
+              <button type="button" class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja - Brilliant English', [
+                  'assets/file-magang/1.jpg',
+                  'assets/file-magang/2.jpeg',
+                  'assets/file-magang/3.jpg'
+                ], 1)">
+                <span class="doc-card__thumb">
+                  <img src="assets/file-magang/2.jpeg" alt="Foto Pengalaman Kerja Brilliant English 2" width="320"
+                    height="140" loading="lazy">
+                  <span class="doc-card__overlay">
+                    <i class="fa-solid fa-search-plus" aria-hidden="true"></i>
+                    <span>3 foto</span>
+                  </span>
+                </span>
+                <span class="documentation-card__body">
+                  <span class="doc-card__title">Foto Pengalaman Kerja</span>
+                  <span class="doc-card__subtitle">Klik untuk melihat semua foto.</span>
+                </span>
+              </button>
+
+              <button type="button" class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja - Brilliant English', [
+                  'assets/file-magang/1.jpg',
+                  'assets/file-magang/2.jpeg',
+                  'assets/file-magang/3.jpg'
+                ], 2)">
+                <span class="doc-card__thumb">
+                  <img src="assets/file-magang/3.jpg" alt="Foto Pengalaman Kerja Brilliant English 3" width="320"
+                    height="140" loading="lazy">
+                  <span class="doc-card__overlay">
+                    <i class="fa-solid fa-search-plus" aria-hidden="true"></i>
+                    <span>3 foto</span>
+                  </span>
+                </span>
+                <span class="documentation-card__body">
+                  <span class="doc-card__title">Foto Pengalaman Kerja</span>
+                  <span class="doc-card__subtitle">Klik untuk melihat semua foto.</span>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <span class="timeline__date">Januari 2025 - Juni 2025</span>
+            <h3 class="timeline__role">Web Development Intern</h3>
+            <div class="timeline__company">
+              <span class="timeline__logo"><img src="assets/img/logo-jti.png" alt="Logo JTI Innovation Center"
+                  width="44" height="44" loading="lazy" /></span>
+              <span class="timeline__company-text">
+                <strong class="timeline__company-name">JTI Innovation Center</strong>
+                <span class="timeline__company-loc">Kab. Jember, Jawa Timur</span>
+              </span>
+            </div>
+            <p class="timeline__desc timeline__intro">Mengerjakan pengembangan antarmuka (frontend) pada website JTINOVA
+              dan Ukerma selama magang di JTI Innovation Center, untuk kebutuhan fitur pengelolaan sertifikat serta
+              stabilitas dan kenyamanan penggunaan website.</p>
+            <h4 class="timeline__achv-title">Kontribusi &amp; Pencapaian:</h4>
+            <ul class="timeline__achv">
+              <li>Mengelola dan mengembangkan antarmuka (frontend) pada <strong>2 website utama</strong>, yaitu JTINOVA
+                dan Ukerma, tepat waktu sesuai target masa magang.</li>
+              <li>Mengembangkan fitur baru berupa sistem pengelolaan penggunaan sertifikat pada website JTINOVA.</li>
+              <li>Melakukan debugging dan perbaikan bug pada website Ukerma untuk meningkatkan stabilitas dan performa
+                sistem.</li>
+              <li>Meningkatkan kenyamanan pengguna melalui perbaikan stabilitas dan performa website.</li>
+            </ul>
+            <div class="project-card__tags">
+              <button type="button" class="project-card__tag" aria-expanded="false" aria-controls="gallery-sertifikat-2"
+                onclick="toggleGallery('gallery-sertifikat-2')">
+                <i class="fa-solid fa-certificate" aria-hidden="true"></i> Sertifikat
+              </button>
+              <button type="button" class="project-card__tag" aria-expanded="false"
+                aria-controls="gallery-tempat-kerja-2" onclick="toggleGallery('gallery-tempat-kerja-2')">
+                <i class="fas fa-image" aria-hidden="true"></i> Foto Pengalaman Kerja
+              </button>
+            </div>
+
+            <div id="gallery-sertifikat-2" class="documentation-gallery">
+              <button type="button" class="documentation-card" onclick="openGalleryPopup('Sertifikat - Web Development Intern JTINOVA', [
+                  'assets/sertifikat/MBMKM-4/MBMKM-4-1.png',
+                  'assets/sertifikat/MBMKM-4/MBMKM-4-2.png'
+                ], 0)">
+                <span class="doc-card__thumb">
+                  <img src="assets/sertifikat/MBMKM-4/MBMKM-4-1.png" alt="Sertifikat JTINOVA Web Development Intern"
+                    width="320" height="140" loading="lazy">
+                  <span class="doc-card__overlay">
+                    <i class="fa-solid fa-search-plus" aria-hidden="true"></i>
+                  </span>
+                </span>
+                <span class="documentation-card__body">
+                  <span class="doc-card__title">Sertifikat Magang</span>
+                  <span class="doc-card__subtitle">Klik untuk melihat ukuran penuh.</span>
+                </span>
+              </button>
+
+              <button type="button" class="documentation-card" onclick="openGalleryPopup('Sertifikat - Web Development Intern JTINOVA Nilai', [
+                  'assets/sertifikat/MBMKM-4/MBMKM-4-1.png',
+                  'assets/sertifikat/MBMKM-4/MBMKM-4-2.png'
+                ], 1)">
+                <span class="doc-card__thumb">
+                  <img src="assets/sertifikat/MBMKM-4/MBMKM-4-2.png" alt="Sertifikat Nilai JTINOVA Web Development"
+                    width="320" height="140" loading="lazy">
+                  <span class="doc-card__overlay">
+                    <i class="fa-solid fa-search-plus" aria-hidden="true"></i>
+                  </span>
+                </span>
+                <span class="documentation-card__body">
+                  <span class="doc-card__title">Sertifikat Magang (Nilai)</span>
+                  <span class="doc-card__subtitle">Klik untuk melihat ukuran penuh.</span>
+                </span>
+              </button>
+            </div>
+
+            <div id="gallery-tempat-kerja-2" class="documentation-gallery">
+              <button type="button" class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja - JTINOVA', [
+                  'assets/file2/1.jpeg',
+                  'assets/file2/2.jpeg'
+                ], 0)">
+                <span class="doc-card__thumb">
+                  <img src="assets/file2/1.jpeg" alt="Foto Pengalaman Kerja JTINOVA 1" width="320" height="140"
+                    loading="lazy">
+                  <span class="doc-card__overlay">
+                    <i class="fa-solid fa-search-plus" aria-hidden="true"></i>
+                  </span>
+                </span>
+                <span class="documentation-card__body">
+                  <span class="doc-card__title">Foto Pengalaman Kerja</span>
+                  <span class="doc-card__subtitle">Klik untuk melihat semua foto.</span>
+                </span>
+              </button>
+              <button type="button" class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja - JTINOVA', [
+                  'assets/file2/1.jpeg',
+                  'assets/file2/2.jpeg'
+                ], 1)">
+                <span class="doc-card__thumb">
+                  <img src="assets/file2/2.jpeg" alt="Foto Pengalaman Kerja JTINOVA 2" width="320" height="140"
+                    loading="lazy">
+                  <span class="doc-card__overlay">
+                    <i class="fa-solid fa-search-plus" aria-hidden="true"></i>
+                  </span>
+                </span>
+                <span class="documentation-card__body">
+                  <span class="doc-card__title">Foto Pengalaman Kerja</span>
+                  <span class="doc-card__subtitle">Klik untuk melihat semua foto.</span>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <span class="timeline__date">Juli 2024 - Desember 2024</span>
+            <h3 class="timeline__role">Backend dan Frontend Developer</h3>
+            <div class="timeline__company">
+              <span class="timeline__logo"><img src="assets/img/logo-jti.png" alt="Logo JTI Innovation Center"
+                  width="44" height="44" loading="lazy" /></span>
+              <span class="timeline__company-text">
+                <strong class="timeline__company-name">JTI Innovation Center</strong>
+                <span class="timeline__company-loc">Kab. Jember, Jawa Timur</span>
+              </span>
+            </div>
+            <p class="timeline__desc timeline__intro">Mengerjakan proyek pengembangan sistem pembuatan sertifikat
+              otomatis berbasis website di JTI Innovation Center, mencakup perancangan dan integrasi sisi backend maupun
+              frontend dalam kerja tim.</p>
+            <h4 class="timeline__achv-title">Kontribusi &amp; Pencapaian:</h4>
+            <ul class="timeline__achv">
+              <li>Merancang, membangun, dan mengintegrasikan sisi backend maupun frontend pada sistem pembuatan
+                sertifikat otomatis (automated certificate generator) berbasis website.</li>
+              <li>Menerapkan kepemimpinan dan kolaborasi tim dalam menganalisis serta memecahkan kendala teknis secara
+                terstruktur.</li>
+              <li>Bertanggung jawab penuh atas kualitas hasil pekerjaan agar selesai tepat waktu sesuai target masa
+                magang.</li>
+            </ul>
+            <div class="project-card__tags">
+              <button type="button" class="project-card__tag" aria-expanded="false" aria-controls="gallery-sertifikat-3"
+                onclick="toggleGallery('gallery-sertifikat-3')">
+                <i class="fa-solid fa-certificate" aria-hidden="true"></i> Sertifikat
+              </button>
+              <button type="button" class="project-card__tag" aria-expanded="false"
+                aria-controls="gallery-tempat-kerja-3" onclick="toggleGallery('gallery-tempat-kerja-3')">
+                <i class="fas fa-image" aria-hidden="true"></i> Foto Pengalaman Kerja
+              </button>
+            </div>
+
+            <div id="gallery-sertifikat-3" class="documentation-gallery">
+              <button type="button" class="documentation-card" onclick="openGalleryPopup('Sertifikat - Backend dan Frontend Developer JTINOVA', [
+                  'assets/sertifikat/MBKM-3/MBKM-3-1.png',
+                  'assets/sertifikat/MBKM-3/MBKM-3-2.png'
+                ], 0)">
+                <span class="doc-card__thumb">
+                  <img src="assets/sertifikat/MBKM-3/MBKM-3-1.png" alt="Sertifikat JTINOVA Backend dan Frontend"
+                    width="320" height="140" loading="lazy">
+                  <span class="doc-card__overlay">
+                    <i class="fa-solid fa-search-plus" aria-hidden="true"></i>
+                  </span>
+                </span>
+                <span class="documentation-card__body">
+                  <span class="doc-card__title">Sertifikat Magang</span>
+                  <span class="doc-card__subtitle">Klik untuk melihat ukuran penuh.</span>
+                </span>
+              </button>
+
+              <button type="button" class="documentation-card" onclick="openGalleryPopup('Sertifikat - Backend dan Frontend Developer JTINOVA', [
+                  'assets/sertifikat/MBKM-3/MBKM-3-1.png',
+                  'assets/sertifikat/MBKM-3/MBKM-3-2.png'
+                ], 1)">
+                <span class="doc-card__thumb">
+                  <img src="assets/sertifikat/MBKM-3/MBKM-3-2.png" alt="Sertifikat Nilai JTINOVA Backend dan Frontend"
+                    width="320" height="140" loading="lazy">
+                  <span class="doc-card__overlay">
+                    <i class="fa-solid fa-search-plus" aria-hidden="true"></i>
+                  </span>
+                </span>
+                <span class="documentation-card__body">
+                  <span class="doc-card__title">Sertifikat Magang (Nilai)</span>
+                  <span class="doc-card__subtitle">Klik untuk melihat ukuran penuh.</span>
+                </span>
+              </button>
+            </div>
+
+            <div id="gallery-tempat-kerja-3" class="documentation-gallery">
+              <button type="button" class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja - JTINOVA TEFA', [
+                  'assets/file/1.jpg',
+                  'assets/file/2.jpg',
+                  'assets/file/3.jpg',
+                  'assets/file/4.jpg'
+                ], 0)">
+                <span class="doc-card__thumb">
+                  <img src="assets/file/1.jpg" alt="Foto Pengalaman Kerja TEFA 1" width="320" height="140"
+                    loading="lazy">
+                  <span class="doc-card__overlay">
+                    <i class="fa-solid fa-search-plus" aria-hidden="true"></i>
+                  </span>
+                </span>
+                <span class="documentation-card__body">
+                  <span class="doc-card__title">Foto Pengalaman Kerja</span>
+                  <span class="doc-card__subtitle">Klik untuk melihat semua foto.</span>
+                </span>
+              </button>
+
+              <button type="button" class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja - JTINOVA TEFA', [
+                  'assets/file/1.jpg',
+                  'assets/file/2.jpg',
+                  'assets/file/3.jpg',
+                  'assets/file/4.jpg'
+                ], 1)">
+                <span class="doc-card__thumb">
+                  <img src="assets/file/2.jpg" alt="Foto Pengalaman Kerja TEFA 2" width="320" height="140"
+                    loading="lazy">
+                  <span class="doc-card__overlay">
+                    <i class="fa-solid fa-search-plus" aria-hidden="true"></i>
+                  </span>
+                </span>
+                <span class="documentation-card__body">
+                  <span class="doc-card__title">Foto Pengalaman Kerja</span>
+                  <span class="doc-card__subtitle">Klik untuk melihat semua foto.</span>
+                </span>
+              </button>
+
+              <button type="button" class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja - JTINOVA TEFA', [
+                  'assets/file/1.jpg',
+                  'assets/file/2.jpg',
+                  'assets/file/3.jpg',
+                  'assets/file/4.jpg'
+                ], 2)">
+                <span class="doc-card__thumb">
+                  <img src="assets/file/3.jpg" alt="Foto Pengalaman Kerja TEFA 3" width="320" height="140"
+                    loading="lazy">
+                  <span class="doc-card__overlay">
+                    <i class="fa-solid fa-search-plus" aria-hidden="true"></i>
+                  </span>
+                </span>
+                <span class="documentation-card__body">
+                  <span class="doc-card__title">Foto Pengalaman Kerja</span>
+                  <span class="doc-card__subtitle">Klik untuk melihat semua foto.</span>
+                </span>
+              </button>
+
+              <button type="button" class="documentation-card" onclick="openGalleryPopup('Foto Pengalaman Kerja - JTINOVA TEFA', [
+                  'assets/file/1.jpg',
+                  'assets/file/2.jpg',
+                  'assets/file/3.jpg',
+                  'assets/file/4.jpg'
+                ], 3)">
+                <span class="doc-card__thumb">
+                  <img src="assets/file/4.jpg" alt="Foto Pengalaman Kerja TEFA 4" width="320" height="140"
+                    loading="lazy">
+                  <span class="doc-card__overlay">
+                    <i class="fa-solid fa-search-plus" aria-hidden="true"></i>
+                  </span>
+                </span>
+                <span class="documentation-card__body">
+                  <span class="doc-card__title">Foto Pengalaman Kerja</span>
+                  <span class="doc-card__subtitle">Klik untuk melihat semua foto.</span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERTIFIKASI & PELATIHAN ===== -->
+    <section class="certifications" id="sertifikasi">
+      <div class="container">
+        <p class="section-label fade-up">SERTIFIKASI &amp; PELATIHAN</p>
+        <h2 class="section-title fade-up">Sertifikasi Kompetensi &amp; Pelatihan</h2>
+
+        <div class="cert-grid">
+          <!-- Group 1: Sertifikasi Kompetensi -->
+          <div class="cert-group fade-up">
+            <h3 class="cert-group__title">
+              <i data-lucide="award" width="18" height="18" aria-hidden="true"></i>
+              Sertifikasi Kompetensi (BNSP &amp; LSP)
+            </h3>
+
+            <div class="cert-list">
+              <article class="cert-card">
+                <span class="cert-card__date">September 2026 - September 2029</span>
+                <h4 class="cert-card__title">LSP Polije - Pemrogram Mobil Pratama (Junior Mobile Programmer)</h4>
+                <p class="cert-card__issuer">Lembaga Sertifikasi Profesi Pihak Kesatu Politeknik Negeri Jember</p>
+              </article>
+
+              <article class="cert-card">
+                <span class="cert-card__date">Juni 2025 - Juni 2028</span>
+                <h4 class="cert-card__title">Komdigi Uji Kompetensi VSGA - Ilmuwan Data Muda (Associate Data Scientist)
+                </h4>
+                <p class="cert-card__issuer">BNSP bersama LSP Teknologi Digital</p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Group 2: Pelatihan & Pengembangan Kompetensi -->
+          <div class="cert-group fade-up">
+            <h3 class="cert-group__title">
+              <i data-lucide="book-open" width="18" height="18" aria-hidden="true"></i>
+              Pelatihan &amp; Pengembangan Kompetensi
+            </h3>
+
+            <div class="cert-list">
+              <article class="cert-card">
+                <span class="cert-card__date">Mei 2026 - Juni 2026</span>
+                <h4 class="cert-card__title">Teknologi Informasi dan Komunikasi - Sertifikasi Kompetensi Pemrogram
+                  Mobil Pratama (Junior Mobile Programmer)</h4>
+                <p class="cert-card__issuer">Lembaga Sertifikasi Profesi (LSP) Politeknik Negeri Jember - BNSP</p>
+              </article>
+
+              <article class="cert-card">
+                <span class="cert-card__date">November 2025 - Desember 2025</span>
+                <h4 class="cert-card__title">Teknologi Informasi dan Komunikasi - Data Science</h4>
+                <p class="cert-card__issuer">Bisa AI Academy</p>
+              </article>
+
+              <article class="cert-card">
+                <span class="cert-card__date">Juni 2025 - Juli 2025</span>
+                <h4 class="cert-card__title">Teknologi Informasi dan Komunikasi - Sertifikasi Kompetensi Ilmuwan Data
+                  Muda (Associate Data Scientist)</h4>
+                <p class="cert-card__issuer">Lembaga Sertifikasi Profesi (LSP) Teknologi Digital - BNSP</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== KONTAK ===== -->
+    <section class="contact" id="kontak">
+      <div class="container">
+        <p class="section-label fade-up">KONTAK</p>
+        <h2 class="section-title fade-up">Hubungi Saya</h2>
+        <p class="contact__subtitle fade-up">
+          Ingin berdiskusi mengenai proyek, lowongan pekerjaan, atau kolaborasi teknis? Hubungi saya langsung melalui
+          WhatsApp atau kirim pesan melalui formulir di bawah ini.
+        </p>
+
+        <div class="contact__grid">
+          <!-- Left: Direct Contact Cards -->
+          <div class="contact__info fade-up">
+            <h3 class="contact__info-title">Saluran Kontak Langsung</h3>
+
+            <div class="contact__cards">
+              <a href="https://wa.me/6282131270114?text=Halo%20Edward,%20saya%20melihat%20portofolio%20Anda%20dan%20ingin%20berdiskusi."
+                class="contact-card contact-card--primary" target="_blank" rel="noopener noreferrer">
+                <span class="contact-card__icon">
+                  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                </span>
+                <span class="contact-card__body">
+                  <span class="contact-card__label">WhatsApp (Utama)</span>
+                  <span class="contact-card__value">082131270114</span>
+                </span>
+                <span class="contact-card__badge">Hubungi</span>
+              </a>
+
+              <a href="mailto:edwardlpramudya2005@gmail.com" class="contact-card">
+                <span class="contact-card__icon">
+                  <i data-lucide="mail" width="18" height="18" aria-hidden="true"></i>
+                </span>
+                <span class="contact-card__body">
+                  <span class="contact-card__label">Email</span>
+                  <span class="contact-card__value">edwardlpramudya2005@gmail.com</span>
+                </span>
+              </a>
+
+              <div class="contact-card contact-card--static">
+                <span class="contact-card__icon">
+                  <i data-lucide="map-pin" width="18" height="18" aria-hidden="true"></i>
+                </span>
+                <span class="contact-card__body">
+                  <span class="contact-card__label">Lokasi</span>
+                  <span class="contact-card__value">Jember, Jawa Timur, Indonesia</span>
+                </span>
+              </div>
+
+              <a href="cv.html" class="contact-card">
+                <span class="contact-card__icon">
+                  <i data-lucide="file-text" width="18" height="18" aria-hidden="true"></i>
+                </span>
+                <span class="contact-card__body">
+                  <span class="contact-card__label">CV Lengkap</span>
+                  <span class="contact-card__value">Lihat &amp; Unduh CV ATS</span>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: WhatsApp Contact Form -->
+          <div class="contact__form-wrapper fade-up">
+            <h3 class="contact__form-title">Kirim Pesan via WhatsApp</h3>
+            <form id="contactForm" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Nama Lengkap</label>
+                  <input type="text" id="name" name="name" placeholder="Nama Anda" required autocomplete="name" />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email / Instansi</label>
+                  <input type="text" id="email" name="email" placeholder="email@contoh.com / Perusahaan" required
+                    autocomplete="email" />
+                </div>
+              </div>
+              <div class="form-group form-group--full">
+                <label for="subject">Subjek</label>
+                <input type="text" id="subject" name="subject" placeholder="Diskusi proyek atau lowongan kerja"
+                  required />
+              </div>
+              <div class="form-group form-group--full">
+                <label for="message">Pesan</label>
+                <textarea id="message" name="message" placeholder="Tuliskan detail kebutuhan atau pesan Anda..."
+                  required></textarea>
+              </div>
+              <div id="contactFormStatus" class="form-status" role="status" aria-live="polite"></div>
+              <button type="submit" class="btn btn--primary contact__submit">
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                Kirim Pesan via WhatsApp (082131270114)
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
@@ -851,8 +1306,8 @@
       <div class="footer__inner">
         <p class="footer__copy">&copy; 2026 Edward Landung Pramudya. All rights reserved.</p>
         <div class="footer__socials">
-          <a href="#" class="footer__social-link" aria-label="Kembali ke atas">
-            <i data-lucide="arrow-up" width="18" height="18"></i>
+          <a href="#hero" class="footer__social-link" aria-label="Kembali ke atas">
+            <i data-lucide="arrow-up" width="18" height="18" aria-hidden="true"></i>
           </a>
         </div>
       </div>
@@ -860,13 +1315,13 @@
   </footer>
 
   <!-- Lightbox (Zoom Gambar Project) -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox__close" id="lightboxClose" aria-label="Tutup">&times;</button>
-    <img class="lightbox__img" id="lightboxImg" src="" alt="Project Preview" />
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Pratinjau gambar proyek">
+    <button type="button" class="lightbox__close" id="lightboxClose" aria-label="Tutup">&times;</button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="Pratinjau proyek" width="1200" height="800" />
   </div>
 
-  <!-- Gallery Popup (Reusable — Sertifikat & Foto Pengalaman Kerja) -->
-  <div class="gallery-popup" id="galleryPopup">
+  <!-- Gallery Popup (Reusable: Sertifikat & Foto Pengalaman Kerja) -->
+  <div class="gallery-popup" id="galleryPopup" role="dialog" aria-modal="true" aria-labelledby="galleryPopupTitle">
     <div class="gallery-popup__backdrop" onclick="closeGalleryPopup()"></div>
     <div class="gallery-popup__container">
       <div class="gallery-popup__header">
@@ -878,18 +1333,90 @@
       <div class="gallery-popup__body">
         <button type="button" class="gallery-popup__nav gallery-popup__nav--prev" id="galleryPrev"
           onclick="galleryNav(-1)" aria-label="Sebelumnya">
-          <i class="fa-solid fa-chevron-left"></i>
+          <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
         </button>
         <div class="gallery-popup__img-wrapper">
-          <img id="galleryPopupImg" src="" alt="Gallery Image" />
+          <img id="galleryPopupImg" src="" alt="Dokumentasi pengalaman kerja" width="900" height="600" />
         </div>
         <button type="button" class="gallery-popup__nav gallery-popup__nav--next" id="galleryNext"
           onclick="galleryNav(1)" aria-label="Selanjutnya">
-          <i class="fa-solid fa-chevron-right"></i>
+          <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
         </button>
       </div>
       <div class="gallery-popup__footer">
         <span class="gallery-popup__counter" id="galleryCounter">1 / 1</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Detail Popup Modal -->
+  <div class="project-modal" id="projectDetailModal" role="dialog" aria-modal="true"
+    aria-labelledby="projectModalTitle" hidden>
+    <div class="project-modal__backdrop" data-close-project-modal></div>
+    <div class="project-modal__container">
+      <div class="project-modal__header">
+        <div class="project-modal__heading">
+          <div class="project-modal__meta">
+            <span class="project-card__badge" id="projectModalBadge">Skripsi/TA</span>
+            <span class="project-modal__role" id="projectModalRole">Mobile &amp; AI Developer</span>
+          </div>
+          <h3 class="project-modal__title" id="projectModalTitle">Detail Proyek</h3>
+        </div>
+        <button type="button" class="project-modal__close" id="projectModalClose" data-close-project-modal
+          aria-label="Tutup detail proyek">
+          &times;
+        </button>
+      </div>
+
+      <div class="project-modal__body">
+        <!-- Dokumentasi Proyek -->
+        <div class="project-modal__section">
+          <h4 class="project-modal__section-title">
+            <i data-lucide="image" width="16" height="16" aria-hidden="true"></i>
+            Dokumentasi Proyek
+          </h4>
+          <div class="project-modal__doc-card">
+            <button type="button" class="project-modal__doc-img-btn" id="projectModalZoomBtn"
+              aria-label="Perbesar gambar dokumentasi proyek">
+              <img id="projectModalImg" src="assets/img/project1.png" alt="Dokumentasi proyek" width="800"
+                height="380" loading="lazy" />
+              <span class="project-modal__doc-zoom-hint">
+                <i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i> Klik untuk perbesar gambar
+              </span>
+            </button>
+            <p class="project-modal__doc-caption" id="projectModalCaption"></p>
+          </div>
+          <p class="project-modal__overview" id="projectModalOverview"></p>
+        </div>
+
+        <!-- Fitur & Karakteristik Kunci -->
+        <div class="project-modal__section">
+          <h4 class="project-modal__section-title">
+            <i data-lucide="list-checks" width="16" height="16" aria-hidden="true"></i>
+            Fitur &amp; Karakteristik Kunci
+          </h4>
+          <ul class="project-modal__features" id="projectModalFeatures"></ul>
+        </div>
+
+        <!-- Teknologi & Stack -->
+        <div class="project-modal__section">
+          <h4 class="project-modal__section-title">
+            <i data-lucide="cpu" width="16" height="16" aria-hidden="true"></i>
+            Teknologi &amp; Arsitektur
+          </h4>
+          <div class="project-card__tags project-modal__tags" id="projectModalTags"></div>
+        </div>
+      </div>
+
+      <div class="project-modal__footer">
+        <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn--primary project-modal__ext-link"
+          id="projectModalExtLink">
+          <span id="projectModalExtLabel">Lihat Proyek</span>
+          <i data-lucide="arrow-up-right" width="16" height="16" aria-hidden="true"></i>
+        </a>
+        <button type="button" class="btn btn--outline project-modal__close-btn" data-close-project-modal>
+          Tutup
+        </button>
       </div>
     </div>
   </div>

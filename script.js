@@ -12,13 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initActiveLink();
   initContactForm();
+  initPortfolioFilter();
+  initProjectDetailModal();
   initLightbox();
   initTextRotator();
   initMotherboardEffect();
 });
 
 // =============================================
-// NAVBAR — scroll effect
+// NAVBAR - scroll effect
 // =============================================
 function initNavbar() {
   const navbar = document.getElementById('navbar');
@@ -36,7 +38,7 @@ function initNavbar() {
 }
 
 // =============================================
-// THEME TOGGLE — light / dark
+// THEME TOGGLE - light / dark
 // =============================================
 function initThemeToggle() {
   const toggle = document.getElementById('themeToggle');
@@ -80,18 +82,32 @@ function updateToggleIcon() {
 function initMobileMenu() {
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
+  if (!menuToggle || !navLinks) return;
+
+  function setMenuOpen(isOpen) {
+    menuToggle.classList.toggle('active', isOpen);
+    navLinks.classList.toggle('open', isOpen);
+    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
 
   menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
-    navLinks.classList.toggle('open');
+    const isOpen = !navLinks.classList.contains('open');
+    setMenuOpen(isOpen);
   });
 
   // Close menu when a link is clicked
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      menuToggle.classList.remove('active');
-      navLinks.classList.remove('open');
+      setMenuOpen(false);
     });
+  });
+
+  // Close menu with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+      setMenuOpen(false);
+      menuToggle.focus();
+    }
   });
 }
 
@@ -100,8 +116,12 @@ function initMobileMenu() {
 // =============================================
 function initScrollAnimations() {
   const elements = document.querySelectorAll('.fade-up');
-
   if (!elements.length) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    elements.forEach(el => el.classList.add('visible'));
+    return;
+  }
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -125,14 +145,27 @@ function initScrollAnimations() {
 }
 
 // =============================================
-// ACTIVE NAV LINK — highlight on scroll
+// ACTIVE NAV LINK - highlight on scroll
 // =============================================
 function initActiveLink() {
   const sections = document.querySelectorAll('section[id]');
   const links = document.querySelectorAll('.navbar__links a');
+  if (!sections.length || !links.length) return;
+
+  const setActiveById = (id) => {
+    links.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+    });
+  };
 
   const onScroll = () => {
-    const scrollY = window.scrollY + 120;
+    const scrollY = window.scrollY + 140;
+
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24) {
+      const lastSection = sections[sections.length - 1];
+      setActiveById(lastSection.getAttribute('id'));
+      return;
+    }
 
     sections.forEach(section => {
       const top = section.offsetTop;
@@ -140,57 +173,160 @@ function initActiveLink() {
       const id = section.getAttribute('id');
 
       if (scrollY >= top && scrollY < top + height) {
-        links.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === '#' + id) {
-            link.classList.add('active');
-          }
-        });
+        setActiveById(id);
       }
     });
   };
 
   window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 }
 
 // =============================================
-// CONTACT FORM — simple validation + feedback
+// CONTACT FORM - validation + WhatsApp handoff
 // =============================================
 function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
+  const statusEl = document.getElementById('contactFormStatus');
+  const submitBtn = form.querySelector('.contact__submit');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const subjectInput = document.getElementById('subject');
+  const messageInput = document.getElementById('message');
+  const waNumber = '6282131270114';
+
+  function showStatus(type, text, fallbackUrl) {
+    if (!statusEl) return;
+    statusEl.className = `form-status form-status--${type}`;
+    statusEl.textContent = text;
+    if (fallbackUrl) {
+      statusEl.appendChild(document.createTextNode(' '));
+      const link = document.createElement('a');
+      link.href = fallbackUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Buka WhatsApp secara manual.';
+      link.style.textDecoration = 'underline';
+      link.style.fontWeight = '700';
+      statusEl.appendChild(link);
+    }
+  }
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const btn = form.querySelector('.contact__submit');
-    const originalText = btn.innerHTML;
+    const fields = [
+      { input: nameInput, label: 'Nama Lengkap' },
+      { input: emailInput, label: 'Email / Instansi' },
+      { input: subjectInput, label: 'Subjek' },
+      { input: messageInput, label: 'Pesan' }
+    ];
 
-    // Simulate send
-    btn.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
-      Sending...
+    const missing = fields.find(f => !f.input || !f.input.value.trim());
+    if (missing) {
+      showStatus('error', `Mohon lengkapi kolom ${missing.label} terlebih dahulu sebelum mengirim pesan.`);
+      if (missing.input) missing.input.focus();
+      return;
+    }
+
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const subject = subjectInput.value.trim();
+    const message = messageInput.value.trim();
+
+    const waText = `Halo Edward, saya ${name} (${email}).\n\nKeperluan: ${subject}\nPesan:\n${message}`;
+    const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`;
+
+    const originalMarkup = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1s linear infinite;" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+      Membuka WhatsApp...
     `;
-    btn.disabled = true;
+
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
+    showStatus('success', 'Pesan berhasil disiapkan dan diarahkan ke WhatsApp 082131270114.', waUrl);
+    form.reset();
 
     setTimeout(() => {
-      btn.innerHTML = `
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Message sent!
-      `;
-      btn.style.background = '#22c55e';
-      btn.style.boxShadow = '0 4px 16px rgba(34,197,94,.3)';
-
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.disabled = false;
-        btn.style.background = '';
-        btn.style.boxShadow = '';
-        form.reset();
-        if (typeof lucide !== 'undefined') lucide.createIcons();
-      }, 2500);
-    }, 1500);
+      submitBtn.innerHTML = originalMarkup;
+      submitBtn.disabled = false;
+    }, 1200);
   });
+}
+
+// =============================================
+// PORTFOLIO FILTER & SEARCH
+// =============================================
+function initPortfolioFilter() {
+  const filterBtns = document.querySelectorAll('.portfolio-filter-btn');
+  const searchInput = document.getElementById('projectSearchInput');
+  const projectCards = document.querySelectorAll('#projects .project-card');
+  const emptyState = document.getElementById('projectsEmptyState');
+  const resetBtn = document.getElementById('resetPortfolioFilterBtn');
+
+  if (!filterBtns.length || !projectCards.length) return;
+
+  let activeFilter = 'all';
+
+  function applyFilter() {
+    const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+    let visibleCount = 0;
+
+    projectCards.forEach(card => {
+      const categories = (card.getAttribute('data-category') || '').split(/\s+/).filter(Boolean);
+      const matchesCategory = activeFilter === 'all' || categories.includes(activeFilter);
+
+      const title = (card.querySelector('.project-card__title')?.textContent || '').toLowerCase();
+      const badge = (card.querySelector('.project-card__badge')?.textContent || '').toLowerCase();
+      const desc = (card.querySelector('.project-card__desc')?.textContent || '').toLowerCase();
+      const tags = (card.querySelector('.project-card__tags')?.textContent || '').toLowerCase();
+      const matchesQuery = !query || title.includes(query) || badge.includes(query) || desc.includes(query) || tags.includes(query);
+
+      const isMatch = matchesCategory && matchesQuery;
+      card.hidden = !isMatch;
+      if (isMatch) {
+        card.classList.add('visible');
+        visibleCount++;
+      }
+    });
+
+    if (emptyState) {
+      emptyState.hidden = visibleCount > 0;
+    }
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeFilter = btn.getAttribute('data-filter') || 'all';
+      filterBtns.forEach(b => {
+        const isCurrent = b === btn;
+        b.classList.toggle('active', isCurrent);
+        b.setAttribute('aria-pressed', isCurrent ? 'true' : 'false');
+      });
+      applyFilter();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', applyFilter);
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      activeFilter = 'all';
+      if (searchInput) searchInput.value = '';
+      filterBtns.forEach(b => {
+        const isAll = (b.getAttribute('data-filter') === 'all');
+        b.classList.toggle('active', isAll);
+        b.setAttribute('aria-pressed', isAll ? 'true' : 'false');
+      });
+      applyFilter();
+      if (searchInput) searchInput.focus();
+    });
+  }
 }
 
 // Add spin animation for loading
@@ -199,7 +335,7 @@ styleSheet.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`
 document.head.appendChild(styleSheet);
 
 // =============================================
-// LIGHTBOX — ZOOM GAMBAR PROJECT
+// LIGHTBOX - ZOOM GAMBAR PROJECT
 // =============================================
 function initLightbox() {
   const lightbox = document.getElementById('lightbox');
@@ -209,30 +345,42 @@ function initLightbox() {
 
   if (!lightbox || !lightboxImg || !lightboxClose) return;
 
-  function openLightbox(img) {
+  let lastFocusedTrigger = null;
+
+  function openLightbox(img, triggerEl) {
     if (!img || !img.src) return;
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt || 'Project Preview';
+    openLightboxBySrc(img.src, img.alt || 'Pratinjau proyek', triggerEl);
+  }
+
+  function openLightboxBySrc(src, alt, triggerEl) {
+    if (!src) return;
+    lastFocusedTrigger = triggerEl || document.activeElement;
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || 'Pratinjau proyek';
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
+    lightboxClose.focus();
   }
+
+  window.openProjectLightbox = openLightboxBySrc;
 
   function closeLightbox() {
     lightbox.classList.remove('active');
-    document.body.style.overflow = '';
+    const projectModal = document.getElementById('projectDetailModal');
+    const galleryPopup = document.getElementById('galleryPopup');
+    const otherModalOpen = (projectModal && projectModal.classList.contains('active')) ||
+      (galleryPopup && galleryPopup.classList.contains('active'));
+    document.body.style.overflow = otherModalOpen ? 'hidden' : '';
+    if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === 'function') {
+      lastFocusedTrigger.focus();
+      lastFocusedTrigger = null;
+    }
     setTimeout(() => {
       if (!lightbox.classList.contains('active')) {
         lightboxImg.src = '';
       }
     }, 300);
   }
-
-  projectCards.forEach((card) => {
-    card.addEventListener('click', () => {
-      const img = card.querySelector('img');
-      openLightbox(img);
-    });
-  });
 
   // Tombol X versi biasa untuk tutup
   lightboxClose.addEventListener('click', (e) => {
@@ -250,6 +398,7 @@ function initLightbox() {
   // Tombol Escape di keyboard untuk tutup
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      e.stopImmediatePropagation();
       closeLightbox();
     }
   });
@@ -261,6 +410,7 @@ function initLightbox() {
 function initTextRotator() {
   const rotatorEl = document.getElementById('heroRotator');
   if (!rotatorEl) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const words = [
     'High-Performance IT Tech',
@@ -320,16 +470,20 @@ function toggleGallery(id) {
   document.querySelectorAll('.documentation-gallery')
     .forEach(item => item.classList.remove('active'));
 
-  // Reset status aktif semua tombol
+  // Reset status aktif dan aria-expanded semua tombol
   document.querySelectorAll('button.project-card__tag')
-    .forEach(btn => btn.classList.remove('active'));
+    .forEach(btn => {
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    });
 
   // Buka gallery yang diklik jika sebelumnya tertutup & aktifkan tombolnya
   if (!isOpen) {
     gallery.classList.add('active');
-    const targetBtn = document.querySelector(`button.project-card__tag[onclick*="'${id}'"]`);
+    const targetBtn = document.querySelector(`button.project-card__tag[aria-controls="${id}"]`);
     if (targetBtn) {
       targetBtn.classList.add('active');
+      targetBtn.setAttribute('aria-expanded', 'true');
     }
   }
 }
@@ -340,10 +494,13 @@ function toggleGallery(id) {
 // Gallery popup state
 let galleryImages = [];
 let galleryIndex = 0;
+let galleryLastTrigger = null;
 
 function openGalleryPopup(title, images, startIndex) {
   galleryImages = Array.isArray(images) ? images : [];
   if (galleryImages.length === 0) return;
+
+  galleryLastTrigger = document.activeElement;
 
   let idx = typeof startIndex === 'number' ? startIndex : 0;
   if (idx < 0 || idx >= galleryImages.length) {
@@ -360,13 +517,20 @@ function openGalleryPopup(title, images, startIndex) {
   if (popup) {
     popup.classList.add('active');
     document.body.style.overflow = 'hidden';
+    const closeBtn = popup.querySelector('.gallery-popup__close');
+    if (closeBtn) closeBtn.focus();
   }
 }
 
 function closeGalleryPopup() {
   const popup = document.getElementById('galleryPopup');
+  if (!popup) return;
   popup.classList.remove('active');
   document.body.style.overflow = '';
+  if (galleryLastTrigger && typeof galleryLastTrigger.focus === 'function') {
+    galleryLastTrigger.focus();
+    galleryLastTrigger = null;
+  }
 }
 
 function galleryNav(direction) {
@@ -449,6 +613,20 @@ function initMotherboardEffect() {
     densityFactor: 18,
     isProjects: true
   });
+
+  // 3. Pendidikan & Pengalaman (same circuit background as Portofolio)
+  createCircuitCanvas('educationCanvas', 'pendidikan', {
+    topClearY: 15,
+    traceCountTarget: 26,
+    densityFactor: 18,
+    isProjects: true
+  });
+  createCircuitCanvas('experienceCanvas', 'pengalaman', {
+    topClearY: 15,
+    traceCountTarget: 58,
+    densityFactor: 18,
+    isProjects: true
+  });
 }
 
 function createCircuitCanvas(canvasId, containerId, options = {}) {
@@ -457,6 +635,7 @@ function createCircuitCanvas(canvasId, containerId, options = {}) {
   if (!canvas || !container) return;
 
   const ctx = canvas.getContext('2d');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let width = 0;
   let height = 0;
   let dpr = 1;
@@ -517,6 +696,9 @@ function createCircuitCanvas(canvasId, containerId, options = {}) {
     ctx.scale(dpr, dpr);
 
     buildCircuit();
+    if (prefersReducedMotion) {
+      draw(true);
+    }
   }
 
   function debouncedResize() {
@@ -685,9 +867,9 @@ function createCircuitCanvas(canvasId, containerId, options = {}) {
     return { x: last.p2.x, y: last.p2.y };
   }
 
-  function draw() {
-    if (!isVisible) {
-      animId = requestAnimationFrame(draw);
+  function draw(staticOnly = false) {
+    if (!staticOnly && !isVisible) {
+      animId = requestAnimationFrame(() => draw(false));
       return;
     }
 
@@ -745,64 +927,66 @@ function createCircuitCanvas(canvasId, containerId, options = {}) {
     });
 
     // 2. Draw Electric Pulses (ultra-sleek hairline pulse: 0.55px)
-    pulses.forEach(pulse => {
-      const trace = traces[pulse.traceIdx];
-      if (!trace) return;
+    if (!staticOnly && !prefersReducedMotion) {
+      pulses.forEach(pulse => {
+        const trace = traces[pulse.traceIdx];
+        if (!trace) return;
 
-      let speedMult = 1;
-      const head = getPointAtDist(trace.segments, pulse.dist);
-      if (mouse.active && mouse.y >= TOP_CLEAR_Y && Math.hypot(head.x - mouse.x, head.y - mouse.y) < 100) {
-        speedMult = 1.35;
+        let speedMult = 1;
+        const head = getPointAtDist(trace.segments, pulse.dist);
+        if (mouse.active && mouse.y >= TOP_CLEAR_Y && Math.hypot(head.x - mouse.x, head.y - mouse.y) < 100) {
+          speedMult = 1.35;
+        }
+
+        pulse.dist += pulse.speed * speedMult;
+
+        if (pulse.dist >= trace.totalLength) {
+          pulse.dist = 0;
+          trace.endFlash = 1.0;
+        }
+
+        const tailStartDist = Math.max(0, pulse.dist - pulse.tail);
+        const tailHead = head;
+        const tailTail = getPointAtDist(trace.segments, tailStartDist);
+
+        ctx.save();
+        const grad = ctx.createLinearGradient(tailTail.x, tailTail.y, tailHead.x, tailHead.y);
+        grad.addColorStop(0, 'rgba(56, 189, 248, 0)');
+        grad.addColorStop(0.7, dark ? 'rgba(56, 189, 248, 0.14)' : 'rgba(37, 99, 235, 0.10)');
+        grad.addColorStop(1, dark ? 'rgba(96, 165, 250, 0.60)' : 'rgba(37, 99, 235, 0.50)');
+
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 0.55;
+        ctx.lineCap = 'round';
+
+        drawPathSegment(ctx, trace.segments, tailStartDist, pulse.dist);
+        ctx.stroke();
+
+        // Glowing head spark (microscopic pinhead dot: 0.65px)
+        ctx.shadowBlur = dark ? 3 : 2;
+        ctx.shadowColor = dark ? '#38bdf8' : '#2563eb';
+        ctx.fillStyle = dark ? '#ffffff' : '#2563eb';
+        ctx.beginPath();
+        ctx.arc(head.x, head.y, 0.65, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      });
+
+      // 3. Subtle Interactive Mouse Aura (whisper-soft)
+      if (mouse.active && mouse.y >= TOP_CLEAR_Y) {
+        ctx.save();
+        const aura = ctx.createRadialGradient(mouse.x, mouse.y, 4, mouse.x, mouse.y, 75);
+        aura.addColorStop(0, dark ? 'rgba(56, 189, 248, 0.03)' : 'rgba(37, 99, 235, 0.02)');
+        aura.addColorStop(1, 'transparent');
+        ctx.fillStyle = aura;
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, 75, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
       }
 
-      pulse.dist += pulse.speed * speedMult;
-
-      if (pulse.dist >= trace.totalLength) {
-        pulse.dist = 0;
-        trace.endFlash = 1.0;
-      }
-
-      const tailStartDist = Math.max(0, pulse.dist - pulse.tail);
-      const tailHead = head;
-      const tailTail = getPointAtDist(trace.segments, tailStartDist);
-
-      ctx.save();
-      const grad = ctx.createLinearGradient(tailTail.x, tailTail.y, tailHead.x, tailHead.y);
-      grad.addColorStop(0, 'rgba(56, 189, 248, 0)');
-      grad.addColorStop(0.7, dark ? 'rgba(56, 189, 248, 0.14)' : 'rgba(37, 99, 235, 0.10)');
-      grad.addColorStop(1, dark ? 'rgba(96, 165, 250, 0.60)' : 'rgba(37, 99, 235, 0.50)');
-
-      ctx.strokeStyle = grad;
-      ctx.lineWidth = 0.55;
-      ctx.lineCap = 'round';
-
-      drawPathSegment(ctx, trace.segments, tailStartDist, pulse.dist);
-      ctx.stroke();
-
-      // Glowing head spark (microscopic pinhead dot: 0.65px)
-      ctx.shadowBlur = dark ? 3 : 2;
-      ctx.shadowColor = dark ? '#38bdf8' : '#2563eb';
-      ctx.fillStyle = dark ? '#ffffff' : '#2563eb';
-      ctx.beginPath();
-      ctx.arc(head.x, head.y, 0.65, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-    });
-
-    // 3. Subtle Interactive Mouse Aura (whisper-soft)
-    if (mouse.active && mouse.y >= TOP_CLEAR_Y) {
-      ctx.save();
-      const aura = ctx.createRadialGradient(mouse.x, mouse.y, 4, mouse.x, mouse.y, 75);
-      aura.addColorStop(0, dark ? 'rgba(56, 189, 248, 0.03)' : 'rgba(37, 99, 235, 0.02)');
-      aura.addColorStop(1, 'transparent');
-      ctx.fillStyle = aura;
-      ctx.beginPath();
-      ctx.arc(mouse.x, mouse.y, 75, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
+      animId = requestAnimationFrame(() => draw(false));
     }
-
-    animId = requestAnimationFrame(draw);
   }
 
   function drawPathSegment(ctx, segments, distA, distB) {
@@ -876,6 +1060,266 @@ function createCircuitCanvas(canvasId, containerId, options = {}) {
   }
 
   resize();
-  animId = requestAnimationFrame(draw);
+  if (prefersReducedMotion) {
+    draw(true);
+  } else {
+    animId = requestAnimationFrame(() => draw(false));
+  }
 }
+
+// =============================================
+// PROJECT DETAIL POPUP MODAL
+// =============================================
+const PROJECT_DETAILS = {
+  famotion: {
+    title: 'Mobile App Famotion',
+    badge: 'Skripsi/TA',
+    role: 'Mobile & Machine Learning Developer',
+    image: 'assets/img/project1.png',
+    imageAlt: 'Dokumentasi antarmuka aplikasi Mobile App Famotion',
+    caption: 'Dokumentasi 5 layar utama aplikasi: Beranda pencarian musik, kamera Deteksi Wajah Aktif, proses analisis AI, rincian skor emosi (Neutral, Sad, Angry, Happy), dan halaman statistik Mood Tracker 7 hari terakhir.',
+    overview: 'Famotion (Face Mood Emotion Detection) adalah aplikasi mobile Tugas Akhir Program Studi D3 Manajemen Informatika Politeknik Negeri Jember. Aplikasi ini dirancang untuk membantu pengguna mengenali suasana hati mereka melalui tangkapan ekspresi wajah pada kamera smartphone, lalu menyarankan musik yang selaras dengan kondisi emosi tersebut.',
+    features: [
+      {
+        title: 'Deteksi Emosi Wajah (ResNet50 & K-NN)',
+        desc: 'Mengenali 4 ekspresi emosi wajah (Happy, Sad, Angry, Neutral) secara real-time dengan mengekstraksi fitur citra menggunakan model ResNet50 dan mengklasifikasikannya dengan algoritma K-Nearest Neighbors (K-NN).'
+      },
+      {
+        title: 'Rekomendasi Musik Multi-Sumber',
+        desc: 'Menyajikan daftar lagu, artis, dan genre berdasarkan hasil deteksi emosi beserta confidence score, mendukung pemutaran langsung lewat integrasi YouTube Music maupun file musik lokal (Local Music) di perangkat.'
+      },
+      {
+        title: 'Mood Tracker & Statistik Mingguan',
+        desc: 'Merekam riwayat deteksi ekspresi wajah selama 7 hari terakhir untuk menampilkan mood dominan dan grafik distribusi persentase emosi pengguna.'
+      },
+      {
+        title: 'Arsitektur Client-Server Terpisah',
+        desc: 'Aplikasi mobile dibangun menggunakan Flutter dan Dart, berkomunikasi dengan layanan REST API Node.js dan MongoDB untuk manajemen data pengguna serta server Python Flask untuk inferensi model AI.'
+      }
+    ],
+    extUrl: 'https://github.com/Epangssss/Famotion',
+    extLabel: 'Buka Repositori GitHub'
+  },
+  bieplus: {
+    title: 'Brilliant English+',
+    badge: 'Magang',
+    role: 'IT Support & Web Developer',
+    image: 'assets/img/project2.png',
+    imageAlt: 'Dokumentasi antarmuka website Brilliant English+',
+    caption: 'Dokumentasi halaman utama Brilliant International Education Plus (BIEPLUS) yang menampilkan navigasi Program, Galeri, informasi fasilitas Camp/asrama, dan tombol Tracking Transaksi.',
+    overview: 'Brilliant English+ (BIEPLUS) adalah platform web pendaftaran kursus Bahasa Inggris dan sistem manajemen hunian asrama (occupancy) di Kampung Inggris Pare. Sistem ini membantu calon siswa menelusuri program belajar, memeriksa ketersediaan camp, dan memantau transaksi pendaftaran secara daring.',
+    features: [
+      {
+        title: 'Manajemen Hunian & Asrama (Occupancy System)',
+        desc: 'Mengelola data ketersediaan kamar camp, penempatan peserta kursus, serta informasi fasilitas tempat tinggal siswa secara terpusat.'
+      },
+      {
+        title: 'Pendaftaran Program & Self-Service Tracking',
+        desc: 'Memfasilitasi pendaftaran kursus Bahasa Inggris secara daring dilengkapi fitur Tracking Transaksi agar calon siswa dapat mengecek status pembayaran dan verifikasi secara mandiri.'
+      },
+      {
+        title: 'Perancangan Ulang Alur Kerja & Keamanan Data',
+        desc: 'Menyusun ulang workflow pengelolaan data pendaftaran dan siswa pada sistem backend guna memperkuat keamanan akses serta meminimalkan risiko kebocoran data (data breach).'
+      },
+      {
+        title: 'Pengelolaan Konten Program & Galeri',
+        desc: 'Menyediakan modul informasi kurikulum, pilihan paket belajar, dan dokumentasi fasilitas kampus berbasis Laravel, Bootstrap, dan MySQL.'
+      }
+    ],
+    extUrl: 'https://occupancy.bieplus.com/',
+    extLabel: 'Buka Live Demo'
+  },
+  'brilliant-pare': {
+    title: 'Brilliant English Pare',
+    badge: 'Freelance',
+    role: 'Full-Stack Web Developer',
+    image: 'assets/img/project3.png',
+    imageAlt: 'Dokumentasi antarmuka website Brilliant English Pare',
+    caption: 'Dokumentasi halaman depan Brilliant English Pare dengan navigasi Tentang Kami, Program, Camp, Galeri, Status Transaksi, serta widget konsultasi CS WhatsApp.',
+    overview: 'Brilliant English Pare adalah portal web resmi lembaga kursus Bahasa Inggris di Kampung Inggris Pare, Kabupaten Kediri. Website ini dirancang untuk menyajikan katalog program kursus, fasilitas tempat tinggal (camp), pelacakan transaksi pendaftaran, serta kanal konsultasi langsung bagi calon siswa.',
+    features: [
+      {
+        title: 'Katalog Program Kursus & Fasilitas Camp',
+        desc: 'Menampilkan rincian paket belajar Bahasa Inggris, durasi program, fasilitas asrama, dan galeri aktivitas siswa dengan tata letak yang mudah dijelajahi.'
+      },
+      {
+        title: 'Pengecekan Status Transaksi Pendaftaran',
+        desc: 'Fitur Status Transaksi pada navigasi utama yang memudahkan pendaftar memverifikasi progres administrasi dan pembayaran kursus.'
+      },
+      {
+        title: 'Integrasi Konsultasi Customer Service',
+        desc: 'Dilengkapi tombol interaktif WhatsApp CS untuk membantu calon siswa berkonsultasi mengenai pilihan program dan ketersediaan camp secara langsung.'
+      },
+      {
+        title: 'Antarmuka Responsif Lintas Perangkat',
+        desc: 'Dikembangkan menggunakan Laravel, CSS, JavaScript, Bootstrap, dan MySQL dengan performa pemuatan halaman yang ringan di perangkat mobile maupun desktop.'
+      }
+    ],
+    extUrl: 'https://brilliantenglishpare.com/',
+    extLabel: 'Buka Live Demo'
+  },
+  'brilliant-jerman': {
+    title: 'Brilliant Kampung Inggris Jerman',
+    badge: 'Magang',
+    role: 'Web Developer',
+    image: 'assets/img/project4.png',
+    imageAlt: 'Dokumentasi antarmuka website Brilliant Kampung Inggris Jerman',
+    caption: 'Dokumentasi portal Brilliant Deutsche Sprache (BIEPLUS) yang menampilkan halaman program Bahasa Jerman, menu Camp dan Galeri, serta fitur Tracking Transaksi.',
+    overview: 'Brilliant Kampung Inggris Jerman (Deutsch Sprache) adalah platform web khusus program kursus Bahasa Jerman di bawah jaringan Brilliant International Education Plus. Platform ini menjembatani kebutuhan siswa yang ingin menguasai bahasa Jerman melalui kelas tatap muka di Pare maupun kelas virtual.',
+    features: [
+      {
+        title: 'Program Belajar Kelas Offline & Online',
+        desc: 'Menyediakan informasi terstruktur mengenai pilihan program Bahasa Jerman tatap muka (offline) dengan fasilitas asrama maupun kelas virtual (online).'
+      },
+      {
+        title: 'Tracking Transaksi & Administrasi Siswa',
+        desc: 'Terintegrasi dengan fitur pelacakan transaksi pendaftaran sehingga peserta dapat memantau status registrasi program Bahasa Jerman secara transparan.'
+      },
+      {
+        title: 'Standarisasi Keamanan Alur Data',
+        desc: 'Menerapkan perbaikan workflow pengelolaan data siswa pada ekosistem website BIEPLUS untuk menjaga integritas data pendaftaran.'
+      },
+      {
+        title: 'Desain Terpadu Berbasis Laravel & MySQL',
+        desc: 'Dibangun di atas arsitektur Laravel, Bootstrap, dan MySQL yang konsisten dengan identitas visual program Deutsch Sprache.'
+      }
+    ],
+    extUrl: 'https://biepluskampunginggris.com/program/bahasa/jerman',
+    extLabel: 'Buka Live Demo'
+  }
+};
+
+function initProjectDetailModal() {
+  const modal = document.getElementById('projectDetailModal');
+  if (!modal) return;
+
+  const badgeEl = document.getElementById('projectModalBadge');
+  const roleEl = document.getElementById('projectModalRole');
+  const titleEl = document.getElementById('projectModalTitle');
+  const imgEl = document.getElementById('projectModalImg');
+  const captionEl = document.getElementById('projectModalCaption');
+  const overviewEl = document.getElementById('projectModalOverview');
+  const featuresEl = document.getElementById('projectModalFeatures');
+  const tagsEl = document.getElementById('projectModalTags');
+  const extLinkEl = document.getElementById('projectModalExtLink');
+  const extLabelEl = document.getElementById('projectModalExtLabel');
+  const closeBtn = document.getElementById('projectModalClose');
+  const zoomBtn = document.getElementById('projectModalZoomBtn');
+  const containerEl = modal.querySelector('.project-modal__body');
+
+  let lastTrigger = null;
+
+  function openProjectModal(projectId, triggerEl) {
+    const data = PROJECT_DETAILS[projectId];
+    if (!data) return;
+
+    lastTrigger = triggerEl || document.activeElement;
+
+    if (badgeEl) badgeEl.textContent = data.badge;
+    if (roleEl) roleEl.textContent = data.role;
+    if (titleEl) titleEl.textContent = data.title;
+    if (imgEl) {
+      imgEl.src = data.image;
+      imgEl.alt = data.imageAlt;
+    }
+    if (captionEl) captionEl.textContent = data.caption;
+    if (overviewEl) overviewEl.textContent = data.overview;
+
+    if (featuresEl) {
+      featuresEl.innerHTML = '';
+      data.features.forEach((feat) => {
+        const li = document.createElement('li');
+        const strong = document.createElement('strong');
+        strong.textContent = feat.title;
+        const span = document.createElement('span');
+        span.textContent = feat.desc;
+        li.appendChild(strong);
+        li.appendChild(span);
+        featuresEl.appendChild(li);
+      });
+    }
+
+    if (tagsEl) {
+      const sourceCard = document.querySelector(`.project-card[data-project-id="${projectId}"]`);
+      const sourceTags = sourceCard ? sourceCard.querySelector('.project-card__tags') : null;
+      tagsEl.innerHTML = sourceTags ? sourceTags.innerHTML : '';
+    }
+
+    if (extLinkEl) extLinkEl.href = data.extUrl;
+    if (extLabelEl) extLabelEl.textContent = data.extLabel;
+    if (containerEl) containerEl.scrollTop = 0;
+
+    modal.hidden = false;
+    requestAnimationFrame(() => {
+      modal.classList.add('active');
+    });
+    document.body.style.overflow = 'hidden';
+
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeProjectModal() {
+    if (!modal.classList.contains('active')) return;
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+
+    setTimeout(() => {
+      if (!modal.classList.contains('active')) {
+        modal.hidden = true;
+      }
+    }, 300);
+
+    if (lastTrigger && typeof lastTrigger.focus === 'function') {
+      lastTrigger.focus();
+      lastTrigger = null;
+    }
+  }
+
+  // Klik atau Enter/Spasi pada card proyek untuk membuka modal detail
+  const cards = document.querySelectorAll('.project-card[data-project-id]');
+  cards.forEach((card) => {
+    const projectId = card.getAttribute('data-project-id');
+    if (!projectId) return;
+
+    card.addEventListener('click', (e) => {
+      // Jika yang diklik adalah link (GitHub / Live Demo), biarkan link terbuka tanpa membuka popup
+      if (e.target.closest('a')) return;
+      openProjectModal(projectId, card);
+    });
+
+    card.addEventListener('keydown', (e) => {
+      // Enter atau Spasi saat fokus berada di card utama
+      if ((e.key === 'Enter' || e.key === ' ') && e.target === card) {
+        e.preventDefault();
+        openProjectModal(projectId, card);
+      }
+    });
+  });
+
+  modal.querySelectorAll('[data-close-project-modal]').forEach((el) => {
+    el.addEventListener('click', closeProjectModal);
+  });
+
+  if (zoomBtn && imgEl) {
+    zoomBtn.addEventListener('click', () => {
+      if (typeof window.openProjectLightbox === 'function') {
+        window.openProjectLightbox(imgEl.src, imgEl.alt, zoomBtn);
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox && lightbox.classList.contains('active')) return;
+    if (modal.classList.contains('active')) {
+      closeProjectModal();
+    }
+  });
+}
+
 
