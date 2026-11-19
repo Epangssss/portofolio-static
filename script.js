@@ -557,8 +557,11 @@ function updateGalleryImage() {
   const nextBtn = document.getElementById('galleryNext');
 
   const currentSrc = galleryImages[galleryIndex] || '';
-  const encodedSrc = encodeURI(currentSrc);
-  const isPdf = currentSrc.toLowerCase().endsWith('.pdf');
+  const hashIndex = currentSrc.indexOf('#');
+  const rawPath = hashIndex >= 0 ? currentSrc.slice(0, hashIndex) : currentSrc;
+  const rawHash = hashIndex >= 0 ? currentSrc.slice(hashIndex + 1) : '';
+  const encodedPath = encodeURI(rawPath);
+  const isPdf = rawPath.toLowerCase().endsWith('.pdf');
 
   if (isPdf) {
     if (img) {
@@ -567,7 +570,14 @@ function updateGalleryImage() {
     }
     if (pdfFrame) {
       pdfFrame.hidden = false;
-      pdfFrame.src = encodedSrc;
+      const hashParts = rawHash
+        ? rawHash.split('&').filter((part) => {
+            const lower = part.toLowerCase();
+            return !lower.startsWith('navpanes=') && !lower.startsWith('view=');
+          })
+        : [];
+      hashParts.push('navpanes=0', 'view=Fit');
+      pdfFrame.src = `${encodedPath}#${hashParts.join('&')}`;
     }
   } else {
     if (pdfFrame) {
@@ -576,13 +586,13 @@ function updateGalleryImage() {
     }
     if (img) {
       img.hidden = false;
-      img.src = encodedSrc;
+      img.src = rawHash ? `${encodedPath}#${rawHash}` : encodedPath;
       img.alt = `Gambar ${galleryIndex + 1} dari ${galleryImages.length}`;
     }
   }
 
   if (openLink) {
-    openLink.href = encodedSrc;
+    openLink.href = rawHash ? `${encodedPath}#${rawHash}` : encodedPath;
   }
 
   counter.textContent = `${galleryIndex + 1} / ${galleryImages.length}`;
@@ -1155,7 +1165,7 @@ const PROJECT_DETAILS = {
         caption: 'Tampilan website utama brilliantinternationaleducation.com yang berada pada 1 sistem server dan arsitektur multi-program yang sama.'
       }
     ],
-    overview: 'Brilliant English+ (BIEPLUS) adalah platform utama yang menggabungkan beberapa program kursus dan pelatihan ke dalam 1 website dan server terpadu (brilliantinternationaleducation.com / occupancy.bieplus.com). Karena setiap program memiliki mentor yang berbeda-beda, struktur data dan alur sistemnya cukup kompleks. Bagian yang ditampilkan di portofolio ini adalah modul yang secara langsung saya ikut andil kerjakan selama masa magang.',
+    overview: 'Brilliant English+ (BIEPLUS) adalah platform utama yang menggabungkan beberapa program kursus dan pelatihan ke dalam 1 website dan server terpadu (brilliantinternationaleducation.com / occupancy.bieplus.com). Karena setiap program memiliki mentor yang berbeda-beda, struktur data dan alur sistemnya cukup kompleks. Bagian yang ditampilkan di portofolio ini adalah modul yang secara langsung saya rancang dan kembangkan selama masa magang.',
     features: [
       {
         title: 'Arsitektur 1 Website Multi-Program & Server Terpadu',
@@ -1166,8 +1176,8 @@ const PROJECT_DETAILS = {
         desc: 'Menangani keterkaitan data yang kompleks karena setiap program memiliki mentor, jadwal kelas, penempatan camp, dan alur administrasi yang berbeda-beda.'
       },
       {
-        title: 'Kontribusi Langsung: Workflow & Keamanan Data',
-        desc: 'Berfokus pada bagian sistem yang saya kerjakan langsung, yaitu perancangan ulang alur kerja (workflow/case flow) pengelolaan data pendaftaran pada 3 website guna meminimalkan risiko kebocoran data.'
+        title: 'Kontribusi Utama: Workflow & Keamanan Data',
+        desc: 'Berfokus pada modul yang saya rancang dan kembangkan langsung, yaitu perancangan ulang alur kerja (workflow/case flow) pengelolaan data pendaftaran pada 3 website guna memperkuat keamanan dan meminimalkan risiko kebocoran data.'
       },
       {
         title: 'Occupancy Camp & Tracking Transaksi Mandiri',
@@ -1227,7 +1237,7 @@ const PROJECT_DETAILS = {
         caption: 'Portal utama brilliantinternationaleducation.com yang menjadi wadah server bersama untuk program Bahasa Inggris, Jerman, dan NHC.'
       }
     ],
-    overview: 'Brilliant Kampung Inggris Jerman (Deutsch Sprache) merupakan salah satu program kursus yang dibangun terintegrasi di dalam 1 website multi-program bersama jaringan Brilliant International Education Plus. Mengingat setiap program ditangani oleh mentor yang berbeda-beda, struktur datanya terhubung secara kompleks dengan sistem utama. Bagian yang ditampilkan di sini merupakan cakupan fitur dan antarmuka yang saya ikut andil kerjakan.',
+    overview: 'Brilliant Kampung Inggris Jerman (Deutsch Sprache) merupakan salah satu program kursus yang dibangun terintegrasi di dalam 1 website multi-program bersama jaringan Brilliant International Education Plus. Mengingat setiap program ditangani oleh mentor yang berbeda-beda, struktur datanya terhubung secara kompleks dengan sistem utama. Bagian yang ditampilkan di sini merupakan cakupan fitur dan antarmuka yang saya rancang dan kembangkan.',
     features: [
       {
         title: 'Bagian dari 1 Website Multi-Program',
@@ -1238,8 +1248,8 @@ const PROJECT_DETAILS = {
         desc: 'Menyesuaikan struktur data kompleks yang memisahkan mentor pengajar, paket kelas offline maupun virtual (online), serta kuota camp khusus peserta Bahasa Jerman.'
       },
       {
-        title: 'Kontribusi Pengembangan Antarmuka & Alur',
-        desc: 'Menampilkan bagian halaman dan alur kerja sistem yang secara langsung saya ikut kerjakan selama magang agar konsisten dengan portal utama.'
+        title: 'Pengembangan Antarmuka & Alur Kerja',
+        desc: 'Menampilkan bagian halaman dan alur kerja sistem yang secara langsung saya rancang dan kembangkan selama magang agar terintegrasi mulus dengan portal utama.'
       },
       {
         title: 'Tracking Transaksi & Integrasi MySQL',
@@ -1270,7 +1280,7 @@ const PROJECT_DETAILS = {
         caption: 'Tampilan portal induk brilliantinternationaleducation.com yang berada pada satu arsitektur website dan server yang sama dengan modul program NHC.'
       }
     ],
-    overview: 'Nuswantara Hospitality Center (NHC) adalah portal program pelatihan dan persiapan karier perhotelan internasional di Kampung Inggris Pare yang berjalan pada satu server dan website terpadu bersama ekosistem BIEPLUS (https://occupancy.bieplus.com/nhc). Dalam pengembangannya, beberapa program pendidikan dijadikan satu website di mana setiap program memiliki mentor yang berbeda-beda, sehingga struktur data, relasi program, dan alur pengelolaannya cukup kompleks. Bagian yang ditampilkan pada portofolio ini merupakan modul dan fitur yang secara langsung saya ikut andil kerjakan selama masa magang.',
+    overview: 'Nuswantara Hospitality Center (NHC) adalah portal program pelatihan dan persiapan karier perhotelan internasional di Kampung Inggris Pare yang berjalan pada satu server dan website terpadu bersama ekosistem BIEPLUS (https://occupancy.bieplus.com/nhc). Dalam pengembangannya, beberapa program pendidikan dijadikan satu website di mana setiap program memiliki mentor yang berbeda-beda, sehingga struktur data, relasi program, dan alur pengelolaannya cukup kompleks. Bagian yang ditampilkan pada portofolio ini merupakan modul dan fitur yang secara langsung saya rancang dan kembangkan selama masa magang.',
     features: [
       {
         title: 'Arsitektur Multi-Program dalam 1 Website & Server',
@@ -1282,7 +1292,7 @@ const PROJECT_DETAILS = {
       },
       {
         title: 'Lingkup Kontribusi & Implementasi Modul',
-        desc: 'Berfokus pada bagian yang saya ikut kerjakan secara langsung, meliputi penataan halaman program NHC, perbaikan alur kerja (workflow/case flow) pengelolaan data pendaftaran, serta penguatan keamanan data siswa.'
+        desc: 'Berfokus pada modul yang saya rancang dan kembangkan secara langsung, meliputi penataan antarmuka program NHC, perbaikan alur kerja (workflow/case flow) pengelolaan data pendaftaran, serta penguatan keamanan data siswa.'
       },
       {
         title: 'Integrasi Camp & Tracking Transaksi Mandiri',
@@ -1291,6 +1301,37 @@ const PROJECT_DETAILS = {
     ],
     extUrl: 'https://occupancy.bieplus.com/nhc',
     extLabel: 'Buka Live Demo'
+  },
+  cetaksertifikat: {
+    title: 'CetakSertifikat - Studio Batch Static',
+    badge: 'Project Mandiri',
+    role: 'Frontend & Web Application Developer',
+    image: 'assets/img/project-cetaksertifikat.jpg',
+    imageAlt: 'Dokumentasi antarmuka CetakSertifikat Studio Batch Static',
+    caption: 'Dokumentasi antarmuka CetakSertifikat Studio Batch Static pada tahap Upload Template & Pratinjau Kanvas interaktif (A4 Landscape) dengan alur wizard 6 langkah.',
+    overview: 'CetakSertifikat Studio Batch Static adalah aplikasi web mandiri (Project Mandiri) yang dikembangkan sebagai wujud nyata implementasi sekaligus percontohan pengganti proyek TEFA (Teaching Factory) Sistem Pembuatan Sertifikat Otomatis Berbasis Website di JTI Innovation Center. Aplikasi ini memungkinkan pengguna mendesain sertifikat, mengunggah template, mengelola penerima secara batch, memvalidasi pratinjau kanvas secara real-time, dan mencetak ratusan sertifikat secara instan langsung dari peramban dengan arsitektur web statis yang cepat dan efisien.',
+    features: [
+      {
+        title: 'Alur Kerja Terpandu 6 Tahap (6-Step Batch Wizard)',
+        desc: 'Menyediakan panduan terstruktur mulai dari Upload Template, Konfigurasi tata letak, Pengisian Data Batch peserta, Detail Sertifikat, Preview & Validasi, hingga Generate & Unduh massal.'
+      },
+      {
+        title: 'Mesin Pratinjau Kanvas Real-Time (HTML5 Canvas)',
+        desc: 'Merender template sertifikat dalam format A4 Landscape secara presisi dengan penempatan nama peserta, nomor seri, tanggal, teks penghargaan, dan simulasi pratinjau langsung sebelum proses cetak.'
+      },
+      {
+        title: 'Pemrosesan Data Batch & Manajemen Peserta',
+        desc: 'Mendukung import dan pengelolaan data penerima secara bertahap dalam kelompok batch, memungkinkan verifikasi data nama dan peran peserta per halaman secara akurat.'
+      },
+      {
+        title: 'Arsitektur Static Client-Side & Ekspor Cepat',
+        desc: 'Berjalan optimal sebagai aplikasi web statis berkinerja tinggi tanpa ketergantungan server berat, menghasilkan berkas sertifikat siap pakai secara instan langsung di sisi pengguna.'
+      }
+    ],
+    extUrl: 'https://csertikat-studio-bs.wasmer.app/',
+    extLabel: 'Buka Live Demo',
+    githubUrl: 'https://github.com/Epangssss/Sertifikat-Generator-Studio-Batch-Static',
+    githubLabel: 'Repositori GitHub'
   }
 };
 
@@ -1309,6 +1350,8 @@ function initProjectDetailModal() {
   const tagsEl = document.getElementById('projectModalTags');
   const extLinkEl = document.getElementById('projectModalExtLink');
   const extLabelEl = document.getElementById('projectModalExtLabel');
+  const secLinkEl = document.getElementById('projectModalSecLink');
+  const secLabelEl = document.getElementById('projectModalSecLabel');
   const closeBtn = document.getElementById('projectModalClose');
   const zoomBtn = document.getElementById('projectModalZoomBtn');
   const containerEl = modal.querySelector('.project-modal__body');
@@ -1397,6 +1440,18 @@ function initProjectDetailModal() {
 
     if (extLinkEl) extLinkEl.href = data.extUrl;
     if (extLabelEl) extLabelEl.textContent = data.extLabel;
+
+    if (secLinkEl) {
+      if (data.githubUrl) {
+        secLinkEl.href = data.githubUrl;
+        if (secLabelEl) secLabelEl.textContent = data.githubLabel || 'GitHub';
+        secLinkEl.hidden = false;
+      } else {
+        secLinkEl.hidden = true;
+        secLinkEl.href = '#';
+      }
+    }
+
     if (containerEl) containerEl.scrollTop = 0;
 
     modal.hidden = false;
@@ -1429,6 +1484,16 @@ function initProjectDetailModal() {
     }
   }
 
+  // Handler langsung untuk tombol "Lihat Lebih Detail"
+  document.querySelectorAll('[data-open-modal]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const pid = btn.getAttribute('data-open-modal');
+      const targetCard = btn.closest('.project-card') || btn;
+      openProjectModal(pid, targetCard);
+    });
+  });
+
   // Klik atau Enter/Spasi pada card proyek untuk membuka modal detail
   const cards = document.querySelectorAll('.project-card[data-project-id]');
   cards.forEach((card) => {
@@ -1436,14 +1501,20 @@ function initProjectDetailModal() {
     if (!projectId) return;
 
     card.addEventListener('click', (e) => {
-      // Jika yang diklik adalah link (GitHub / Live Demo), biarkan link terbuka tanpa membuka popup
+      // Jika yang diklik adalah tombol Lihat Lebih Detail
+      if (e.target.closest('[data-open-modal]')) {
+        e.stopPropagation();
+        openProjectModal(projectId, card);
+        return;
+      }
+      // Jika yang diklik adalah link external (a tag), biarkan link terbuka tanpa membuka popup
       if (e.target.closest('a')) return;
       openProjectModal(projectId, card);
     });
 
     card.addEventListener('keydown', (e) => {
       // Enter atau Spasi saat fokus berada di card utama
-      if ((e.key === 'Enter' || e.key === ' ') && e.target === card) {
+      if ((e.key === 'Enter' || e.key === ' ') && (e.target === card || e.target.closest('[data-open-modal]'))) {
         e.preventDefault();
         openProjectModal(projectId, card);
       }
