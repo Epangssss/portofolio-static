@@ -1333,6 +1333,51 @@ const PROJECT_DETAILS = {
     extLabel: 'Buka Live Demo',
     githubUrl: 'https://github.com/Epangssss/Sertifikat-Generator-Studio-Batch-Static',
     githubLabel: 'Repositori GitHub'
+  },
+  'arduino-rtc': {
+    title: 'IoT Real-Time Clock (RTC DS3231) & LCD 16x2',
+    badge: 'IoT & Embedded',
+    role: 'Hardware & Embedded Systems Developer',
+    image: 'assets/img/project-arduino-rtc.png',
+    imageAlt: 'Dokumentasi prototipe hardware IoT Arduino Uno Real-Time Clock dan LCD 16x2',
+    caption: 'Dokumentasi implementasi fisik sistem Real-Time Clock berbasis Arduino Uno, modul RTC presisi tinggi DS3231, display LCD 16x2 dengan modul backpack I2C, serta breadboard.',
+    gallery: [
+      {
+        src: 'assets/img/project-arduino-rtc.png',
+        alt: 'Prototipe Perangkat Keras Arduino Uno RTC DS3231',
+        label: 'Prototipe Fisik',
+        caption: 'Implementasi fisik rangkaian mikrokontroler Arduino Uno yang terhubung ke modul RTC DS3231 dan LCD 16x2 I2C pada breadboard.'
+      },
+      {
+        src: 'assets/img/project-arduino-rtc-schematic.png',
+        alt: 'Skema Jalur Pengkabelan I2C Arduino Uno',
+        label: 'Skema Rangkaian Wiring',
+        caption: 'Diagram pengkabelan jalur bus I2C: VCC (5V, kabel merah), GND (kabel hitam), SDA (pin analog A4, kabel hijau/kuning), dan SCL (pin analog A5, kabel oranye) yang terhubung paralel.'
+      }
+    ],
+    overview: 'Proyek sistem tertanam (Embedded IoT) mandiri yang mengimplementasikan sistem pewaktuan presisi tinggi (Real-Time Clock) dan termometer digital real-time menggunakan mikrokontroler Arduino Uno, modul RTC DS3231 (TCXO - Temperature Compensated Crystal Oscillator), dan penampil teks LCD 16x2 dengan antarmuka serial I2C. Komunikasi data antar-modul dirancang hemat pin menggunakan bus I2C (Inter-Integrated Circuit) pada pin analog A4 (SDA) dan A5 (SCL), memastikan pembacaan waktu, tanggal, hari, dan suhu internal chip berjalan akurat tanpa membebani pemrosesan mikrokontroler.',
+    features: [
+      {
+        title: 'Sinkronisasi Waktu & Kalender Otomatis (setting_waktu.ino)',
+        desc: 'Menyediakan skrip konfigurasi awal untuk menginisialisasi serta menyinkronkan jam, menit, detik, hari (DOW 0-6), dan tanggal ke register memori RTC DS3231 dengan akurasi tinggi.'
+      },
+      {
+        title: 'Pemantauan Waktu & Suhu Real-Time (lcd_rtcds3231.ino)',
+        desc: 'Menampilkan data hari dan tanggal pada baris pertama LCD, serta waktu (jam:menit:detik) dan pembacaan sensor suhu internal RTC (format t:XX.XX) pada baris kedua yang diperbarui setiap detik.'
+      },
+      {
+        title: 'Efisiensi Jalur Bus I2C Dua Kawat (Two-Wire Interface)',
+        desc: 'Menghubungkan dua modul peripheral (RTC DS3231 dan I2C backpack LCD alamat 0x27) secara paralel hanya dengan 2 jalur data analog (A4 untuk SDA dan A5 untuk SCL).'
+      },
+      {
+        title: 'Ketahanan Operasional Mandiri (Battery-Backed RTC)',
+        desc: 'Didukung baterai koin cadangan pada modul DS3231 sehingga pencatatan waktu dan kalender tetap berjalan aktif dan presisi meski catu daya utama mikrokontroler terputus.'
+      }
+    ],
+    extUrl: 'https://github.com/Epangssss/IoT-Arduino-Uno-Real-Time-Clock',
+    extLabel: 'Buka Repositori GitHub',
+    githubUrl: 'https://github.com/Epangssss/IoT-Arduino-Uno-Real-Time-Clock',
+    githubLabel: 'Repositori GitHub'
   }
 };
 
